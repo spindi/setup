@@ -25,11 +25,11 @@ export BRIGHTCOVE_MORLOCK_BASE_DIR=/usr/local/brightcove/morlock
 
 # Prompt
 GIT_PS1_SHOWDIRTYSTATE=true
-source ~/.bash/.git-completion.bash
+source ~/.setup/git/completion.sh
 #source ~/.git-prompt.sh
 #export PS1='\[\033[36m\]\u\[\033[0m\]:\w\[\033[1m\]$(__git_ps1)\[\033[0m\]\$ ' # Full path
 #export PS1='\[\033[36m\]\u\[\033[0m\]:\W\[\033[1m\]$(__git_ps1)\[\033[0m\]\$ '
-source ~/.bash/bash_prompt.sh
+source ~/.setup/bash/prompt.sh
 
 # GoLang
 export GOPATH=/Users/cboyd/Documents/Work/Go
