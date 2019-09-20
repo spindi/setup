@@ -1,0 +1,4 @@
+require("misc.clipboard")
+require("misc.caffiene")
+require("misc.shortcuts")
+require("window.manipulation")
