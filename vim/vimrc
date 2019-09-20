@@ -23,7 +23,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'majutsushi/tagbar'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"
+
 " Initialize plugin system
 call plug#end()
 
@@ -188,4 +188,3 @@ set cursorline
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
-
