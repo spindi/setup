@@ -1,0 +1,53 @@
+[core]
+	excludesfile = /Users/cboyd/.gitignore_global
+	editor = /usr/local/bin/vim
+[diff]
+	tool = vimdiff
+[difftool]
+  # prompt = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+  prompt = false
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = Conor Boyd
+	email = cboyd@brightcove.com
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[push]
+	default = matching
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
+[commit]
+	template = /Users/cboyd/.stCommitMsg
+[credential]
+	helper = osxkeychain
+[url "git@github.com:"]
+  insteadOf = https://github.com/

@@ -1,2 +1,2 @@
 # setup
-Setup
+sync setup between machines
