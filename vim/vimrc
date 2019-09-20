@@ -1,0 +1,201 @@
+" Vundle git repo
+" $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" PluginInstall
+" PluginUpdate
+
+set nocompatible              " required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.setup/vim/vundle
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'heavenshell/vim-pydocstring'
+Plugin 'mileszs/ack.vim'
+Plugin 'fatih/vim-go'
+"Plugin 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+let g:ale_lint_on_text_changed = 1
+let g:ale_lint_on_insert_leave = 1
+Plugin 'w0rp/ale'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'davidhalter/jedi-vim'
+" Plugin 'vim-voom/VOoM'
+"let g:deoplete#enable_at_startup = 1
+"Plugin 'Shougo/deoplete.nvim'
+"Plugin 'deoplete-plugins/deoplete-jedi'
+Plugin 'chrisbra/csv.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" See the docstrings for folded code
+let g:SimpylFold_docstring_preview = 1
+
+" General indent
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set autoindent
+
+" Python indent
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=180 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
+" Full stack indent
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+
+" UTF-8 support
+set encoding=utf-8
+
+" Syntax
+let python_highlight_all=1
+syntax on
+
+" File Browsing
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+" Line numbers
+" set nu
+
+" Highlight search
+set hlsearch
+
+" System clipboard
+" set clipboard=unnamed
+
+" Vimdiff highlight
+highlight DiffAdd cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
+highlight DiffDelete cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
+highlight DiffText cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
+" The diff line highlight
+highlight DiffChange cterm=none ctermfg=Black ctermbg=White gui=none guifg=Black guibg=White
+
+" Colorscheme
+colorscheme molokai
+
+" Status Bar in single window
+" 0: never
+" 1: only if there are at least two windows (this one is the default)
+" 2: always
+set laststatus=2
+
+" Format
+nnoremap <LocalLeader>= :Autoformat<CR>
+
+" Recursive search
+" :cd ~/projects/yourproject
+" :Ack your-search-term
+let g:ackprg = 'rg -S --no-heading --vimgrep'
+nnoremap \\ :Ack<SPACE>
+
+let g:syntastic_go_checkers = ['gometalinter']
+
+" W0rp Ale Async Linter
+" make sure that we have the libs in our path for venv
+py3 << EOF
+import os.path
+import sys
+#import vim
+#import jedi
+if 'VIRTUAL_ENV' in os.environ:
+    base = os.environ['VIRTUAL_ENV']
+    site_packages = os.path.join(base, 'lib', 'python%s' %  sys.version[:3], 'site-packages')
+    prev_sys_path = list(sys.path)
+    import site
+    site.addsitedir(site_packages)
+    sys.real_prefix = sys.prefix
+    sys.prefix = base
+    # Move the added items to the front of the path:
+    new_sys_path = []
+    for item in list(sys.path):
+        if item not in prev_sys_path:
+          new_sys_path.append(item)
+          sys.path.remove(item)
+    sys.path[:0] = new_sys_path
+EOF
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['add_blank_lines_for_python_control_statements', 'autopep8', 'black', 'isort', 'yapf'],
+\}
+"\   'go': ['gometalinter'],
+"\   'python': ['prospector', 'flake8'] 
+let g:ale_linters = {
+\   'go': ['golangci-lint'],
+\   'python': ['prospector'] 
+\}
+let g:airline#extensions#ale#enabled = 1
+let g:ale_python_prospector_options = '--strictness high --profile ~/.prospector.yaml'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap
+autocmd FileType python set colorcolumn=180
+
+" jedi-vim
+let g:jedi#auto_vim_configuration = 1
+let g:jedi#goto_command = '<C-c>g'
+let g:jedi#goto_definitions_command = ''  " dynamically done for ft=python.
+let g:jedi#use_tabs_not_buffers = 1  " current default is 1.
+let g:jedi#rename_command = '<C-c>rr'
+let g:jedi#usages_command = '<der>gu'
+let g:jedi#completions_enabled = 1
+let g:jedi#smart_auto_mappings = 1
+let g:jedi#documentation_command = 'K'
+let g:jedi#auto_close_doc = 1
+" let g:jedi#use_splits_not_buffers = 'winwidth'
+" let g:jedi#use_splits_not_buffers = 'right'
+let g:jedi#show_call_signatures = '1'
+let g:jedi#force_py_version = '3'
+set omnifunc=jedi#completions
+
+" Be able to write the crontab
+au FileType crontab setlocal bkc=yes
+
+" Use the mouse for highlighting and cursor
+"set mouse=nv
+set mouse=n
+
+" Enable the cursorline
+set cursorline
+
+" Pydocstring
+" Default key mapping is <C-l>
+"
+" Multiple cursors
+" c – change text.
+" I – insert at start of range.
+" A – insert at end of range.
+"
+" Jump between changes
+" Double backtick ``
+"
+" NERDTree
+" :NERDTreeToggle
