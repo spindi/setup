@@ -1,45 +1,31 @@
-" Vundle git repo
-" $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-" PluginInstall
-" PluginUpdate
-
 set nocompatible              " required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.setup/vim/vundle
-call vundle#begin()
+" Plugins
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'heavenshell/vim-pydocstring'
-Plugin 'mileszs/ack.vim'
-Plugin 'fatih/vim-go'
-"Plugin 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-gitgutter'
+Plug 'Chiel92/vim-autoformat'
+Plug 'heavenshell/vim-pydocstring'
+Plug 'mileszs/ack.vim'
+Plug 'fatih/vim-go'
+Plug 'nsf/gocode', {'rtp': 'vim/'}
 let g:ale_lint_on_text_changed = 1
 let g:ale_lint_on_insert_leave = 1
-Plugin 'w0rp/ale'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'davidhalter/jedi-vim'
-" Plugin 'vim-voom/VOoM'
-"let g:deoplete#enable_at_startup = 1
-"Plugin 'Shougo/deoplete.nvim'
-"Plugin 'deoplete-plugins/deoplete-jedi'
-Plugin 'chrisbra/csv.vim'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+Plug 'w0rp/ale'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'davidhalter/jedi-vim'
+Plug 'chrisbra/csv.vim'
+Plug 'majutsushi/tagbar'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"
+" Initialize plugin system
+call plug#end()
 
 " Enable folding
 set foldmethod=indent
@@ -199,3 +185,7 @@ set cursorline
 "
 " NERDTree
 " :NERDTreeToggle
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
+
