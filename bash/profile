@@ -1,0 +1,60 @@
+# List
+export CLICOLOR=1
+#export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx # subtle dir highlight
+export LSCOLORS=ExFxBxDxCxegedabagacad  # harsh dir highlight
+
+# Make sure that we clear out anything existing
+unalias -a
+
+# Alias
+alias ll='ls -alGFh'
+alias ls='ls -GFh'
+alias n='nano -i'
+alias grep='grep --color=auto'
+alias cdntools='deactivate; cd ~/Documents/Work/Git/CdnTools/cdntools; source venv/bin/activate; python go.py -h'
+alias morlock='deactivate; cd ~/Documents/Work/Git/Morlock/morlock; source venv/bin/activate'
+alias fabric='cd ~/Documents/Work/CDN/fabric_management_api'
+
+# ulimit -n 2048 # Open files
+# ulimit -u 1024 # Max User Processes
+
+export PATH=/usr/local/sbin:/usr/local/bin:/Users/cboyd/work/maven/bin:/Users/cboyd/Documents/Work/Go/src/github.com/zencoder/bolt-utils/bin:$PATH
+
+# Morlock
+export BRIGHTCOVE_MORLOCK_BASE_DIR=/usr/local/brightcove/morlock
+
+# Prompt
+GIT_PS1_SHOWDIRTYSTATE=true
+source ~/.bash/.git-completion.bash
+#source ~/.git-prompt.sh
+#export PS1='\[\033[36m\]\u\[\033[0m\]:\w\[\033[1m\]$(__git_ps1)\[\033[0m\]\$ ' # Full path
+#export PS1='\[\033[36m\]\u\[\033[0m\]:\W\[\033[1m\]$(__git_ps1)\[\033[0m\]\$ '
+source ~/.bash/bash_prompt.sh
+
+# GoLang
+export GOPATH=/Users/cboyd/Documents/Work/Go
+export GOBIN=/Users/cboyd/Documents/Work/Go/bin
+export PATH=$PATH:${GOPATH//://bin:}/bin
+export FABPATH=/Users/cboyd/Documents/Work/Go/src/github.com/zencoder
+export GO111MODULE=on
+
+# AWS
+export AWS_SDK_LOAD_CONFIG=1
+
+# API Tokens
+source ~/.ssh/tokens.sh
+
+## >>> conda initialize >>>
+## !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/anaconda3/etc/profile.d/conda.sh" ]; then
+#        . "/anaconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/anaconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+## <<< conda initialize <<<
