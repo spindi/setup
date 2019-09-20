@@ -58,3 +58,6 @@ source ~/.ssh/tokens.sh
 #fi
 #unset __conda_setup
 ## <<< conda initialize <<<
+
+# Anaconda
+export PATH="/usr/local/anaconda3/bin:/Users/cboyd/.local/bin:${PATH}"
