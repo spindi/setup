@@ -23,6 +23,8 @@ Plug 'davidhalter/jedi-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'majutsushi/tagbar'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-easytags'
 
 " Initialize plugin system
 call plug#end()
@@ -188,3 +190,6 @@ set cursorline
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" update ctags for use with ctrl-], ctrl-t and ctrl-^
+au BufWritePost *.py,*.go,*.js silent! !ctags -R --exclude=.git --exclude=venv &
