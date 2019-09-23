@@ -22,9 +22,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'davidhalter/jedi-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'majutsushi/tagbar'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'xolox/vim-misc'
-" Plug 'xolox/vim-easytags'
 
 " Initialize plugin system
 call plug#end()
@@ -91,10 +88,7 @@ highlight DiffChange cterm=none ctermfg=Black ctermbg=White gui=none guifg=Black
 " Colorscheme
 colorscheme molokai
 
-" Status Bar in single window
-" 0: never
-" 1: only if there are at least two windows (this one is the default)
-" 2: always
+" Status Bar in single window. 0=never, 1=only with two windows, 2=always
 set laststatus=2
 
 " Format
@@ -177,19 +171,14 @@ set cursorline
 " Pydocstring
 " Default key mapping is <C-l>
 "
-" Multiple cursors
-" c – change text.
-" I – insert at start of range.
-" A – insert at end of range.
-"
 " Jump between changes
 " Double backtick ``
 "
 " NERDTree
-" :NERDTreeToggle
+nmap <F7> :NERDTreeToggle<CR>
 
-" tagbar
+" Tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" update ctags for use with :ta, gd, gD, ctrl-], ctrl-t and ctrl-^
+" Update ctags for use with :ta, gd, gD, Ctrl-], Ctrl-t and Ctrl-^
 au BufWritePost *.py,*.go silent! !ctags -R --exclude=.git --exclude=venv --exclude='*.js' &
