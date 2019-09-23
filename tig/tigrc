@@ -1,1 +1,5 @@
-bind status P !git push origin
+bind main	   C ?git cherry-pick %(commit)
+bind main    F !git fetch
+bind main    P !git pull
+bind status  P !git push origin
+bind refs	   C ?git checkout %(branch)
