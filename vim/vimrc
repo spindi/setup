@@ -191,5 +191,5 @@ set cursorline
 " tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" update ctags for use with ctrl-], ctrl-t and ctrl-^
-au BufWritePost *.py,*.go,*.js silent! !ctags -R --exclude=.git --exclude=venv &
+" update ctags for use with :ta, gd, gD, ctrl-], ctrl-t and ctrl-^
+au BufWritePost *.py,*.go silent! !ctags -R --exclude=.git --exclude=venv --exclude='*.js' &
