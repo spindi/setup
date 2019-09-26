@@ -117,12 +117,6 @@ function set_conda () {
   fi
 }
 
-# Simple git branch
-# Git branch in prompt.
-#get_simple_git_branch() {
-#    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-#}
-
 # Set the full bash prompt.
 function set_bash_prompt () {
   # Set the PROMPT_SYMBOL variable. We do this first so we don't lose the
