@@ -52,7 +52,7 @@ function set_git_branch {
   fi
 
   # Set arrow icon based on status against remote.
-  remote_pattern="# Your branch is (.*) of"
+  remote_pattern="Your branch is (.*) of"
   if [[ ${git_status} =~ ${remote_pattern} ]]; then
     if [[ ${BASH_REMATCH[1]} == "ahead" ]]; then
       remote="↑"
@@ -62,13 +62,13 @@ function set_git_branch {
   else
     remote=""
   fi
-  diverge_pattern="# Your branch and (.*) have diverged"
+  diverge_pattern="Your branch and (.*) have diverged"
   if [[ ${git_status} =~ ${diverge_pattern} ]]; then
     remote="↕"
   fi
 
   # Get the name of the branch.
-  branch_pattern="^# On branch ([^${IFS}]*)"
+  branch_pattern="^On branch ([^${IFS}]*)"
   if [[ ${git_status} =~ ${branch_pattern} ]]; then
     branch=${BASH_REMATCH[1]}
   fi
@@ -119,10 +119,9 @@ function set_conda () {
 
 # Simple git branch
 # Git branch in prompt.
-get_simple_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+#get_simple_git_branch() {
+#    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+#}
 
 # Set the full bash prompt.
 function set_bash_prompt () {
@@ -144,11 +143,8 @@ function set_bash_prompt () {
   fi
 
   # Set the bash prompt variable.
-  #PS1="
-#${PYTHON_VIRTUALENV}${GREEN}\u@\A ${YELLOW}\w${COLOR_NONE} ${BRANCH}
-#${PROMPT_SYMBOL} "
   PS1="
-${PYTHON_VIRTUALENV}${PYTHON_CONDA}${GREEN}\u@\A ${YELLOW}\w${COLOR_NONE}${RED}$(get_simple_git_branch)${COLOR_NONE}
+${PYTHON_VIRTUALENV}${PYTHON_CONDA}${GREEN}\u@\A ${YELLOW}\w${COLOR_NONE} ${RED}${BRANCH}${COLOR_NONE}
 ${PROMPT_SYMBOL} "
 }
 
