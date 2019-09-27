@@ -1,5 +1,8 @@
 bind main	   C ?git cherry-pick %(commit)
-bind main    F !git fetch
 bind main    P !git pull
+bind main    F !git fetch
+bind main    V !git d %(file)
 bind status  P !git push origin
 bind refs	   C ?git checkout %(branch)
+bind log     C ?git checkout %(branch)
+bind log     ! ?git reset --hard %(commit)
