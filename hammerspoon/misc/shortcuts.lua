@@ -8,6 +8,5 @@ function open(name)
     end
 end
 
-mash = { 'ctrl', 'alt', 'cmd' }
-hs.hotkey.bind(mash, "e", open("Finder"))
-hs.hotkey.bind(mash, "t", open("Terminal"))
+hs.hotkey.bind(bind_keys, "e", open("Finder"))
+hs.hotkey.bind(bind_keys, "t", open("Terminal"))
