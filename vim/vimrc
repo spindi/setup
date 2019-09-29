@@ -5,23 +5,30 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 
 Plug 'tmhedberg/SimpylFold'
-Plug 'vim-scripts/indentpython.vim'
+"Plug 'vim-scripts/indentpython.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
-Plug 'Chiel92/vim-autoformat'
+"Plug 'Chiel92/vim-autoformat'
 Plug 'heavenshell/vim-pydocstring'
 Plug 'mileszs/ack.vim'
 Plug 'fatih/vim-go'
 Plug 'nsf/gocode', {'rtp': 'vim/'}
-let g:ale_lint_on_text_changed = 1
-let g:ale_lint_on_insert_leave = 1
-Plug 'w0rp/ale'
-Plug 'terryma/vim-multiple-cursors'
+"let g:ale_lint_on_text_changed = 1
+"let g:ale_lint_on_insert_leave = 1
+"Plug 'w0rp/ale'
+"Plug 'terryma/vim-multiple-cursors'
 Plug 'davidhalter/jedi-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'majutsushi/tagbar'
+let g:pymode_python = 'python3'
+let g:pymode_lint_on_fly = 1
+let g:pymode_lint_ignore = ["E501",]
+let g:pymode_indent = 1
+let g:pymode_rope = 1
+let g:pymode_rope_autoimport = 1
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " Initialize plugin system
 call plug#end()
@@ -76,7 +83,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 set hlsearch
 
 " System clipboard
-" set clipboard=unnamed
+set clipboard=unnamed
 
 " Vimdiff highlight
 highlight DiffAdd cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
@@ -90,15 +97,6 @@ colorscheme molokai
 
 " Status Bar in single window. 0=never, 1=only with two windows, 2=always
 set laststatus=2
-
-" Format
-nnoremap <LocalLeader>= :Autoformat<CR>
-
-" Recursive search
-" :cd ~/projects/yourproject
-" :Ack your-search-term
-let g:ackprg = 'rg -S --no-heading --vimgrep'
-nnoremap \\ :Ack<SPACE>
 
 let g:syntastic_go_checkers = ['gometalinter']
 
@@ -168,6 +166,9 @@ set mouse=n
 " Enable the cursorline
 set cursorline
 
+" Update ctags for use with :ta, gd, gD, Ctrl-], Ctrl-t and Ctrl-^
+au BufWritePost *.py,*.go silent! !ctags -R --exclude=.git --exclude=venv --exclude='*.js' &
+
 " Pydocstring
 " Default key mapping is <C-l>
 "
@@ -180,5 +181,18 @@ nmap <F7> :NERDTreeToggle<CR>
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" Update ctags for use with :ta, gd, gD, Ctrl-], Ctrl-t and Ctrl-^
-au BufWritePost *.py,*.go silent! !ctags -R --exclude=.git --exclude=venv --exclude='*.js' &
+" Format
+nnoremap <LocalLeader>= :Autoformat<CR>
+
+" Recursive search
+" :cd ~/projects/yourproject
+" :ack your-search-term
+let g:ackprg = 'rg -s --no-heading --vimgrep'
+nnoremap \\ :ack<space>
+
+" tabs
+nmap <C-j> :tabnext<CR>
+nmap ∆ :tabnew<CR>
+nmap <C-k> :tabprevious<CR>
+nmap ˚ :tabclose<CR>
+
