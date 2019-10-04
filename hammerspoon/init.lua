@@ -7,7 +7,7 @@ hs.hotkey.bind(bind_keys, 'r', function()
 end)
 hs.alert.show("Config reloaded")
 
-require("misc.clipboard")
+-- require("misc.clipboard")
 require("misc.caffiene")
 require("misc.shortcuts")
 require("window.manipulation")
