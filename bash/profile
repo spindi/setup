@@ -1,7 +1,7 @@
 # List
 export CLICOLOR=1
-#export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx # subtle dir highlight
-export LSCOLORS=ExFxBxDxCxegedabagacad  # harsh dir highlight
+#export LSCOLORS=ExFxBxDxCxegedabagacad
+#eval $(gdircolors ~/.setup/bash/dircolors.256dark)
 
 # Make sure that we clear out anything existing
 unalias -a
