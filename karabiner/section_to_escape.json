@@ -29,6 +29,25 @@
                 "caps_lock"
               ],
               "mandatory": [
+                "left_command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "grave_accent_and_tilde"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "non_us_backslash",
+            "modifiers": {
+              "optional": [
+                "caps_lock"
+              ],
+              "mandatory": [
                 "shift"
               ]
             }
