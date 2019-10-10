@@ -26,8 +26,8 @@ export BRIGHTCOVE_MORLOCK_BASE_DIR=/usr/local/brightcove/morlock
 
 # Prompt
 GIT_PS1_SHOWDIRTYSTATE=true
-source ~/.setup/git/completion.sh
-source ~/.setup/bash/prompt.sh
+source ~/Setup/git/completion.sh
+source ~/Setup/bash/prompt.sh
 
 # GoLang
 export GOPATH=/Users/cboyd/Documents/Work/Go
