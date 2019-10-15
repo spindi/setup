@@ -98,6 +98,15 @@ function set_virtualenv () {
   fi
 }
 
+# Show that we are in a screen
+function set_screen_session () {
+  if test -z "$STY" ; then
+      SCREEN_SESSION=""
+  else
+      SCREEN_SESSION="${LIGHT_GRAY}${STY}${COLOR_NONE} "
+  fi
+}
+
 # Determine active Python conda details.
 function set_conda () {
   if test -z "$CONDA_PROMPT_MODIFIER" ; then
@@ -123,11 +132,14 @@ function set_bash_prompt () {
   # return value of the last command.
   set_prompt_symbol $?
 
-  # Set the PYTHON_VIRTUALENV variable.
+  # Set the PYTHON_VIRTUALENV variable
   set_virtualenv
 
-  # Set the PYTHON_CONDA variable.
+  # Set the PYTHON_CONDA variable
   set_conda
+
+  # Set the SCREEN_SESSION variable
+  set_screen_session
 
   # Set the BRANCH variable.
   if is_git_repository ; then
@@ -138,7 +150,7 @@ function set_bash_prompt () {
 
   # Set the bash prompt variable.
   PS1="
-${PYTHON_VIRTUALENV}${PYTHON_CONDA}${GREEN}\u@\A ${YELLOW}\w${COLOR_NONE} ${RED}${BRANCH}${COLOR_NONE}
+${PYTHON_VIRTUALENV}${PYTHON_CONDA}${GREEN}\u@\A ${SCREEN_SESSION}${YELLOW}\w${COLOR_NONE} ${RED}${BRANCH}${COLOR_NONE}
 ${PROMPT_SYMBOL} "
 }
 
