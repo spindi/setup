@@ -3,3 +3,4 @@ vbell off
 term screen-256color
 termcapinfo xterm* ti@:te@
 defshell -$SHELL
+defscrollback 10000

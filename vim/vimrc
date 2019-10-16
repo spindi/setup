@@ -138,3 +138,7 @@ nmap <C-k> :tabprevious<CR>
 nmap ˚ :tabclose<CR>
 
 " https://github.com/garbas/vim-snipmate
+
+
+" Colour of the parenthesis matching
+hi! MatchParen cterm=NONE,bold gui=NONE,bold ctermbg=15 guibg=#fdf6e3 ctermfg=12 guifg=#839496
