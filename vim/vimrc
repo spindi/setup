@@ -89,15 +89,17 @@ set hlsearch
 " System clipboard
 set clipboard=unnamed
 
-" Vimdiff highlight
-highlight DiffAdd cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
-highlight DiffDelete cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
-highlight DiffText cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
-" The diff line highlight
-highlight DiffChange cterm=none ctermfg=Black ctermbg=White gui=none guifg=Black guibg=White
-
 " Colorscheme
 colorscheme molokai
+
+" Vimdiff highlight
+hi DiffAdd cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
+hi DiffDelete cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
+hi DiffText cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
+" The diff line highlight
+hi DiffChange cterm=none ctermfg=Black ctermbg=White gui=none guifg=Black guibg=White
+" Vim highlight
+hi Visual term=reverse cterm=reverse
 
 " Status Bar in single window. 0=never, 1=only with two windows, 2=always
 set laststatus=2
