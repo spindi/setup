@@ -5,7 +5,7 @@ termcapinfo xterm* ti@:te@
 termcapinfo screen* ti@:te@
 defshell -$SHELL
 defscrollback 10000
-bufferfile /tmp/screen-exchange
+bufferfile /Users/cboyd/Setup/screen/exchange
 bindkey -m ' ' eval 'stuff \040' 'writebuf' 'exec sh -c "/usr/bin/pbcopy < /tmp/screen-exchange"'
 hardstatus alwayslastline
 hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
