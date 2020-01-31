@@ -9,6 +9,7 @@ unalias -a
 # Alias
 alias ll='ls -alGFh'
 alias ls='ls -GFh'
+alias mtail='multitail'
 alias n='nano -i'
 alias grep='grep --color=auto'
 alias cdntools='deactivate; cd ~/Documents/Work/Git/CdnTools/cdntools; source venv/bin/activate; python go.py -h'
