@@ -7,6 +7,8 @@ export CLICOLOR=1
 unalias -a
 
 # Alias
+alias v='/usr/local/bin/vim'
+alias vi='/usr/local/bin/vim'
 alias ll='ls -alGFh'
 alias ls='ls -GFh'
 alias mtail='multitail'

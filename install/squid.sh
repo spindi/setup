@@ -1,0 +1,1 @@
+breww cask install squidman
