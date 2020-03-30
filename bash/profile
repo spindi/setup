@@ -22,7 +22,7 @@ alias cdnops='deactivate; cd ~/Documents/Work/Git/Cdnops/cdnops; source venv/bin
 # ulimit -n 2048 # Open files
 # ulimit -u 1024 # Max User Processes
 
-export PATH=/usr/local/sbin:/usr/local/bin:/Users/cboyd/work/maven/bin:/Users/cboyd/Documents/Work/Go/src/github.com/zencoder/bolt-utils/bin:$PATH
+export PATH=/usr/local/sbin:/usr/local/bin:/Users/cboyd/work/maven/bin:/Users/cboyd/Documents/Work/Go/src/github.com/zencoder/bolt-utils/bin:/usr/local/go/bin:$PATH
 
 # Morlock
 export BRIGHTCOVE_MORLOCK_BASE_DIR=/usr/local/brightcove/morlock
@@ -62,3 +62,11 @@ source ~/.ssh/tokens.sh
 
 # Anaconda
 export PATH="/usr/local/anaconda3/bin:/Users/cboyd/.local/bin:${PATH}"
+
+# Screen
+touch /tmp/screen-exchange
+
+# Bash completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi

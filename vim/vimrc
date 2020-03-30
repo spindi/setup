@@ -20,7 +20,7 @@ let g:ackprg = 'rg -s --no-heading --vimgrep'
 Plug 'mileszs/ack.vim'
 Plug 'fatih/vim-go'
 Plug 'nsf/gocode', {'rtp': 'vim/'}
-Plug 'chrisbra/csv.vim'
+" Plug 'chrisbra/csv.vim'
 Plug 'majutsushi/tagbar'
 let g:pymode_python = 'python3'
 let g:pymode_lint_on_fly = 1
@@ -135,12 +135,13 @@ nnoremap \\ :Ack<space>
 
 " tabs
 nmap <C-j> :tabnext<CR>
+" Option j
 nmap ∆ :tabnew<CR>
 nmap <C-k> :tabprevious<CR>
+" Option k
 nmap ˚ :tabclose<CR>
 
 " https://github.com/garbas/vim-snipmate
-
 
 " Colour of the parenthesis matching
 hi! MatchParen cterm=NONE,bold gui=NONE,bold ctermbg=15 guibg=#fdf6e3 ctermfg=12 guifg=#839496
