@@ -19,6 +19,7 @@ alias morlock='deactivate; cd ~/Documents/Work/Git/Morlock/morlock; source venv/
 alias fabric='cd ~/Documents/Work/CDN/fabric_management_api'
 alias cdnops='deactivate; cd ~/Documents/Work/Git/Cdnops/cdnops; source venv/bin/activate'
 alias emacs='/usr/local/bin/emacs'
+alias epochtodate='date -r' # mac os x 
 
 # ulimit -n 2048 # Open files
 # ulimit -u 1024 # Max User Processes
