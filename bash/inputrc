@@ -1,5 +1,13 @@
 set completion-ignore-case on
-# set show-all-if-ambiguous on
+set show-all-if-ambiguous on
+set expand-tilde off
+set mark-directories on
+set mark-symlinked-directories on
+set print-completions-horizontally on
+
+# tab to cycle through the matches
 TAB: menu-complete
+# shift + tab to see what the matches for types prefix are
+"\e[Z": complete
 "\e[A": history-search-backward
 "\e[B": history-search-forward
