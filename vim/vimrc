@@ -1,5 +1,5 @@
-set nocompatible              " required
-filetype off                  " required
+set nocompatible " required
+filetype off     " required
 
 " Plugins
 call plug#begin('~/.vim/plugged')
@@ -36,6 +36,7 @@ Plug 'ervandew/supertab'
 Plug 'jreybert/vimagit' " :Magit
 Plug 'vim-scripts/AutoComplPop' " auto popup completion
 Plug 'tomtom/tcomment_vim' " gc in visual to toggle
+Plug 'puremourning/vimspector'
 
 " Initialize plugin system
 call plug#end()
@@ -136,9 +137,9 @@ nnoremap \\ :Ack<space>
 
 " tabs
 nmap <C-j> :tabnext<CR>
+nmap <C-k> :tabprevious<CR>
 " Option j
 nmap ∆ :tabnew<CR>
-nmap <C-k> :tabprevious<CR>
 " Option k
 nmap ˚ :tabclose<CR>
 
@@ -146,3 +147,18 @@ nmap ˚ :tabclose<CR>
 
 " Colour of the parenthesis matching
 hi! MatchParen cterm=NONE,bold gui=NONE,bold ctermbg=15 guibg=#fdf6e3 ctermfg=12 guifg=#839496
+
+" Navigation
+" ``      = ping pong
+" C-c g   = goto def
+" [[      = previous def / class
+" ]]      = next def / class
+" Shift+[ = previous paragraph
+" Shift+] = next paragraph
+
+" Pdb
+" \r = run
+" \b = breakpoint
+" next
+" step
+" continue
