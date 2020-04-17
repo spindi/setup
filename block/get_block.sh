@@ -20,5 +20,10 @@ do
 done
 
 # remove the duplicates
-sort block_file.txt | uniq | grep -v localhost > ${OUTPUT_FILE}.tmp
+sort block_file.txt | \
+  uniq | \
+  grep -v localhost | \
+  grep -v '^-' | \
+  grep -v ^$ \
+  > ${OUTPUT_FILE}.tmp
 mv ${OUTPUT_FILE}.tmp ${OUTPUT_FILE}
