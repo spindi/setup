@@ -5,8 +5,22 @@ termcapinfo xterm* ti@:te@
 termcapinfo screen* ti@:te@
 defshell -$SHELL
 defscrollback 10000
-bufferfile /Users/cboyd/Setup/screen/exchange
-bindkey -m ' ' eval 'stuff \040' 'writebuf' 'exec sh -c "/usr/bin/pbcopy < /tmp/screen-exchange"'
+
+# working in osx
+bufferfile $HOME/.screen_exchange
+bindkey -m ' ' eval 'stuff \040' writebuf 'exec sh -c "if [ -e /usr/bin/pbcopy ]; then cat $HOME/.screen_exchange | pbcopy; fi"'
+
 hardstatus alwayslastline
 hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
 shelltitle "$ |"
+
+# C-a c      create session
+# C-a C-a    ping pong sessions
+#
+# C-a |      vertical split
+# C-a S      horizontal split
+# C-a <tab>  move to next split
+# C-a X      close current split
+#
+# C-a "      list available windows
+# C-a A      retitle window
