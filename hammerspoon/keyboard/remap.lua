@@ -1,12 +1,9 @@
--- https://github.com/Hammerspoon/hammerspoon/blob/master/extensions/keycodes/init.lua
--- need to make changes to the code for this to work
---hs.hotkey.bind({}, '±', function()-- {{{1
---    hs.eventtap.keyStroke({}, "Escape")
---end)-- }}}1
-
--- this works
---hs.hotkey.bind({}, '§', function()-- {{{1
---    hs.eventtap.keyStroke({}, "Escape")
---end)-- }}}1
-
--- for now we need to use https://pqrs.org/osx/karabiner/
+hs.hotkey.bind({"shift"}, "§", function()
+   hs.eventtap.keyStroke({"shift"}, "`")
+end)
+hs.hotkey.bind({"ctrl"}, "§", function()
+   hs.eventtap.keyStroke({"shift"}, "\\")
+end)
+hs.hotkey.bind({}, "§", function()
+   hs.eventtap.keyStroke({}, "escape")
+end)
