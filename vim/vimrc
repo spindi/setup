@@ -36,7 +36,17 @@ Plug 'ervandew/supertab'
 Plug 'jreybert/vimagit' " :Magit
 Plug 'vim-scripts/AutoComplPop' " auto popup completion
 Plug 'tomtom/tcomment_vim' " gc in visual to toggle
-Plug 'puremourning/vimspector'
+"Plug 'puremourning/vimspector'
+
+let g:clang_library_path='/usr/local/opt/llvm/lib'
+Plug 'xavierd/clang_complete'
+"
+" Unite file or Unite buffer
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Shougo/unite.vim'
+
+" OpenSCAD
+Plug 'sirtaj/vim-openscad'
 
 " Initialize plugin system
 call plug#end()
