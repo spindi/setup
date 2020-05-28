@@ -165,6 +165,10 @@ hi! MatchParen cterm=NONE,bold gui=NONE,bold ctermbg=15 guibg=#fdf6e3 ctermfg=12
 " ]]      = next def / class
 " Shift+[ = previous paragraph
 " Shift+] = next paragraph
+" zm increases foldlevel by one
+" zM closes all open folds
+" zr decreases foldlevel by one
+" zR opens all closed folds
 
 " Pdb
 " \r = run
