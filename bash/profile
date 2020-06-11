@@ -7,6 +7,7 @@ export CLICOLOR=1
 unalias -a
 
 # Alias
+alias h='history'
 alias v='/usr/local/bin/vim'
 alias vi='/usr/local/bin/vim'
 alias ll='ls -alGFh'
@@ -18,6 +19,7 @@ alias cdntools='deactivate; cd ~/Documents/Work/Git/CdnTools/cdntools; source ve
 alias morlock='deactivate; cd ~/Documents/Work/Git/Morlock/morlock; source venv/bin/activate'
 alias fabric='cd ~/Documents/Work/CDN/fabric_management_api'
 alias cdnops='deactivate; cd ~/Documents/Work/Git/Cdnops/cdnops; source venv/bin/activate'
+alias boltfastly='deactivate; cd ~/Documents/Work/Git/Bolt-Fastly/bolt-fastly/'
 alias emacs='/usr/local/bin/emacs'
 alias epochtodate='date -r' # mac os x 
 
@@ -72,3 +74,7 @@ touch /tmp/screen-exchange
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
+
+# Java
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
