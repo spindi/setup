@@ -158,17 +158,29 @@ nmap ˚ :tabclose<CR>
 " Colour of the parenthesis matching
 hi! MatchParen cterm=NONE,bold gui=NONE,bold ctermbg=15 guibg=#fdf6e3 ctermfg=12 guifg=#839496
 
+" Spelling
+autocmd BufReadPost,BufNewFile *.md,*.txt set spell spelllang=en_gb
+
 " Navigation
 " ``      = ping pong
+"
 " C-c g   = goto def
 " [[      = previous def / class
 " ]]      = next def / class
+"
 " Shift+[ = previous paragraph
 " Shift+] = next paragraph
+"
 " zm increases foldlevel by one
 " zM closes all open folds
 " zr decreases foldlevel by one
 " zR opens all closed folds
+"
+" # highlight and go to next occurrance of word cursor is on
+"
+" set spell spelllang=en_gb
+" [s ]s move between misspellings
+" z= to get alternatives
 
 " Pdb
 " \r = run

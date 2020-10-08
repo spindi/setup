@@ -7,7 +7,7 @@
   # prompt = false
 [user]
 	name = Conor Boyd
-	email = cboyd@brightcove.com
+	email = conor.boyd@spindicator.com
 [color]
   branch = auto
   diff = auto
@@ -39,7 +39,6 @@
 [alias]
 	d = difftool
 [commit]
-	template = /Users/cboyd/.stCommitMsg
 [credential]
 	helper = osxkeychain
 [url "git@github.com:"]

@@ -1,3 +1,6 @@
+# Get rid of Apple zsh warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # List
 export CLICOLOR=1
 #export LSCOLORS=ExFxBxDxCxegedabagacad
@@ -7,6 +10,10 @@ export CLICOLOR=1
 unalias -a
 
 # Alias
+alias d='docker'
+alias dc='docker-compose'
+alias dm='docker-machine'
+alias dt='cd ~/Documents/Work/Reason.co/DeutscheTelekom'
 alias h='history'
 alias v='/usr/local/bin/vim'
 alias vi='/usr/local/bin/vim'
@@ -76,5 +83,5 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 # Java
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"

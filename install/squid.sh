@@ -1,1 +1,3 @@
-breww cask install squidman
+brew cask install squidman
+
+# logs in ~/Library/Logs/squid

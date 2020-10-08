@@ -98,6 +98,15 @@ function set_virtualenv () {
   fi
 }
 
+# Determine active Python virtualenv details.
+function set_docker_machine () {
+  if test -z "$DOCKER_MACHINE_NAME" ; then
+      DOCKER_MACHINE=""
+  else
+      DOCKER_MACHINE="${LIGHT_GRAY}[D:${DOCKER_MACHINE_NAME}]${COLOR_NONE} "
+  fi
+}
+
 # Show that we are in a screen
 function set_screen_session () {
   if test -z "$STY" ; then
@@ -135,6 +144,9 @@ function set_bash_prompt () {
   # Set the PYTHON_VIRTUALENV variable
   set_virtualenv
 
+  # Set the DOCKER_MACHINE variable
+  set_docker_machine
+
   # Set the PYTHON_CONDA variable
   set_conda
 
@@ -151,7 +163,7 @@ function set_bash_prompt () {
   # Set the bash prompt variable.
   SCREEN_NULL_TITLE_ESCAPE_SEQUENCE='\[\033k\033\\\]'
   PS1="
-${PYTHON_VIRTUALENV}${PYTHON_CONDA}${GREEN}\u@\A ${SCREEN_SESSION}${YELLOW}\w${COLOR_NONE} ${RED}${BRANCH}${COLOR_NONE}"${SCREEN_NULL_TITLE_ESCAPE_SEQUENCE}"
+${DOCKER_MACHINE}${PYTHON_VIRTUALENV}${PYTHON_CONDA}${GREEN}\u@\A ${SCREEN_SESSION}${YELLOW}\w${COLOR_NONE} ${RED}${BRANCH}${COLOR_NONE}"${SCREEN_NULL_TITLE_ESCAPE_SEQUENCE}"
 ${PROMPT_SYMBOL} "
 }
 
