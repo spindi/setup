@@ -2,8 +2,11 @@
 http://squidman.net/squidman/
 
 # ad servers
-https://calomel.org/squid_adservers.html
+# https://calomel.org/squid_adservers.html
+
+# get adservers
+curl -sS -L --compressed 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml&showintro=0&mimetype=plaintext' > ~/Setup/squid/blocklist.txt
 
 # remove ads - add to the top of the squid conf
-acl block_file dstdom_regex "/Users/cboyd/Setup/squid/block_file.txt"                                                                                                                                
-http_access deny block_file 
+acl blocklist dstdom_regex "/Users/conorboyd/Setup/squid/blocklist.txt"
+http_access deny blocklist 
