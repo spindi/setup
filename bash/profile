@@ -9,6 +9,12 @@ export CLICOLOR=1
 # Make sure that we clear out anything existing
 unalias -a
 
+# History file setup
+HISTSIZE=999999
+HISTFILESIZE=999999
+HISTTIMEFORMAT="%Y%m%d-%T "
+HISTIGNORE="&:pwd:ls:[bf]g:exit:[ \t]*"
+
 # Alias
 alias d='docker'
 alias dc='docker-compose'
@@ -85,3 +91,5 @@ fi
 # Java
 #export PATH="$HOME/.jenv/bin:$PATH"
 #eval "$(jenv init -)"
+
+export PATH="$HOME/.cargo/bin:$PATH"
