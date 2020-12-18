@@ -1,7 +1,7 @@
 #!/bin/bash
 
-BLOCKLIST="/Users/${USER}/Setup/squid/blocklist.txt"
-BLOCKLIST_TEMP="/tmp/blocklist.txt"
+BLOCKLIST="/Users/${USER}/Setup/squid/block_dns.txt"
+BLOCKLIST_TEMP="/tmp/block_dns.txt"
 
 # get adlists
 curl -sS -L --compressed 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml&showintro=0&mimetype=plaintext' > ${BLOCKLIST_TEMP}
