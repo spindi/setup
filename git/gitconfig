@@ -7,7 +7,7 @@
   # prompt = false
 [user]
 	name = Conor Boyd
-	email = conor.boyd@spindicator.com
+	email = conor.boyd@reason.co
 [color]
   branch = auto
   diff = auto
@@ -53,3 +53,6 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[http]
+	sslKey = /Users/conorboyd/Documents/Work/Reason.co/DeutscheTelekom/SSLKeys/Access/ssl_smarthub-wbench/userkey.pem
+	sslCert = /Users/conorboyd/Documents/Work/Reason.co/DeutscheTelekom/SSLKeys/Access/ssl_smarthub-wbench/user.crt
