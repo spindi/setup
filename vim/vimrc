@@ -4,52 +4,6 @@ filetype off     " required
 " Plugins
 call plug#begin('~/.vim/plugged')
 
-let g:SimpylFold_docstring_preview = 1 " See the docstrings for folded code
-Plug 'tmhedberg/SimpylFold'
-Plug 'flazz/vim-colorschemes'
-let NERDTreeIgnore=['\.pyc$', '\~$'] " Ignore files in NERDTree
-Plug 'scrooloose/nerdtree'
-let g:airline#extensions#ale#enabled = 1
-Plug 'vim-airline/vim-airline'
-Plug 'airblade/vim-gitgutter'
-let g:autopep8_diff_type='vertical'
-let g:autopep8_max_line_length=180
-Plug 'tell-k/vim-autopep8'
-Plug 'heavenshell/vim-pydocstring' " Default key mapping is <C-l>
-let g:ackprg = 'rg -s --no-heading --vimgrep'
-Plug 'mileszs/ack.vim'
-Plug 'fatih/vim-go'
-Plug 'nsf/gocode', {'rtp': 'vim/'}
-" Plug 'chrisbra/csv.vim'
-Plug 'majutsushi/tagbar'
-let g:pymode_python = 'python3'
-let g:pymode_lint_on_fly = 1
-let g:pymode_lint_ignore = ["E501",]
-let g:pymode_indent = 1
-let g:pymode_rope = 1
-let g:pymode_rope_autoimport = 1
-" set completeopt=menuone,noinsert,noselect " preview if doc needed
-" set completeopt=longest,noinsert,noselect,menuone,preview
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'ervandew/supertab'
-Plug 'jreybert/vimagit' " :Magit
-Plug 'vim-scripts/AutoComplPop' " auto popup completion
-Plug 'tomtom/tcomment_vim' " gc in visual to toggle
-" Plug 'puremourning/vimspector'
-Plug 'davidhalter/jedi-vim'
-Plug 'zxqfl/tabnine-vim'
-
-let g:clang_library_path='/usr/local/opt/llvm/lib'
-Plug 'xavierd/clang_complete'
-
-" OpenSCAD
-Plug 'sirtaj/vim-openscad'
-
-" Initialize plugin system
-call plug#end()
-
 " Enable folded view by default
 set foldmethod=syntax
 set foldlevel=1
@@ -59,6 +13,91 @@ nnoremap <space> za
 " zM fold all levels
 " zr unfold level
 " zR unfold all levels
+let g:SimpylFold_docstring_preview = 1 " See the docstrings for folded code
+Plug 'tmhedberg/SimpylFold'
+
+Plug 'flazz/vim-colorschemes'
+colorscheme molokai
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] " Ignore files in NERDTree
+Plug 'scrooloose/nerdtree'
+
+let g:airline#extensions#ale#enabled = 1
+Plug 'vim-airline/vim-airline'
+
+Plug 'airblade/vim-gitgutter'
+
+" Format
+autocmd FileType python noremap <buffer> <LocalLeader>= :call Autopep8()<CR>
+autocmd FileType json noremap <buffer> <LocalLeader>= :%!python -m json.tool<CR>
+let g:autopep8_diff_type='vertical'
+let g:autopep8_max_line_length=180
+Plug 'tell-k/vim-autopep8'
+
+" Default key mapping is <C-l>
+let g:pydocstring_doq_path = '/home/spindicator/.local/bin/doq'
+Plug 'heavenshell/vim-pydocstring' 
+
+let g:ackprg = 'rg -s --no-heading --vimgrep'
+Plug 'mileszs/ack.vim'
+
+Plug 'majutsushi/tagbar'
+Plug 'ervandew/supertab'
+
+" gc in visual to toggle
+Plug 'tomtom/tcomment_vim' 
+
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_goto_buffer_command='new-or-existing-tab'
+map <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>gr :YcmCompleter GoToReferences<CR>
+" :cw to show fixes
+map <leader>rr :YcmCompleter RefactorRename<Space>
+Plug 'ycm-core/YouCompleteMe'
+
+" Checking
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height=5
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" virtualenv pylint hack
+py3 << EOF
+import os
+if 'VIRTUAL_ENV' in os.environ:
+  os.system('pip show pylint >/dev/null && if [ $? -eq 1 ]; then pip install pylint; fi')
+EOF
+Plug 'vim-syntastic/syntastic'
+
+"Plug 'Coacher/vim-virtualenv'
+Plug 'jmcantrell/vim-virtualenv'
+
+" OpenSCAD
+Plug 'sirtaj/vim-openscad'
+
+" Syntax highlighting
+Plug 'sheerun/vim-polyglot'
+
+" Indent
+Plug 'Vimjas/vim-python-pep8-indent'
+
+" Window
+" " Dependencies
+" Plug 'qpkorr/vim-bufkill'
+" Plug 'kassio/neoterm'
+" " --------------------
+" Plug 'yatli/vmux.vim'
+
+" Shell
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Shougo/vimshell.vim'
+
+" Initialize plugin system
+call plug#end()
 
 " General indent
 set tabstop=2
@@ -99,9 +138,6 @@ set hlsearch
 " System clipboard
 set clipboard=unnamed
 
-" Colorscheme
-colorscheme molokai
-
 " Vimdiff highlight
 hi DiffAdd cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
 hi DiffDelete cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
@@ -114,67 +150,51 @@ hi Visual term=reverse cterm=reverse
 " Status Bar in single window. 0=never, 1=only with two windows, 2=always
 set laststatus=2
 
-let g:syntastic_go_checkers = ['gometalinter']
-
 " Be able to write the crontab
 autocmd FileType crontab setlocal bkc=yes
 
-" Use the mouse for highlighting and cursor
-"set mouse=nv
-set mouse=n
+" Mouse
+set mouse=v
+set mousefocus
 
 " Enable the cursorline
 set cursorline
+hi CursorLine ctermbg=234
+hi MatchParen cterm=none ctermbg=green ctermfg=black
+" https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 
 " Update ctags for use with :ta, gd, gD, Ctrl-], Ctrl-t and Ctrl-^
-" au BufWritePost *.py,*.go silent! !ctags -R --exclude=.git --exclude=venv --exclude='*.js' &
+au BufWritePost *.py,*.go silent! !ctags -R --exclude=.git --exclude=venv --exclude='*.js' &
 
 " NERDTree
-nmap <F7> :NERDTreeToggle<CR>
+map <F7> :NERDTreeToggle<CR>
 
 " Tagbar
-nmap <F8> :TagbarToggle<CR>
-
-" Format
-autocmd FileType python noremap <buffer> <LocalLeader>= :call Autopep8()<CR>
-autocmd FileType json noremap <buffer> <LocalLeader>= :%!python -m json.tool<CR>
+map <F8> :TagbarToggle<CR>
 
 " Recursive search
 " :cd ~/projects/yourproject
 " :ack your-search-term
 nnoremap \\ :Ack<space>
 
-" tabs
+" Tabs
+nmap <C-h> :tabnew<CR>
+nmap <C-l> :tabclose<CR>
 nmap <C-j> :tabnext<CR>
 nmap <C-k> :tabprevious<CR>
-" Option j
-nmap ∆ :tabnew<CR>
-" Option k
-nmap ˚ :tabclose<CR>
-
-" https://github.com/garbas/vim-snipmate
-
-" Colour of the parenthesis matching
-hi! MatchParen cterm=NONE,bold gui=NONE,bold ctermbg=15 guibg=#fdf6e3 ctermfg=12 guifg=#839496
 
 " Spelling
 autocmd BufReadPost,BufNewFile *.md,*.txt set spell spelllang=en_gb
 
-" Jedi
-let g:jedi#use_tabs_not_buffers = 1  " use buffers instead of tabs
-let g:jedi#show_call_signatures = "1"
-let g:jedi#goto_command = "<localleader>gt"
-let g:jedi#goto_assignments_command = "<localleader>ga"
-let g:jedi#goto_definitions_command = "<localleader>gg"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<localleader>u"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
+" Bell
+set belloff=all
+
+" Whitespace
+autocmd BufWritePre *.py :%s/\s\+$//e 
 
 " Navigation
 " ``      = ping pong
 "
-" C-c g   = goto def
 " [[      = previous def / class
 " ]]      = next def / class
 "
@@ -198,3 +218,6 @@ let g:jedi#rename_command = "<leader>r"
 " next
 " step
 " continue
+
+" Terminal
+" :ter

@@ -1,10 +1,13 @@
 # Get rid of Apple zsh warning
-export BASH_SILENCE_DEPRECATION_WARNING=1
+# export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # List
-export CLICOLOR=1
+#export CLICOLOR=1
 #export LSCOLORS=ExFxBxDxCxegedabagacad
-#eval $(gdircolors ~/.setup/bash/dircolors.256dark)
+eval $(dircolors /home/spindicator/Setup/bash/dircolors.256dark)
+
+# Export the DISPLAY for the local X11 (VcXsrv)
+export DISPLAY=:0
 
 # Make sure that we clear out anything existing
 unalias -a
@@ -21,40 +24,29 @@ alias dc='docker-compose'
 alias dm='docker-machine'
 alias dt='cd ~/Documents/Work/Reason.co/DeutscheTelekom/'
 alias h='history'
-alias v='/usr/local/bin/vim'
-alias vi='/usr/local/bin/vim'
+# alias v='/usr/local/bin/vim'
+# alias vi='/usr/local/bin/vim'
 alias ll='ls -alGFh'
-alias ls='ls -GFh'
+alias ls='ls --color=auto'
 alias mtail='multitail'
 alias n='nano -i'
 alias grep='grep --color=auto'
-alias cdntools='deactivate; cd ~/Documents/Work/Git/CdnTools/cdntools; source venv/bin/activate; python go.py -h'
-alias morlock='deactivate; cd ~/Documents/Work/Git/Morlock/morlock; source venv/bin/activate'
-alias fabric='cd ~/Documents/Work/CDN/fabric_management_api'
-alias cdnops='deactivate; cd ~/Documents/Work/Git/Cdnops/cdnops; source venv/bin/activate'
-alias boltfastly='deactivate; cd ~/Documents/Work/Git/Bolt-Fastly/bolt-fastly/'
-alias emacs='/usr/local/bin/emacs'
+# alias emacs='/usr/local/bin/emacs'
 alias epochtodate='date -r' # mac os x 
+
+# Visual and Git editor setting
+export VISUAL=vi
+export EDITOR="$VISUAL"
 
 # ulimit -n 2048 # Open files
 # ulimit -u 1024 # Max User Processes
 
-export PATH=/usr/local/sbin:/usr/local/bin:/Users/cboyd/work/maven/bin:/Users/cboyd/Documents/Work/Go/src/github.com/zencoder/bolt-utils/bin:/usr/local/go/bin:$PATH
-
-# Morlock
-export BRIGHTCOVE_MORLOCK_BASE_DIR=/usr/local/brightcove/morlock
+export PATH=/usr/local/sbin:/usr/local/bin:/home/spindicator/.local/bin:$PATH
 
 # Prompt
 GIT_PS1_SHOWDIRTYSTATE=true
 source ~/Setup/git/completion.sh
 source ~/Setup/bash/prompt.sh
-
-# GoLang
-export GOPATH=/Users/cboyd/Documents/Work/Go
-export GOBIN=/Users/cboyd/Documents/Work/Go/bin
-export PATH=$PATH:${GOPATH//://bin:}/bin
-export FABPATH=/Users/cboyd/Documents/Work/Go/src/github.com/zencoder
-export GO111MODULE=on
 
 # AWS
 export AWS_SDK_LOAD_CONFIG=1
@@ -77,19 +69,8 @@ source ~/.ssh/tokens.sh
 #unset __conda_setup
 ## <<< conda initialize <<<
 
-# Anaconda
-export PATH="/usr/local/anaconda3/bin:/Users/cboyd/.local/bin:${PATH}"
-
 # Screen
 touch /tmp/screen-exchange
 
-# Bash completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-
-# Java
-#export PATH="$HOME/.jenv/bin:$PATH"
-#eval "$(jenv init -)"
-
-export PATH="$HOME/.cargo/bin:$PATH"
+# Docker
+export DOCKER_HOST=tcp://localhost:2375
