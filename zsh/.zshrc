@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,6 +80,7 @@ export DOCKER_HOST=tcp://localhost:2375
 source ~/.ssh/tokens.sh 
 # just adding a $ on the end of the promot
 export PROMPT='%(?:%{%}➜ :%{%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)$ '
+export PATH=/usr/local/sbin:/usr/local/bin:/home/spindicator/.local/bin:$PATH
 
 # visual and git editor setting
 export VISUAL=vi
@@ -110,4 +111,7 @@ export EDITOR="$VISUAL"
 alias dc='docker-compose'
 alias dm='docker-machine'
 alias dt='cd ~/Documents/Work/Reason.co/DeutscheTelekom/'
+alias stt='cd ~/Documents/Work/Reason.co/DeutscheTelekom/Code/vil/stt && source venv/bin/activate && source config/staging-env.sh'
 alias h='history'
+alias python='python3'
+alias ls='ls --color=tty --group-directories-first'
