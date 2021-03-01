@@ -60,7 +60,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-"let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height=5
 let g:syntastic_check_on_open = 1
@@ -85,16 +85,9 @@ Plug 'sheerun/vim-polyglot'
 " Indent
 Plug 'Vimjas/vim-python-pep8-indent'
 
-" Window
-" " Dependencies
-" Plug 'qpkorr/vim-bufkill'
-" Plug 'kassio/neoterm'
-" " --------------------
-" Plug 'yatli/vmux.vim'
-
 " Shell
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'Shougo/vimshell.vim'
+" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Plug 'Shougo/vimshell.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -133,6 +126,7 @@ syntax on
 " set nu
 
 " Highlight search
+" * search on word
 set hlsearch
 
 " System clipboard
@@ -160,11 +154,10 @@ set mousefocus
 " Enable the cursorline
 set cursorline
 hi CursorLine ctermbg=234
-hi MatchParen cterm=none ctermbg=green ctermfg=black
 " https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 
-" Update ctags for use with :ta, gd, gD, Ctrl-], Ctrl-t and Ctrl-^
-au BufWritePost *.py,*.go silent! !ctags -R --exclude=.git --exclude=venv --exclude='*.js' &
+" Parenthesis
+hi MatchParen cterm=none ctermbg=green ctermfg=black
 
 " NERDTree
 map <F7> :NERDTreeToggle<CR>
@@ -173,8 +166,6 @@ map <F7> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
 
 " Recursive search
-" :cd ~/projects/yourproject
-" :ack your-search-term
 nnoremap \\ :Ack<space>
 
 " Tabs
@@ -186,11 +177,25 @@ nmap <C-k> :tabprevious<CR>
 " Spelling
 autocmd BufReadPost,BufNewFile *.md,*.txt set spell spelllang=en_gb
 
+" Keyword help
+autocmd BufNewFile,BufRead *.py set keywordprg=pydoc3
+
 " Bell
 set belloff=all
 
 " Whitespace
 autocmd BufWritePre *.py :%s/\s\+$//e 
+autocmd BufWritePre *.md :%s/\s\+$//e 
+
+" Clipboard
+" Yanking in the WSL
+let s:clip = '/mnt/c/Windows/system32/clip.exe' 
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)
+    augroup END
+end
 
 " Navigation
 " ``      = ping pong
