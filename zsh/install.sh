@@ -1,5 +1,5 @@
 # config
-ln -s -f ~/Setup/zsh/.zshrc ~/.zshrc
+ln -s -f ~/Setup/zsh/zshrc ~/.zshrc
 
 # plugins
 cd /home/spindicator/.oh-my-zsh/plugins
