@@ -1,0 +1,1 @@
+/home/spindicator/Documents/Work/AutoHotkey/shortcuts.ahk
