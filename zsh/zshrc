@@ -76,9 +76,13 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export DOCKER_HOST=tcp://localhost:2375
+#export DOCKER_HOST=tcp://localhost:2375
+#export DOCKER_BUILDKIT=1
+
 source ~/.ssh/tokens.sh 
-# just adding a $ on the end of the promot
+source ~/.ssh/ddns.sh 
+
+# just adding a $ on the end of the prompt
 export PROMPT='%(?:%{%}➜ :%{%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)$ '
 export PATH=/usr/local/sbin:/usr/local/bin:/home/spindicator/.local/bin:$PATH
 
