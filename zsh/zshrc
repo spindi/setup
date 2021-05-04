@@ -70,8 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-plugins=(autoswitch_virtualenv $plugins)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting autoswitch_virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -84,7 +83,7 @@ source ~/.ssh/tokens.sh
 source ~/.ssh/ddns.sh 
 
 # just adding a $ on the end of the prompt
-export PROMPT='%(?:%{%}➜ :%{%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)$ '
+export PROMPT="${PROMPT}%{$fg_bold[green]%}\$%{$reset_color%} "
 export PATH=/usr/local/sbin:/usr/local/bin:/home/spindicator/.local/bin:$PATH
 
 # visual and git editor setting
@@ -116,7 +115,8 @@ export EDITOR="$VISUAL"
 alias dc='docker-compose'
 alias dm='docker-machine'
 alias dt='cd ~/Documents/Work/Reason.co/DeutscheTelekom/'
-alias stv='cd ~/Documents/Work/Reason.co/DeutscheTelekom/Code/social_tv/social_tv && source venv/bin/activate && source config/staging-env.sh'
+alias stv='cd ~/Documents/Work/Reason.co/DeutscheTelekom/Code/social_tv/social_tv && source config/staging-env.sh'
+alias stvb='cd ~/Documents/Work/Reason.co/DeutscheTelekom/Code/social_tv_beta/social_tv_beta && source config/staging-env.sh'
 alias h='history'
 alias python='python3'
 alias ls='ls --color=tty --group-directories-first'
