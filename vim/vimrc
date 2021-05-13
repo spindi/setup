@@ -4,6 +4,10 @@ filetype off     " required
 " Plugins
 call plug#begin('~/.vim/plugged')
 
+" Wrap
+set nowrap
+nnoremap <F4> :set wrap!<CR>
+
 " Enable folded view by default
 set foldmethod=syntax
 set foldlevel=1
@@ -46,23 +50,34 @@ let g:autotagTagsFile = '/home/spindicator/.vim/tag/autotag'
 Plug 'craigemery/vim-autotag'
 Plug 'majutsushi/tagbar'
 " ctags -R init on dir
+" https://vim.fandom.com/wiki/Browsing_programs_with_tags
 " gd search declaration
 " gD search declaration global, from top
 " c, gn, <enter name>, esc
 " n, .
 " Ctrl + ] jump tag declaration
+" Ctrl + w, Ctrl + ] jump tag declaration in split
 " Ctrl + t jump back
+" # highlight occurrances up
+" * highlight occurrances down
 
 " gc in visual to toggle
 Plug 'tomtom/tcomment_vim'
 
-" let g:ycm_autoclose_preview_window_after_completion = 1
-" let g:ycm_goto_buffer_command='new-or-existing-tab'
-" map <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" map <leader>gr :YcmCompleter GoToReferences<CR>
-" " :cw to show fixes
-" map <leader>rr :YcmCompleter RefactorRename<Space>
-" Plug 'ycm-core/YouCompleteMe'
+" Completion 
+" Plug 'codota/tabnine-vim'
+
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_goto_buffer_command='new-or-existing-tab'
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+map <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>gr :YcmCompleter GoToReferences<CR>
+" :cw to show fixes
+map <leader>rr :YcmCompleter RefactorRename<Space>
+Plug 'ycm-core/YouCompleteMe'
+" set completeopt=preview,menuone " default
+" set completeopt=popup,menuone
 
 " Checking
 set statusline+=%#warningmsg#
@@ -75,6 +90,8 @@ set statusline+=%*
 " pip install flake8-todo
 " let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_python_checkers=['flake8', 'python3']
+let g:syntastic_python_flake8_args = '--max-line-length 120'
+let g:syntastic_markdown_mdl_args = "-r '~MD013'"
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height=5
 let g:syntastic_check_on_open = 1
@@ -87,7 +104,6 @@ let g:syntastic_check_on_wq = 1
 " EOF
 Plug 'vim-syntastic/syntastic'
 
-"Plug 'Coacher/vim-virtualenv'
 Plug 'jmcantrell/vim-virtualenv'
 
 " OpenSCAD
@@ -102,9 +118,6 @@ Plug 'Vimjas/vim-python-pep8-indent'
 " Shell
 " Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'Shougo/vimshell.vim'
-
-" Completion with Tabnine
-Plug 'codota/tabnine-vim'
 
 " Initialize plugin system
 call plug#end()
