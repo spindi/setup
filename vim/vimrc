@@ -26,14 +26,14 @@ colorscheme molokai
 let NERDTreeIgnore=['\.pyc$', '\~$'] " Ignore files in NERDTree
 Plug 'scrooloose/nerdtree'
 
-let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#ale#enabled = 1
 Plug 'vim-airline/vim-airline'
 
 Plug 'airblade/vim-gitgutter'
 
 " Format
 autocmd FileType python noremap <buffer> <LocalLeader>= :call Autopep8()<CR>
-autocmd FileType json noremap <buffer> <LocalLeader>= :%!python -m json.tool<CR>
+autocmd FileType json noremap <buffer> <LocalLeader>= :%!python -c "import json, sys, collections; print(json.dumps(json.loads(sys.stdin.read(), object_pairs_hook=collections.OrderedDict), indent=2))"<CR>
 let g:autopep8_diff_type='vertical'
 let g:autopep8_max_line_length=180
 Plug 'tell-k/vim-autopep8'
@@ -64,9 +64,16 @@ Plug 'majutsushi/tagbar'
 " gc in visual to toggle
 Plug 'tomtom/tcomment_vim'
 
-" Completion 
+" Completion
 " Plug 'codota/tabnine-vim'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" " Completion Snips
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+" let g:UltiSnipsExpandTrigger='<leader>ss'
+
+let g:ycm_seed_identifiers_with_syntax = 0
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_goto_buffer_command='new-or-existing-tab'
@@ -90,8 +97,9 @@ set statusline+=%*
 " pip install flake8-todo
 " let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_python_checkers=['flake8', 'python3']
-let g:syntastic_python_flake8_args = '--max-line-length 120'
-let g:syntastic_markdown_mdl_args = "-r '~MD013'"
+let g:syntastic_python_flake8_args = '--max-line-length 180'
+let g:syntastic_json_checkers=['jsonlint']
+let g:syntastic_markdown_mdl_args = "-r '~MD013'" " ignore the line length warning
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height=5
 let g:syntastic_check_on_open = 1
@@ -104,6 +112,7 @@ let g:syntastic_check_on_wq = 1
 " EOF
 Plug 'vim-syntastic/syntastic'
 
+" Python Virtualenv
 Plug 'jmcantrell/vim-virtualenv'
 
 " OpenSCAD
@@ -119,6 +128,11 @@ Plug 'Vimjas/vim-python-pep8-indent'
 " Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'Shougo/vimshell.vim'
 
+" JSON
+Plug 'elzr/vim-json'
+" Disable fancy concealing of attribute quotes.
+let g:vim_json_syntax_conceal = 0
+
 " Initialize plugin system
 call plug#end()
 
@@ -129,7 +143,8 @@ set shiftwidth=2
 set expandtab
 set autoindent
 
-" Python indent
+" Development file settings
+" Python
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -138,12 +153,53 @@ au BufNewFile,BufRead *.py
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
+" JavaScript
+au BufNewFile,BufRead *.js
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=180 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+" TypeScript
+au BufNewFile,BufRead *.ts
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=180 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
 
-" Full stack indent
-au BufNewFile,BufRead *.js, *.html, *.css
+" Browser file settings
+au BufNewFile,BufRead *.html
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
+    \ set textwidth=180 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+au BufNewFile,BufRead *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set textwidth=180 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
+" JSON file settings
+au BufNewFile,BufRead *.json
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set filetype=json |
+    \ set textwidth=180 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
 
 " UTF-8 support
 set encoding=utf-8
@@ -214,9 +270,12 @@ autocmd BufNewFile,BufRead *.py set keywordprg=pydoc3
 " Bell
 set belloff=all
 
-" Whitespace
+" Whitespace removal
 autocmd BufWritePre *.py :%s/\s\+$//e
 autocmd BufWritePre *.md :%s/\s\+$//e
+autocmd BufWritePre *.js :%s/\s\+$//e
+autocmd BufWritePre *.ts :%s/\s\+$//e
+autocmd BufWritePre *.json :%s/\s\+$//e
 
 " Clipboard
 " Yanking in the WSL
@@ -236,20 +295,25 @@ end
 "
 " Shift+[ = previous paragraph
 " Shift+] = next paragraph
-"
+
+" Folds
 " zm increases foldlevel by one
 " zM closes all open folds
 " zr decreases foldlevel by one
 " zR opens all closed folds
-"
+
+" Highlight
 " * highlight and go to next occurrance of word cursor is on
 " # highlight and go to previous occurrance of word cursor is on
-"
+" Allow use of shift and arrow for highlight
+set keymodel=startsel
+
+" Spelling
 " set spell spelllang=en_gb
 " [s ]s move between misspellings
 " z= to get alternatives
 
-" Pdb
+" Debug Pdb
 " \r = run
 " \b = breakpoint
 " next
