@@ -1,7 +1,12 @@
+BASE=/home/spindicator/.oh-my-zsh
+
 # config
 ln -s -f ~/Setup/zsh/zshrc ~/.zshrc
 
 # plugins
-cd /home/spindicator/.oh-my-zsh/plugins
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-git clone git://github.com/zsh-users/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${BASE}/plugins"
+git clone git://github.com/zsh-users/zsh-autosuggestions "${BASE}/plugins"
+
+# spaceship prompt
+git clone https://github.com/denysdovhan/spaceship-prompt.git "${BASE}/custom/themes/spaceship-prompt" --depth=1
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "${BASE}/custom/themes/spaceship.zsh-theme"
