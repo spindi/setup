@@ -1,58 +1,22 @@
-[core]
-	excludesfile = /Users/cboyd/.gitignore_global
-	editor = /usr/local/bin/vim
-[diff]
-	tool = vimdiff
-[difftool]
-  # prompt = false
+[http]
+	sslKey = /home/spindicator/Documents/Work/Reason.co/DeutscheTelekom/SSLKeys/userkey.pem
+	sslCert = /home/spindicator/Documents/Work/Reason.co/DeutscheTelekom/SSLKeys/user.crt
+	postBuffer = 104857600
 [user]
-	name = Conor Boyd
 	email = conor.boyd@reason.co
-[color]
-  branch = auto
-  diff = auto
-  status = auto
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-[color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
-[filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
-[push]
-	default = matching
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
-[difftool]
-	prompt = false
-[alias]
-	d = difftool
-[commit]
+	name = Conor Boyd
 [credential]
-	helper = osxkeychain
-[url "git@github.com:"]
-  insteadOf = https://github.com/
-[merge]
+	helper = store
+[diff]
 	tool = vimdiff
 [difftool "vimdiff"]
 	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[http]
-	sslKey = /Users/conorboyd/Documents/Work/Reason.co/DeutscheTelekom/SSLKeys/Access/ssl_smarthub-wbench/userkey.pem
-	sslCert = /Users/conorboyd/Documents/Work/Reason.co/DeutscheTelekom/SSLKeys/Access/ssl_smarthub-wbench/user.crt
+[core]
+	excludesfile = /home/spindicator/.gitignore_global
+	editor = /usr/bin/vim
+[alias]
+	dt = difftool
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
