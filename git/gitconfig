@@ -15,8 +15,10 @@
 	excludesfile = /home/spindicator/.gitignore_global
 	editor = /usr/bin/vim
 [alias]
-	dt = difftool
-	co = checkout
 	br = branch
 	ci = commit
+	co = checkout
+	dt = difftool
+	fe = fetch
+	pu = pull
 	st = status
