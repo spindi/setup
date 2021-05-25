@@ -8,8 +8,8 @@ export ZSH="/home/spindicator/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="spaceship"
+ZSH_THEME="robbyrussell"
+# ZSH_THEME="spaceship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -84,9 +84,9 @@ source ~/.ssh/tokens.sh
 source ~/.ssh/ddns.sh 
 
 # adding a colour coded $ on the end of the prompt
-# NEWLINE=$'\n'
-# PROMPT='%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
-# export PROMPT="${PROMPT}%{$fg_bold[green]%}${NEWLINE}%(?:%{$fg_bold[green]%}\$:%{$fg_bold[red]%}\$)%{$reset_color%} "
+NEWLINE=$'\n'
+PROMPT='%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+export PROMPT="${PROMPT}%{$fg_bold[green]%}${NEWLINE}%(?:%{$fg_bold[green]%}\$:%{$fg_bold[red]%}\$)%{$reset_color%} "
 export PATH=/usr/local/sbin:/usr/local/bin:/home/spindicator/.local/bin:$PATH
 
 # visual and git editor setting
