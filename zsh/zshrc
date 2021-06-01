@@ -124,4 +124,6 @@ alias sss='cd ~/Documents/Work/Reason.co/DeutscheTelekom/Code/service-socialtv-s
 alias h='history'
 alias python='python3'
 alias ls='ls --color=tty --group-directories-first'
+alias ll='ls -al'
 alias clip='/mnt/c/Windows/system32/clip.exe'
+alias git_kill_local='git branch --merged origin/master | grep -v master | xargs git branch -d'
