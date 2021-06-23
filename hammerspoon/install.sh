@@ -1,5 +1,5 @@
 #!/bin/bash
-brew cask install hammerspoon
+brew install --cask hammerspoon
 rm -f ./hammerspoon/init.lua
 
 ln -s -f ~/Setup/hammerspoon/assets ./.hammerspoon/assets

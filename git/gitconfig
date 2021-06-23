@@ -1,9 +1,7 @@
 [http]
-	sslKey = /home/spindicator/Documents/Work/Reason.co/DeutscheTelekom/SSLKeys/userkey.pem
-	sslCert = /home/spindicator/Documents/Work/Reason.co/DeutscheTelekom/SSLKeys/user.crt
 	postBuffer = 104857600
 [user]
-	email = conor.boyd@reason.co
+	email = conor.boyd@rvu.co.uk
 	name = Conor Boyd
 [credential]
 	helper = store
@@ -12,7 +10,6 @@
 [difftool "vimdiff"]
 	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
 [core]
-	excludesfile = /home/spindicator/.gitignore_global
 	editor = /usr/bin/vim
 [alias]
 	br = branch

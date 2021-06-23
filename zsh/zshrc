@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/spindicator/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -80,14 +80,14 @@ source $ZSH/oh-my-zsh.sh
 #export DOCKER_HOST=tcp://localhost:2375
 #export DOCKER_BUILDKIT=1
 
-source ~/.ssh/tokens.sh 
-source ~/.ssh/ddns.sh 
+# source ~/.ssh/tokens.sh 
+# source ~/.ssh/ddns.sh 
 
 # adding a colour coded $ on the end of the prompt
 NEWLINE=$'\n'
 PROMPT='%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 export PROMPT="${PROMPT}%{$fg_bold[green]%}${NEWLINE}%(?:%{$fg_bold[green]%}\$:%{$fg_bold[red]%}\$)%{$reset_color%} "
-export PATH=/usr/local/sbin:/usr/local/bin:/home/spindicator/.local/bin:$PATH
+export PATH=/usr/local/opt:$(brew --prefix openvpn)/sbin:/usr/local/sbin:/usr/local/bin:/home/spindicator/.local/bin:$PATH
 
 # visual and git editor setting
 export VISUAL=vi
@@ -117,13 +117,8 @@ export EDITOR="$VISUAL"
 # Alias                                                                                                                                                                                                                                     alias d='docker'
 alias dc='docker-compose'
 alias dm='docker-machine'
-alias dt='cd ~/Documents/Work/Reason.co/DeutscheTelekom/'
-alias stv='cd ~/Documents/Work/Reason.co/DeutscheTelekom/Code/social_tv/social_tv && source config/staging-env.sh'
-alias stvb='cd ~/Documents/Work/Reason.co/DeutscheTelekom/Code/social_tv_beta/social_tv_beta && source config/staging-env.sh'
-alias sss='cd ~/Documents/Work/Reason.co/DeutscheTelekom/Code/service-socialtv-sessions/service-socialtv-sessions && export CONFIG_FILE=local_settings.yaml'
 alias h='history'
 alias python='python3'
-alias ls='ls --color=tty --group-directories-first'
+# alias ls='ls --color=tty --group-directories-first'
 alias ll='ls -al'
-alias clip='/mnt/c/Windows/system32/clip.exe'
 alias git_kill_local='git branch --merged origin/master | grep -v master | xargs git branch -d'
