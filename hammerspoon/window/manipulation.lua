@@ -17,12 +17,28 @@ units = {
   maximum       = { x = 0.00, y = 0.00, w = 1.00, h = 1.00 }
 }
 
+-- half the screen in various directions
 hs.hotkey.bind(bind_keys, 'l', function() hs.window.focusedWindow():move(units.right50,    nil, true) end)
 hs.hotkey.bind(bind_keys, 'h', function() hs.window.focusedWindow():move(units.left50,     nil, true) end)
 hs.hotkey.bind(bind_keys, 'k', function() hs.window.focusedWindow():move(units.top50,      nil, true) end)
 hs.hotkey.bind(bind_keys, 'j', function() hs.window.focusedWindow():move(units.bot50,      nil, true) end)
+
+-- 70 / 30 screen split defaults
 hs.hotkey.bind(bind_keys, ']', function() hs.window.focusedWindow():move(units.upright30,  nil, true) end)
 hs.hotkey.bind(bind_keys, '[', function() hs.window.focusedWindow():move(units.upleft70,   nil, true) end)
 hs.hotkey.bind(bind_keys, ';', function() hs.window.focusedWindow():move(units.botleft70,  nil, true) end)
 hs.hotkey.bind(bind_keys, "'", function() hs.window.focusedWindow():move(units.botright30, nil, true) end)
 hs.hotkey.bind(bind_keys, 'm', function() hs.window.focusedWindow():move(units.maximum,    nil, true) end)
+
+-- move window to monitor
+function moveWindowToDisplay(d)
+  return function()
+    local displays = hs.screen.allScreens()
+    local win = hs.window.focusedWindow()
+    win:moveToScreen(displays[d], false, true)
+  end
+end
+
+hs.hotkey.bind(bind_keys, "1", moveWindowToDisplay(1))
+hs.hotkey.bind(bind_keys, "2", moveWindowToDisplay(2))
+hs.hotkey.bind(bind_keys, "3", moveWindowToDisplay(3))
