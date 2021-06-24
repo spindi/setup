@@ -87,10 +87,10 @@ source $ZSH/oh-my-zsh.sh
 NEWLINE=$'\n'
 PROMPT='%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 export PROMPT="${PROMPT}%{$fg_bold[green]%}${NEWLINE}%(?:%{$fg_bold[green]%}\$:%{$fg_bold[red]%}\$)%{$reset_color%} "
-export PATH=/usr/local/opt:$(brew --prefix openvpn)/sbin:/usr/local/sbin:/usr/local/bin:/home/spindicator/.local/bin:$PATH
+export PATH=$(brew --prefix openvpn)/sbin:/usr/local/sbin:/usr/local/bin:/home/spindicator/.local/bin:$PATH
 
 # visual and git editor setting
-export VISUAL=vi
+export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # You may need to manually set your language environment
