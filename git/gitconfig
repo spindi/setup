@@ -10,7 +10,7 @@
 [difftool "vimdiff"]
 	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
 [core]
-	editor = /usr/bin/vim
+	editor = /usr/local/bin/vim
 [alias]
 	br = branch
 	ci = commit
