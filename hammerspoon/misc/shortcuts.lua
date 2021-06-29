@@ -8,9 +8,10 @@ function open(name)
     end
 end
 
+hs.hotkey.bind(bind_keys, "c", open("Google Chrome"))
 hs.hotkey.bind(bind_keys, "f", open("Finder"))
-hs.hotkey.bind(bind_keys, "k", open("kitty"))
-hs.hotkey.bind(bind_keys, "m", open("Spotify"))
-hs.hotkey.bind(bind_keys, "p", open("Stickies")) --- postit
-hs.hotkey.bind(bind_keys, "s", open("Safari"))
-hs.hotkey.bind(bind_keys, "t", open("Terminal"))
+-- hs.hotkey.bind(bind_keys, "k", open("kitty"))
+hs.hotkey.bind(bind_keys, "i", open("iTerm"))
+--- hs.hotkey.bind(bind_keys, "m", open("spotify"))
+hs.hotkey.bind(bind_keys, "s", open("Stickies"))
+-- hs.hotkey.bind(bind_keys, "t", open("terminal"))
