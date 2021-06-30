@@ -124,6 +124,7 @@ alias pip='pip3'
 alias ll='ls -al'
 alias lll='find . | grep'
 alias ip='curl ifconfig.co'
+alias vd='visidata'
 alias git_kill_local='git branch --merged origin/master | grep -v master | xargs git branch -d'
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
