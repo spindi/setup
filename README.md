@@ -1,2 +1,3 @@
-# setup
-sync setup between machines
+# Setup
+
+An attempt to get things the same on multiple machines
