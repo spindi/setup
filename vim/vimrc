@@ -41,14 +41,17 @@ Plug 'scrooloose/nerdtree'
 " let g:airline#extensions#ale#enabled = 1
 Plug 'vim-airline/vim-airline'
 
+" Git
 Plug 'airblade/vim-gitgutter'
 
 " Format
 autocmd FileType python noremap <buffer> <LocalLeader>= :call Autopep8()<CR>
-autocmd FileType json noremap <buffer> <LocalLeader>= :%!python -c "import json, sys, collections; print(json.dumps(json.loads(sys.stdin.read(), object_pairs_hook=collections.OrderedDict), indent=2))"<CR>
 let g:autopep8_diff_type='vertical'
 let g:autopep8_max_line_length=180
 Plug 'tell-k/vim-autopep8'
+autocmd FileType python noremap <buffer> <LocalLeader>b :Black<CR>
+Plug 'ambv/black'
+autocmd FileType json noremap <buffer> <LocalLeader>= :%!python -c "import json, sys, collections; print(json.dumps(json.loads(sys.stdin.read(), object_pairs_hook=collections.OrderedDict), indent=2))"<CR>
 
 " Default key mapping is <C-l>
 let g:pydocstring_doq_path = '/usr/local/bin/doq'
@@ -107,10 +110,12 @@ set statusline+=%*
 " https://github.com/DmytroLitvinov/awesome-flake8-extensions
 " pip install flake8-docstrings
 " pip install flake8-todo
+" sudo gem install mdl
 " let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_python_checkers=['flake8', 'python3']
 let g:syntastic_python_flake8_args = '--max-line-length 180'
 let g:syntastic_json_checkers=['jsonlint']
+" let g:syntastic_clojure_checkers=['clj-konto']
 let g:syntastic_markdown_mdl_args = "-r '~MD013'" " ignore the line length warning
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height=5
@@ -136,14 +141,14 @@ Plug 'sheerun/vim-polyglot'
 " Indent
 Plug 'Vimjas/vim-python-pep8-indent'
 
-" Shell
-" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-" Plug 'Shougo/vimshell.vim'
-
 " JSON
 Plug 'elzr/vim-json'
 " Disable fancy concealing of attribute quotes.
 let g:vim_json_syntax_conceal = 0
+
+" " Clojure
+" Plug 'clojure-emacs/cider'
+" Plug 'tpope/vim-fireplace'
 
 " Initialize plugin system
 call plug#end()
@@ -315,6 +320,7 @@ set keymodel=startsel
 " set spell spelllang=en_gb
 " [s ]s move between misspellings
 " z= to get alternatives
+" zg to add word to personal dictionary
 
 " Debug Pdb
 " \r = run
