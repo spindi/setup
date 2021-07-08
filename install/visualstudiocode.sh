@@ -1,2 +1,2 @@
 #!/bin/bash
-brew cask install visual-studio-code
+brew install --cask visual-studio-code
