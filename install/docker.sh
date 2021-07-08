@@ -2,5 +2,5 @@
 brew install docker docker-machine
 # brew services start docker-machine
 # docker-machine start
-brew cask install virtualbox
+brew install --cask virtualbox
 docker-machine create default --driver virtualbox
