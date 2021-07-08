@@ -117,14 +117,21 @@ export EDITOR="$VISUAL"
 # Alias                                                                                                                                                                                                                                     alias d='docker'
 alias dc='docker-compose'
 alias dm='docker-machine'
+alias git_kill_local='git branch --merged origin/master | grep -v master | xargs git branch -d'
+alias grep='ggrep'
 alias h='history'
-alias python='python3'
-alias pip='pip3'
-# alias ls='ls --color=tty --group-directories-first'
+alias ip='curl ifconfig.co'
 alias ll='ls -al'
 alias lll='find . | grep'
-alias ip='curl ifconfig.co'
+alias ls='gls --color=tty --group-directories-first'
+alias python='python3'
+alias pip='pip3'
+alias t='tree -C'
 alias vd='visidata'
-alias git_kill_local='git branch --merged origin/master | grep -v master | xargs git branch -d'
+
+# Google SDK CLI
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+# Dagster
+export DAGSTER_HOME=/Users/conor.boydrvu.co.uk/Code/dagster-home
