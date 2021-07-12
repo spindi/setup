@@ -57,8 +57,14 @@ autocmd FileType json noremap <buffer> <LocalLeader>= :%!python -c "import json,
 let g:pydocstring_doq_path = '/usr/local/bin/doq'
 Plug 'heavenshell/vim-pydocstring'
 
+" Finding
+" ripgrep
 let g:ackprg = 'rg -s --no-heading --vimgrep'
 Plug 'mileszs/ack.vim'
+" fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+map ; :Files<CR>
 
 " Tag management
 let g:autotagTagsFile = '/home/spindicator/.vim/tag/autotag'
@@ -331,3 +337,6 @@ set keymodel=startsel
 
 " Terminal
 " :ter
+
+" Fuzzy file search
+" ;
