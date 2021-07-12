@@ -1,0 +1,6 @@
+#!env bash
+if [ -n "$1" ] && [ -n "$2" ]; then
+  kubectl -n $1 logs --follow $2
+else
+  echo "USAGE: klt <namespace> <pod>"
+fi

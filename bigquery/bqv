@@ -1,12 +1,11 @@
 #!env bash
-if [ -z "$1" ]
-then
-  echo 'USAGE: bqv <filename.sql>'
-else
+if [ -n "$1" ]; then
   bq query \
     --nouse_legacy_sql \
     --format=csv \
     --max_rows=1000000 \
     < $1 \
     > $1.csv && visidata $1.csv
+else
+  echo 'USAGE: bqv <filename.sql>'
 fi

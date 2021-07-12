@@ -1,0 +1,9 @@
+#!env bash
+if [ -n "$1" ]; then
+  bq query \
+    --nouse_legacy_sql \
+    --dry_run \
+    < $1
+else
+  echo 'USAGE: bqc <filename.sql>'
+fi

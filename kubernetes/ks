@@ -1,0 +1,6 @@
+#!env bash
+if [ -n "$1" ] && [ -n "$2" ]; then
+  kubectl exec -n $1 -i -t $2 -- /bin/bash
+else
+  echo "USAGE: ks <namespace> <pod>"
+fi
