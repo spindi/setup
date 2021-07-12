@@ -135,3 +135,6 @@ source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/compl
 
 # Dagster
 export DAGSTER_HOME=/Users/conor.boydrvu.co.uk/Code/dagster-home
+
+# Kubectl completion
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
