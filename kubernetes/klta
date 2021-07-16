@@ -1,0 +1,6 @@
+#!env bash
+if [ -n "$1" ] && [ -n "$2" ]; then
+  stern --color always -n $1 $2
+else
+  echo "USAGE: klta <namespace> <app-name>"
+fi
