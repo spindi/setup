@@ -138,3 +138,7 @@ export DAGSTER_HOME=/Users/conor.boydrvu.co.uk/Code/dagster-home
 
 # Kubectl completion
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+
+# iterm shell integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
