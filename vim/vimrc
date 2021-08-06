@@ -38,19 +38,43 @@ endif
 let NERDTreeIgnore=['\.pyc$', '\~$'] " Ignore files in NERDTree
 Plug 'scrooloose/nerdtree'
 
-" let g:airline#extensions#ale#enabled = 1
-Plug 'vim-airline/vim-airline'
-
 " Git
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
+nnoremap <LocalLeader>gV :Gvsplit<CR>
+nnoremap <LocalLeader>gv :Gvdiffsplit!<CR>
+" Take the left pane
+nnoremap <LocalLeader>gvc :diffget //2<CR>
+" Take the right pane
+nnoremap <LocalLeader>gvb :diffget //3<CR>
+Plug 'tpope/vim-fugitive'
+
+" Status line
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.dirty='⚡'
+" git
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+Plug 'vim-airline/vim-airline'
 
 " Format
 autocmd FileType python noremap <buffer> <LocalLeader>= :call Autopep8()<CR>
 let g:autopep8_diff_type='vertical'
 let g:autopep8_max_line_length=180
 Plug 'tell-k/vim-autopep8'
-autocmd FileType python noremap <buffer> <LocalLeader>b :Black<CR>
-Plug 'ambv/black'
+" autocmd FileType python noremap <buffer> <LocalLeader>b :Black<CR>
+" Plug 'ambv/black'
 autocmd FileType json noremap <buffer> <LocalLeader>= :%!python -c "import json, sys, collections; print(json.dumps(json.loads(sys.stdin.read(), object_pairs_hook=collections.OrderedDict), indent=2))"<CR>
 
 " Default key mapping is <C-l>
