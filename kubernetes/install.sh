@@ -1,9 +1,10 @@
-#!env bash
+#!/usr/local/bin/bash
 brew install kubernetes-cli
 brew install stern 
 
 DIR=/usr/local/bin
 ln -f -s ~/Setup/kubernetes/ks ${DIR}/ks       # shell
+ln -f -s ~/Setup/kubernetes/kdp ${DIR}/kdp     # describe pod 
 ln -f -s ~/Setup/kubernetes/kge ${DIR}/kgd     # get deployment 
 ln -f -s ~/Setup/kubernetes/kge ${DIR}/kge     # get endpoints 
 ln -f -s ~/Setup/kubernetes/kgi ${DIR}/kgi     # get ingress

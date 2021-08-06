@@ -1,4 +1,4 @@
-#!env bash
+#!/usr/local/bin/bash
 if [ -n "$1" ] && [ -n "$2" ]; then
   kubectl exec -n $1 -i -t $2 -- /bin/bash
 else

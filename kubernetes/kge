@@ -1,4 +1,4 @@
-#!env bash
+#!/usr/local/bin/bash
 if [ -n "$1" ]; then
   kubectl -n $1 get endpoints
 else
