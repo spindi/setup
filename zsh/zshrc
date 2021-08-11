@@ -87,10 +87,10 @@ source ~/.ssh/tokens.sh
 NEWLINE=$'\n'
 PROMPT='%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 export PROMPT="${PROMPT}%{$fg_bold[green]%}${NEWLINE}%(?:%{$fg_bold[green]%}\$:%{$fg_bold[red]%}\$)%{$reset_color%} "
-export PATH=$(brew --prefix openvpn)/sbin:/usr/local/sbin:/usr/local/bin:/home/spindicator/.local/bin:$PATH
+export PATH=$(brew --prefix openvpn)/sbin:$(brew --prefix vim)/bin:/usr/local/sbin:/usr/local/bin:/home/spindicator/.local/bin:$PATH
 
 # visual and git editor setting
-export VISUAL=vim
+export VISUAL=$(brew --prefix vim)/bin/vim
 export EDITOR="$VISUAL"
 
 # You may need to manually set your language environment
