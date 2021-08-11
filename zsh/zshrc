@@ -80,7 +80,7 @@ source $ZSH/oh-my-zsh.sh
 #export DOCKER_HOST=tcp://localhost:2375
 #export DOCKER_BUILDKIT=1
 
-# source ~/.ssh/tokens.sh 
+source ~/.ssh/tokens.sh 
 # source ~/.ssh/ddns.sh 
 
 # adding a colour coded $ on the end of the prompt
@@ -115,6 +115,7 @@ export EDITOR="$VISUAL"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # Alias                                                                                                                                                                                                                                     alias d='docker'
+alias diff='colordiff'
 alias dc='docker-compose'
 alias dm='docker-machine'
 alias dms='socat TCP-LISTEN:2376,reuseaddr,fork,bind=127.0.0.1 UNIX-CLIENT:/var/run/docker.sock'
