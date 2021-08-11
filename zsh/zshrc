@@ -120,7 +120,11 @@ alias dc='docker-compose'
 alias dm='docker-machine'
 alias dms='socat TCP-LISTEN:2376,reuseaddr,fork,bind=127.0.0.1 UNIX-CLIENT:/var/run/docker.sock'
 alias git_kill_local='git branch --merged origin/master | grep -v master | xargs git branch -d'
-alias grep='ggrep'
+if [ -f "$(brew --prefix grep)/bin/grep" ]; then
+  alias grep="$(brew --prefix grep)/bin/grep"
+elif [ -f "$(brew --prefix grep)/bin/ggrep" ]; then
+  alias grep="$(brew --prefix grep)/bin/ggrep"
+fi
 alias h='history'
 alias ip='curl ifconfig.co'
 alias ll='ls -al'
