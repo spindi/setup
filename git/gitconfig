@@ -19,3 +19,5 @@
 	fe = fetch
 	pu = pull
 	st = status
+[difftool]
+	prompt = false
