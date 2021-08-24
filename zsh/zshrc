@@ -137,7 +137,7 @@ alias t='tree -C'
 alias vd='visidata'
 
 # Google SDK CLI
-if [ -f "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then
+if [ -d "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then
   # if we have the mac cask installed
   source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
   source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
