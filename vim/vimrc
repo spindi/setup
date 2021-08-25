@@ -147,6 +147,7 @@ let g:syntastic_python_flake8_args = '--max-line-length 180'
 let g:syntastic_json_checkers=['jsonlint']
 " let g:syntastic_clojure_checkers=['clj-konto']
 let g:syntastic_markdown_mdl_args = "-r '~MD013'" " ignore the line length warning
+let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height=5
 let g:syntastic_check_on_open = 1
