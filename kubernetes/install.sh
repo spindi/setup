@@ -1,5 +1,6 @@
 #!/usr/local/bin/bash
 brew install kubernetes-cli
+brew install kubeseal
 brew install stern 
 
 DIR=/usr/local/bin

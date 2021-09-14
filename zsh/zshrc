@@ -91,7 +91,8 @@ export PATH=$(brew --prefix openvpn)/sbin:$(brew --prefix vim)/bin:/usr/local/sb
 
 # visual and git editor setting
 export VISUAL=$(brew --prefix vim)/bin/vim
-export EDITOR="$VISUAL"
+export EDITOR=${VISUAL}
+export GIT_EDITOR=${VISUAL}
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -136,7 +137,7 @@ alias t='tree -C'
 alias vd='visidata'
 
 # Google SDK CLI
-if [ -f "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then
+if [ -d "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then
   # if we have the mac cask installed
   source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
   source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"

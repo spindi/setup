@@ -2,10 +2,14 @@ bind main	   C ?git cherry-pick %(commit)
 bind main    P ?git pull origin %(branch)
 bind main    M ?git merge %(branch) main
 bind main    F ?git fetch origin %(branch)
-bind main    V !git d %(file)
+bind main    V !git difftool HEAD %(file)
 bind status  P ?git push origin %(branch)
-bind status  V !git d %(file)
+bind status  V !git difftool HEAD %(file)
 bind refs	   C ?git checkout %(branch)
 bind refs    P ?git push origin %(branch)
 bind log     C ?git checkout %(branch)
 bind log     ! ?git reset --hard %(commit)
+
+set vertical-split = yes
+set line-graphics = utf-8
+set mouse = true
