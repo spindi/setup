@@ -177,6 +177,11 @@ Plug 'elzr/vim-json'
 " Disable fancy concealing of attribute quotes.
 let g:vim_json_syntax_conceal = 0
 
+" Markdown
+" mdr downloadable from https://github.com/MichaelMure/mdr/releases/
+let g:preview_markdown_auto_update = 1
+Plug 'skanehira/preview-markdown.vim'
+
 " " Clojure
 " Plug 'clojure-emacs/cider'
 " Plug 'tpope/vim-fireplace'
