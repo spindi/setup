@@ -1,7 +1,17 @@
-after installing karabiner elements...
+# Karabiner Elements
 
-link to ~/.config/karabiner/assets/complex_modifications
+## Post install
 
-reference https://pqrs.org/osx/karabiner/json.html
+After installing karabiner elements...
 
-section_to_escape.json - useful if you have a touchbar enabled mac and like to use vim
+### General Config
+
+Couple of remaps for UK layout - `karabiner.json`
+Link into `~/.config/karabiner/` directory
+
+### Complex Modification
+
+Touchbar Mac tweak for Vim  - `section_to_escape.json`
+Link into `~/.config/karabiner/assets/complex_modifications/` directory
+
+[Reference](https://pqrs.org/osx/karabiner/json.html)
