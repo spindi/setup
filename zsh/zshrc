@@ -116,10 +116,15 @@ export GIT_EDITOR=${VISUAL}
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # Alias                                                                                                                                                                                                                                     alias d='docker'
+alias bat='batcat'
 alias diff='colordiff'
 alias dc='docker-compose'
 alias dm='docker-machine'
 alias dms='socat TCP-LISTEN:2376,reuseaddr,fork,bind=127.0.0.1 UNIX-CLIENT:/var/run/docker.sock'
+alias e='date +"%s"'
+alias e2d='f(){ date -d @"$1"; unset -f f; }; f'
+alias ep1="echo \`e\` + 86400 | bc"
+alias ep2="echo \`e\` + 86400 + 86400 | bc"
 alias git_kill_local='git branch --merged origin/master | grep -v master | xargs git branch -d'
 if [ -f "$(brew --prefix grep)/bin/grep" ]; then
   alias grep="$(brew --prefix grep)/bin/grep"
@@ -131,8 +136,9 @@ alias ip='curl ifconfig.co'
 alias ll='ls -al'
 alias lll='find . | grep'
 alias ls='gls --color=tty --group-directories-first'
-alias python='python3'
-alias pip='pip3'
+alias n='nb'
+# alias python='python3'
+# alias pip='pip3'
 alias t='tree -C'
 alias vd='visidata'
 
