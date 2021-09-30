@@ -1,0 +1,4 @@
+#!/bin/bash
+# the pbcopy script
+tee <&0 | /mnt/c/Windows/system32/clip.exe
+exit 0
