@@ -155,8 +155,12 @@ export DAGSTER_HOME=/Users/conor.boydrvu.co.uk/Code/dagster-home
 # Kubectl completion
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
-# iterm shell integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# # iterm shell integration
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Terraform autocomplete
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
 
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"

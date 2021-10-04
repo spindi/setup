@@ -74,3 +74,5 @@ touch /tmp/screen-exchange
 
 # Docker
 export DOCKER_HOST=tcp://localhost:2375
+
+complete -C /usr/bin/terraform terraform
