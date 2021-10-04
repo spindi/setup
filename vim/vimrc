@@ -189,6 +189,10 @@ Plug 'hashivim/vim-terraform'
 " Plug 'clojure-emacs/cider'
 " Plug 'tpope/vim-fireplace'
 
+" VCL
+let g:vcl_fold = 1
+Plug 'fgsch/vim-varnish'
+
 " Initialize plugin system
 call plug#end()
 
