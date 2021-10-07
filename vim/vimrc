@@ -231,6 +231,15 @@ au BufNewFile,BufRead *.ts
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
+" Varnish Configuration Language
+au BufNewFile,BufRead *.vcl
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set textwidth=180 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
 
 " Browser file settings
 au BufNewFile,BufRead *.html
