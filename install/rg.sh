@@ -1,1 +1,2 @@
+# ripgrep 
 brew install rg
