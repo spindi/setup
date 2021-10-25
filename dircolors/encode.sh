@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "export $(dircolors dircolors.default)"
+dircolors dircolors.spindicator > dircolors.spindicator.encoded

@@ -1,2 +1,2 @@
 #!/bin/bash
-dircolors --print-database > dircolors.default
+dircolors --print-database > dircolors.spindicator

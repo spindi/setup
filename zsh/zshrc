@@ -140,7 +140,7 @@ alias h='history'
 alias ip='curl ifconfig.co'
 alias ll='ls -al'
 alias lll='find . | grep'
-alias ls='gls --color=tty --group-directories-first'
+alias ls='gls --color=auto --group-directories-first'
 alias n='nb'
 alias python="$(brew --prefix python)/bin/python3"
 alias pip="$(brew --prefix python)/bin/pip3"
@@ -176,5 +176,9 @@ complete -o nospace -C /usr/bin/terraform terraform
 # eval "$(pyenv init --path)"
 # eval "$(pyenv init -)"
 
+# Dircolors
+source /home/spindicator/Setup/dircolors/dircolors.spindicator.encoded
+
 # Home
 cd ~/
+
