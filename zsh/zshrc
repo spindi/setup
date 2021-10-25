@@ -72,6 +72,7 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting autoswitch_virtualenv)
+# plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -117,6 +118,7 @@ export GIT_EDITOR=${VISUAL}
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # Alias                                                                                                                                                                                                                                     alias d='docker'
 alias bat='batcat'
+alias b='browsh --startup-url www.duckduckgo.com'
 alias diff='colordiff'
 alias dc='docker-compose'
 alias dm='docker-machine'
@@ -140,8 +142,8 @@ alias ll='ls -al'
 alias lll='find . | grep'
 alias ls='gls --color=tty --group-directories-first'
 alias n='nb'
-# alias python='python3'
-# alias pip='pip3'
+alias python="$(brew --prefix python)/bin/python3"
+alias pip="$(brew --prefix python)/bin/pip3"
 alias t='tree -C'
 alias vd='visidata'
 
@@ -151,9 +153,11 @@ if [ -d "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ];
   source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
   source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 fi
-
+# Google Cloud SDK does not like pyenv pythons so use the brew
+# export CLOUDSDK_PYTHON=/home/linuxbrew/.linuxbrew/opt/python@3.9/bin/python3.9
+export CLOUDSDK_PYTHON=/home/linuxbrew/.linuxbrew/Cellar/python@3.9/3.9.7_1/bin/python3
 # Dagster
-export DAGSTER_HOME=/Users/conor.boydrvu.co.uk/Code/dagster-home
+# export DAGSTER_HOME=/Users/conor.boydrvu.co.uk/Code/dagster-home
 
 # Kubectl completion
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
@@ -166,10 +170,11 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
 # Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+# export PYTHON_CONFIGURE_OPTS="--enable-shared"
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
 
 # Home
 cd ~/
