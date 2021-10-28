@@ -146,6 +146,7 @@ alias python="$(brew --prefix python)/bin/python3"
 alias pip="$(brew --prefix python)/bin/pip3"
 alias t='tree -C'
 alias vd='visidata'
+alias ttfb='curl -s -o /dev/null -w "Connect: %{time_connect} TTFB: %{time_starttransfer} Total time: %{time_total} \n"'
 
 # Google SDK CLI
 if [ -d "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then
