@@ -127,7 +127,8 @@ map <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <leader>gr :YcmCompleter GoToReferences<CR>
 " :cw to show fixes
 map <leader>rr :YcmCompleter RefactorRename<Space>
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
+Plug 'tabnine/YouCompleteMe'
 " set completeopt=preview,menuone " default
 " set completeopt=popup,menuone
 
