@@ -159,6 +159,8 @@ fi
 export CLOUDSDK_PYTHON=/home/linuxbrew/.linuxbrew/Cellar/python@3.9/3.9.7_1/bin/python3
 # Dagster
 # export DAGSTER_HOME=/Users/conor.boydrvu.co.uk/Code/dagster-home
+# Uses default browser
+export BROWSER="explorer.exe"
 
 # Kubectl completion
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
