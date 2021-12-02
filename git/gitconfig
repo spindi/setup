@@ -1,7 +1,7 @@
 [http]
 	postBuffer = 104857600
 [user]
-	email = conor.boyd@rvu.co.uk
+	email = conor.boyd@napster.com
 	name = Conor Boyd
 [credential]
 	helper = store
