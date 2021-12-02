@@ -295,7 +295,8 @@ set laststatus=2
 autocmd FileType crontab setlocal bkc=yes
 
 " Mouse
-set mouse=v
+set mouse=a
+" set mouse=v " Mac
 set mousefocus
 
 " Enable the cursorline
