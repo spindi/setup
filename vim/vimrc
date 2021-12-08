@@ -127,8 +127,8 @@ map <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <leader>gr :YcmCompleter GoToReferences<CR>
 " :cw to show fixes
 map <leader>rr :YcmCompleter RefactorRename<Space>
-" Plug 'ycm-core/YouCompleteMe'
-Plug 'tabnine/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
+" Plug 'tabnine/YouCompleteMe'
 " set completeopt=preview,menuone " default
 " set completeopt=popup,menuone
 
@@ -185,6 +185,9 @@ Plug 'skanehira/preview-markdown.vim'
 
 " Terraform
 Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
+let g:terraform_completion_keys = 1
+let g:terraform_registry_module_completion = 0
 
 " " Clojure
 " Plug 'clojure-emacs/cider'
@@ -388,3 +391,9 @@ set keymodel=startsel
 
 " Fuzzy file search
 " ;
+
+" Colour overrides
+" Generally making things a little darker
+hi Normal ctermbg=232
+hi SignColumn ctermbg=233
+hi CursorLine ctermbg=233 
