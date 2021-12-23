@@ -69,12 +69,14 @@ let g:airline#extensions#branch#enabled = 1
 Plug 'vim-airline/vim-airline'
 
 " Format
+"" Python
 autocmd FileType python noremap <buffer> <LocalLeader>= :call Autopep8()<CR>
 let g:autopep8_diff_type='vertical'
 let g:autopep8_max_line_length=180
 Plug 'tell-k/vim-autopep8'
 " autocmd FileType python noremap <buffer> <LocalLeader>b :Black<CR>
 " Plug 'ambv/black'
+"" JSON
 autocmd FileType json noremap <buffer> <LocalLeader>= :%!python -c "import json, sys, collections; print(json.dumps(json.loads(sys.stdin.read(), object_pairs_hook=collections.OrderedDict), indent=2))"<CR>
 
 " Default key mapping is <C-l>
@@ -184,6 +186,7 @@ let g:preview_markdown_auto_update = 1
 Plug 'skanehira/preview-markdown.vim'
 
 " Terraform
+autocmd FileType terraform noremap <buffer> <LocalLeader>= :Terraform fmt<CR>
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 let g:terraform_completion_keys = 1
@@ -336,11 +339,12 @@ autocmd BufNewFile,BufRead *.py set keywordprg=pydoc3
 set belloff=all
 
 " Whitespace removal
-autocmd BufWritePre *.py :%s/\s\+$//e
-autocmd BufWritePre *.md :%s/\s\+$//e
 autocmd BufWritePre *.js :%s/\s\+$//e
-autocmd BufWritePre *.ts :%s/\s\+$//e
 autocmd BufWritePre *.json :%s/\s\+$//e
+autocmd BufWritePre *.md :%s/\s\+$//e
+autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.tf :%s/\s\+$//e
+autocmd BufWritePre *.ts :%s/\s\+$//e
 
 " Clipboard
 " Yanking in the WSL
