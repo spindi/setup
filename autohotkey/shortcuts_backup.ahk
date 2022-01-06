@@ -26,9 +26,6 @@ SwitchTo(programName) {
       case "KeePassXC.exe":
         Run, "C:\Program Files\KeePassXC\KeePassXC.exe"
         return
-      case "thunderbird.exe":
-        Run, "C:\Program Files\Mozilla Thunderbird\thunderbird.exe"
-        return
       default:
         Run, %programName%
     }
