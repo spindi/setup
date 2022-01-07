@@ -88,9 +88,11 @@ Plug 'heavenshell/vim-pydocstring'
 let g:ackprg = 'rg -s --no-heading --vimgrep'
 Plug 'mileszs/ack.vim'
 " fzf
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 map ; :Files<CR>
+map <LocalLeader>; :Rg<CR>
 
 " Tag management
 let g:autotagTagsFile = '/home/spindicator/.vim/tag/autotag'
