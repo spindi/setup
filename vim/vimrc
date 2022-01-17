@@ -53,7 +53,7 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-" powerline symbols
+" Powerline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -77,7 +77,7 @@ Plug 'tell-k/vim-autopep8'
 " autocmd FileType python noremap <buffer> <LocalLeader>b :Black<CR>
 " Plug 'ambv/black'
 "" JSON
-autocmd FileType json noremap <buffer> <LocalLeader>= :%!python -c "import json, sys, collections; print(json.dumps(json.loads(sys.stdin.read(), object_pairs_hook=collections.OrderedDict), indent=2))"<CR>
+autocmd FileType json noremap <buffer> <LocalLeader>= :%!python3 -c "import json, sys, collections; print(json.dumps(json.loads(sys.stdin.read(), object_pairs_hook=collections.OrderedDict), indent=2))"<CR>
 
 " Default key mapping is <C-l>
 let g:pydocstring_doq_path = '/usr/local/bin/doq'
@@ -188,7 +188,7 @@ let g:preview_markdown_auto_update = 1
 Plug 'skanehira/preview-markdown.vim'
 
 " Terraform
-autocmd FileType terraform noremap <buffer> <LocalLeader>= :Terraform fmt<CR>
+autocmd FileType terraform noremap <buffer> <LocalLeader>= :TerraformFmt<CR>
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 let g:terraform_completion_keys = 1
@@ -201,6 +201,10 @@ let g:terraform_registry_module_completion = 0
 " VCL
 let g:vcl_fold = 1
 Plug 'fgsch/vim-varnish'
+
+" Unimpaired
+" [l and ]l to nav errors
+Plug 'tpope/vim-unimpaired'
 
 " Initialize plugin system
 call plug#end()
@@ -403,3 +407,15 @@ set keymodel=startsel
 hi Normal ctermbg=232
 hi SignColumn ctermbg=233
 hi CursorLine ctermbg=233 
+
+" Cursor colour for different modes
+if &term =~ "xterm\\|rxvt"
+    " use an orange cursor in insert mode
+    let &t_SI = "\<Esc>]12;blue\x7"
+    " use a red cursor otherwise
+    let &t_EI = "\<Esc>]12;red\x7"
+    silent !echo -ne "\033]12;red\007"
+    " reset cursor when vim exits
+    autocmd VimLeave * silent !echo -ne "\033]112\007"
+    " use \003]12;gray\007 for gnome-terminal and rxvt up to version 9.21
+endif
