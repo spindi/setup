@@ -1,3 +1,7 @@
+" Required
+set nocompatible
+filetype off
+
 " General indent
 set tabstop=2
 set softtabstop=2
@@ -26,24 +30,13 @@ Plug 'tmhedberg/SimpylFold'
 " Colourscheme
 Plug 'flazz/vim-colorschemes'
 if &diff
-    " Vimdiff highlight
-    " hi DiffAdd cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
-    " hi DiffDelete cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
-    " hi DiffText cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
-    " " The diff line highlight
-    " hi DiffChange cterm=none ctermfg=Black ctermbg=White gui=none guifg=Black guibg=White
-    " " Vim highlight
-    " hi Visual term=reverse cterm=reverse
     colorscheme tender
 else
     colorscheme molokai
 endif
-" Plug 'drewtempelmeyer/palenight.vim'
-" set background=dark
-" colorscheme palenight
 
 " Git
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
 nnoremap <LocalLeader>gV :Gvsplit<CR>
 nnoremap <LocalLeader>gv :Gvdiffsplit!<CR>
 " Take the left pane
@@ -52,12 +45,12 @@ nnoremap <LocalLeader>gvc :diffget //2<CR>
 nnoremap <LocalLeader>gvb :diffget //3<CR>
 Plug 'tpope/vim-fugitive'
 
-" Finding
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-map ; :Files<CR>
-map <LocalLeader>; :Rg<CR>
+" Find
+" let g:Lf_WindowPosition = 'popup'
+" let g:Lf_PreviewInPopup = 1
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+map ; :Leaderf file<CR>
+map <LocalLeader>; :Leaderf rg<CR>
 
 " Comment
 " gc in visual to toggle
@@ -65,6 +58,24 @@ Plug 'tomtom/tcomment_vim'
 
 " Python Virtualenv
 Plug 'jmcantrell/vim-virtualenv'
+
+" Python Format
+autocmd FileType python noremap <buffer> <LocalLeader>= :call Autopep8()<CR>
+let g:autopep8_diff_type='vertical'
+let g:autopep8_max_line_length=180
+Plug 'tell-k/vim-autopep8'
+
+" Completion
+let g:jedi#use_tabs_not_buffers = 1
+" Completion <C-Space>
+" Goto assignment <leader>g (typical goto function)
+" Goto definition <leader>d (follow identifier as far as possible, includes imports and statements)
+" Goto (typing) stub <leader>s
+" Show Documentation/Pydoc K (shows a popup with assignments)
+" Renaming <leader>r
+" Usages <leader>n (shows all the usages of a name)
+Plug 'davidhalter/jedi-vim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " OpenSCAD
 Plug 'sirtaj/vim-openscad'
@@ -79,6 +90,9 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'elzr/vim-json'
 " Disable fancy concealing of attribute quotes.
 let g:vim_json_syntax_conceal = 0
+
+" JSON Format
+autocmd FileType json noremap <buffer> <LocalLeader>= :%!python3 -c "import json, sys, collections; print(json.dumps(json.loads(sys.stdin.read(), object_pairs_hook=collections.OrderedDict), indent=2))"<CR>
 
 " Markdown
 " mdr downloadable from https://github.com/MichaelMure/mdr/releases/
@@ -190,7 +204,7 @@ set clipboard=unnamed
 " Status Bar in single window. 0=never, 1=only with two windows, 2=always
 set laststatus=2
 
-" Be able to write the crontab
+" Crontab write
 autocmd FileType crontab setlocal bkc=yes
 
 " Mouse
@@ -214,6 +228,8 @@ nmap <C-k> :tabprevious<CR>
 
 " Spelling
 autocmd BufReadPost,BufNewFile *.md,*.txt set spell spelllang=en_gb
+set spellsuggest=best,9
+set spellfile=~/.vim/spell/en.utf-8.add
 
 " Keyword help
 " K
@@ -239,6 +255,9 @@ if executable(s:clip)
         autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)
     augroup END
 end
+
+set completeopt-=preview
+autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 " Navigation
 " ``      = ping pong
@@ -277,31 +296,19 @@ set keymodel=startsel
 " Terminal
 " :ter
 
-" Fuzzy file search
-" ;
-
-" Colour overrides
-" Generally making things a little darker
-hi Normal ctermbg=232
-hi SignColumn ctermbg=233
-hi CursorLine ctermbg=233 
-
-" Cursor for different modes
-if &term =~ "xterm\\|rxvt"
-    " use an orange cursor in insert mode
-    let &t_SI = "\<Esc>]12;blue\x7"
-    " use a red cursor otherwise
-    let &t_EI = "\<Esc>]12;red\x7"
-    " reset cursor when vim exits
-    autocmd VimLeave * let &t_me="\<Esc>]12;magenta\x7"
-endif
+" Fuzzy search
+" ; = file
+" \; = rg
 
 " -----------------------------------------------------------------------------
 " Lua plugins
-lua require('plugins')
-
 lua << END
+  require('plugins')
+
+  --- require'lspconfig'.pylsp.setup{}
+
 	require('lualine').setup{
 		options = { theme = 'powerline' }
 	}
+  require('gitsigns').setup()
 END
