@@ -31,7 +31,7 @@
     "venv"
   ],
   "diagnostic-languageserver.filetypes": {
-    "python": "pylint"
+    "python": "flake8"
   },
   "diagnostic-languageserver.linters": {
     "pylint": {
@@ -70,10 +70,52 @@
       },
       "offsetColumn": 1,
       "formatLines": 1
+    },
+    "flake8": {
+      "sourceName": "flake8",
+      "command": "flake8",
+      "args": [
+        "%file"
+      ],
+      "formatPattern": [
+        "^(.+\\.py):(\\d+):(\\d+): (I|W|E|F)\\d+ (.+)$",
+        {
+          "line": 2,
+          "column": 3,
+          "security": 4,
+          "message": [
+            5
+          ]
+        }
+      ],
+      "rootPatterns": [
+        "pyproject.toml",
+        "setup.py",
+        "setup.cfg",
+        ".git"
+      ],
+      "securities": {
+        "E": "error",
+        "W": "warning",
+        "I": "info",
+        "F": "error"
+      },
+      "requiredFiles": [
+        ".flake8",
+        "setup.cfg"
+      ],
+      "offsetColumn": 0,
+      "formatLines": 1
     }
   },
-  "diagnostic.warningSign": "!!",
+  "diagnostic.errorSign": "\u2718",
+  "diagnostic.warningSign": "!",
+  "diagnostic.infoSign": "?",
   "diagnostic.checkCurrentLine": true,
+  "diagnostic.locationlist": true,
+  "coc.preferences.jumpCommand": "CocSplitIfNotOpen",
+  "pydocstring.enable": true,
+  "pydocstring.doqPath": "/home/spindicator/.local/bin/doq",
   "cSpell.language": "en-GB",
   "cSpell.enabled": false
 }
