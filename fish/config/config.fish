@@ -14,7 +14,7 @@ set -gx PATH /usr/local/bin $PATH
 set -gx PATH /home/spindicator/.local/bin $PATH
 
 # Environment
-set -gx VISUAL (brew --prefix vim)/bin/vim
+set -gx VISUAL (brew --prefix vim)/bin/nvim
 set -gx EDITOR $VISUAL
 set -gx GIT_EDITOR $VISUAL
 set -gx BROWSER "explorer.exe" # Uses default browser
