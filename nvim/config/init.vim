@@ -8,6 +8,10 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set autoindent
+"
+" Cursor
+set guicursor=n-v-c:block-Cursor-blinkon0
+set guicursor+=i:block-Cursor-blinkwait0-blinkon500-blinkoff500
 
 " Start plugins
 call plug#begin('~/.vim/plugged')
@@ -65,17 +69,43 @@ let g:autopep8_diff_type='vertical'
 let g:autopep8_max_line_length=180
 Plug 'tell-k/vim-autopep8'
 
-" Completion
-let g:jedi#use_tabs_not_buffers = 1
-" Completion <C-Space>
-" Goto assignment <leader>g (typical goto function)
-" Goto definition <leader>d (follow identifier as far as possible, includes imports and statements)
-" Goto (typing) stub <leader>s
-" Show Documentation/Pydoc K (shows a popup with assignments)
-" Renaming <leader>r
-" Usages <leader>n (shows all the usages of a name)
-Plug 'davidhalter/jedi-vim'
+" Python Docstring
+nmap <LocalLeader>l <Plug>(pysocstring)
+let g:pydocstring_doq_path = '/home/spindicator/.local/bin/doq'
+Plug 'heavenshell/vim-pydocstring'
+
+" Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}
+
+" Completion, Lint, Refactor
+function! SplitIfNotOpen(...)
+    let fname = a:1
+    let call = ''
+    if a:0 == 2
+	let fname = a:2
+	let call = a:1
+    endif
+    let bufnum=bufnr(expand(fname))
+    let winnum=bufwinnr(bufnum)
+    if winnum != -1
+	" Jump to existing split
+	exe winnum . "wincmd w"
+    else
+	" Make new split as usual
+	exe "vsplit " . fname
+    endif
+    " Execute the cursor movement command
+    exe call
+endfunction
+command! -nargs=+ CocSplitIfNotOpen :call SplitIfNotOpen(<f-args>)
+nmap <LocalLeader>d <Plug>(coc-definition)
+nmap <LocalLeader>n <Plug>(coc-references)
+nmap <LocalLeader>r <Plug>(coc-rename)
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+" File
+let NERDTreeIgnore=['\.pyc$', '\~$'] " Ignore files in NERDTree
+map <F7> :NERDTreeToggle<CR>
+Plug 'preservim/nerdtree'
 
 " OpenSCAD
 Plug 'sirtaj/vim-openscad'
@@ -256,8 +286,8 @@ if executable(s:clip)
     augroup END
 end
 
-set completeopt-=preview
-autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+" set completeopt-=preview
+" autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 " Navigation
 " ``      = ping pong
