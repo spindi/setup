@@ -29,6 +29,9 @@ source ~/.ssh/tokens.sh
 # Google Cloud SDK does not like pyenv pythons so use the brew
 export CLOUDSDK_PYTHON=/home/linuxbrew/.linuxbrew/Cellar/python@3.9/3.9.9/bin/python3
 
+# Ulimit
+ulimit -n 16384
+
 # Home
 if test (pwd) = '/mnt/c/WINDOWS/System32'
     cd ~/
