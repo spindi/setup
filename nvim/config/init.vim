@@ -20,17 +20,6 @@ call plug#begin('~/.vim/plugged')
 set nowrap
 nnoremap <F4> :set wrap!<CR>
 
-" Fold
-set foldmethod=syntax
-set foldlevel=1
-" Fold with the spacebar
-nnoremap <space> za
-" zm fold level
-" zM fold all levels
-" zr unfold level
-" zR unfold all levels
-Plug 'tmhedberg/SimpylFold'
-
 " Colourscheme
 Plug 'flazz/vim-colorschemes'
 if &diff
@@ -113,13 +102,20 @@ Plug 'sirtaj/vim-openscad'
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
 
+" Fold
+set foldmethod=syntax
+set foldlevel=1
+" Fold with the spacebar
+nnoremap <space> za
+Plug 'tmhedberg/SimpylFold'
+
 " Indent
-Plug 'Vimjas/vim-python-pep8-indent'
+" Plug 'Vimjas/vim-python-pep8-indent'
 
 " JSON
-Plug 'elzr/vim-json'
 " Disable fancy concealing of attribute quotes.
 let g:vim_json_syntax_conceal = 0
+Plug 'elzr/vim-json', { 'for': 'json' }
 
 " JSON Format
 autocmd FileType json noremap <buffer> <LocalLeader>= :%!python3 -c "import json, sys, collections; print(json.dumps(json.loads(sys.stdin.read(), object_pairs_hook=collections.OrderedDict), indent=2))"<CR>
@@ -131,8 +127,8 @@ Plug 'skanehira/preview-markdown.vim'
 
 " Terraform
 autocmd FileType terraform noremap <buffer> <LocalLeader>= :TerraformFmt<CR>
-Plug 'hashivim/vim-terraform'
-Plug 'juliosueiras/vim-terraform-completion'
+Plug 'hashivim/vim-terraform', { 'for': ['terraform', 'tf'] }
+Plug 'juliosueiras/vim-terraform-completion', { 'for': ['terraform', 'tf'] }
 let g:terraform_completion_keys = 1
 let g:terraform_registry_module_completion = 0
 
