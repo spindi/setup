@@ -33,7 +33,7 @@ export CLOUDSDK_PYTHON=/home/linuxbrew/.linuxbrew/Cellar/python@3.9/3.9.9/bin/py
 ulimit -n 16384
 
 # Home
-if test (pwd) = '/mnt/c/WINDOWS/System32'
+if test (pwd) = '/mnt/c/WINDOWS/system32'
     cd ~/
 end
 # cat /home/spindicator/.banner
