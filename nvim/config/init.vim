@@ -2,6 +2,10 @@
 set nocompatible
 filetype off
 
+" Clipboard
+" Tell Neovim to use system clipboard
+set clipboard=unnamedplus
+
 " General indent
 set tabstop=2
 set softtabstop=2
@@ -123,7 +127,7 @@ autocmd FileType json noremap <buffer> <LocalLeader>= :%!python3 -c "import json
 " Markdown
 " mdr downloadable from https://github.com/MichaelMure/mdr/releases/
 let g:preview_markdown_auto_update = 1
-Plug 'skanehira/preview-markdown.vim'
+Plug 'skanehira/preview-markdown.vim', { 'for': 'markdown' }
 
 " Terraform
 autocmd FileType terraform noremap <buffer> <LocalLeader>= :TerraformFmt<CR>
@@ -180,7 +184,6 @@ au BufNewFile,BufRead *.vcl
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
-
 " Browser file settings
 au BufNewFile,BufRead *.html
     \ set tabstop=2 |
@@ -198,7 +201,6 @@ au BufNewFile,BufRead *.css
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
-
 " JSON file settings
 au BufNewFile,BufRead *.json
     \ set tabstop=2 |
@@ -271,16 +273,6 @@ autocmd BufWritePre *.md :%s/\s\+$//e
 autocmd BufWritePre *.py :%s/\s\+$//e
 autocmd BufWritePre *.tf :%s/\s\+$//e
 autocmd BufWritePre *.ts :%s/\s\+$//e
-
-" Clipboard
-" Yanking in the WSL
-let s:clip = '/mnt/c/Windows/system32/clip.exe'
-if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)
-    augroup END
-end
 
 " set completeopt-=preview
 " autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
