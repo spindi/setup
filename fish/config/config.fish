@@ -16,7 +16,7 @@ set -gx PATH /home/spindicator/.local/bin $PATH
 # Environment
 set -gx VISUAL (brew --prefix nvim)/bin/nvim
 set -gx EDITOR $VISUAL
-set -gx GIT_EDITOR mcedit # $VISUAL
+set -gx GIT_EDITOR $VISUAL
 set -gx BROWSER "explorer.exe" # Uses default browser
 
 # Alias                                                                                                                                                                                                                                     alias d='docker'
