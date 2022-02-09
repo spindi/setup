@@ -16,7 +16,7 @@ set -gx PATH /home/spindicator/.local/bin $PATH
 # Environment
 set -gx VISUAL (brew --prefix nvim)/bin/nvim
 set -gx EDITOR $VISUAL
-set -gx GIT_EDITOR $VISUAL
+set -gx GIT_EDITOR mcedit # $VISUAL
 set -gx BROWSER "explorer.exe" # Uses default browser
 
 # Alias                                                                                                                                                                                                                                     alias d='docker'
@@ -27,13 +27,13 @@ source ~/.config/fish/alias_git.fish
 source ~/.ssh/tokens.sh
 
 # Google Cloud SDK does not like pyenv pythons so use the brew
-export CLOUDSDK_PYTHON=/home/linuxbrew/.linuxbrew/Cellar/python@3.9/3.9.9/bin/python3
+export CLOUDSDK_PYTHON=/home/linuxbrew/.linuxbrew/opt/python@3.9/bin/python3
 
 # Ulimit
 ulimit -n 16384
 
 # Home
-if test (pwd) = '/mnt/c/WINDOWS/system32'
+if test (pwd | tr '[:upper:]' '[:lower:]') = '/mnt/c/windows/system32'
     cd ~/
 end
 # cat /home/spindicator/.banner
