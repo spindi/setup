@@ -31,13 +31,18 @@
     "venv"
   ],
   "diagnostic-languageserver.filetypes": {
-    "python": "flake8"
+    "python": "pylint"
   },
   "diagnostic-languageserver.linters": {
     "pylint": {
       "sourceName": "pylint",
       "command": "pylint",
+      "debounce": 100,
       "args": [
+        "--init-hook",
+        "import sys; import os; sys.path.append(os.environ['VIRTUAL_ENV'] + '/lib/python3.9/site-packages/')",
+        "--disable",
+        "C0103,C0114",
         "--output-format",
         "text",
         "--score",
@@ -51,15 +56,12 @@
         {
           "line": 1,
           "column": 2,
+          "endColumn": 2,
           "security": 3,
           "message": 4
         }
       ],
-      "rootPatterns": [
-        ".git",
-        "pyproject.toml",
-        "setup.py"
-      ],
+      "rootPatterns": ["pyproject.toml", "setup.py", ".git", "tox.ini"],
       "securities": {
         "informational": "hint",
         "refactor": "info",
@@ -69,53 +71,16 @@
         "fatal": "error"
       },
       "offsetColumn": 1,
-      "formatLines": 1
-    },
-    "flake8": {
-      "sourceName": "flake8",
-      "command": "flake8",
-      "args": [
-        "%file"
-      ],
-      "formatPattern": [
-        "^(.+\\.py):(\\d+):(\\d+): (I|W|E|F)\\d+ (.+)$",
-        {
-          "line": 2,
-          "column": 3,
-          "security": 4,
-          "message": [
-            5
-          ]
-        }
-      ],
-      "rootPatterns": [
-        "pyproject.toml",
-        "setup.py",
-        "setup.cfg",
-        ".git"
-      ],
-      "securities": {
-        "E": "error",
-        "W": "warning",
-        "I": "info",
-        "F": "error"
-      },
-      "requiredFiles": [
-        ".flake8",
-        "setup.cfg"
-      ],
-      "offsetColumn": 0,
+      "offsetColumnEnd": 1,
       "formatLines": 1
     }
   },
-  "diagnostic.errorSign": "\u2718",
-  "diagnostic.warningSign": "!",
-  "diagnostic.infoSign": "?",
+  "diagnostic.errorSign": "✖",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.infoSign": "●",
+  "diagnostic.hintSign": "○",
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.locationlist": true,
   "coc.preferences.jumpCommand": "CocSplitIfNotOpen",
-  "pydocstring.enable": true,
-  "pydocstring.doqPath": "/home/spindicator/.local/bin/doq",
   "cSpell.language": "en-GB",
   "cSpell.enabled": false
 }

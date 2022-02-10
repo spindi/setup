@@ -65,10 +65,9 @@ let g:autopep8_max_line_length=180
 Plug 'tell-k/vim-autopep8'
 
 " Python Docstring
-nmap <LocalLeader>l <Plug>(pysocstring)
+nmap <LocalLeader>l <Plug>(pydocstring)
 let g:pydocstring_doq_path = '/home/spindicator/.local/bin/doq'
 Plug 'heavenshell/vim-pydocstring'
-
 " Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}
 
 " Completion, Lint, Refactor
