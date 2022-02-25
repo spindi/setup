@@ -1,6 +1,6 @@
 {
   "jedi.enable": true,
-  "jedi.startupMessage": false,
+  "jedi.startupMessage": true,
   "jedi.markupKindPreferred": "plaintext",
   "jedi.trace.server": "off",
   "jedi.jediSettings.autoImportModules": [],
@@ -33,6 +33,9 @@
   "diagnostic-languageserver.filetypes": {
     "python": "pylint"
   },
+  "diagnostic-languageserver.formatFiletypes": {
+    "python": "autopep8"
+  },
   "diagnostic-languageserver.linters": {
     "pylint": {
       "sourceName": "pylint",
@@ -40,7 +43,9 @@
       "debounce": 100,
       "args": [
         "--init-hook",
-        "import sys; import os; sys.path.append(os.environ['VIRTUAL_ENV'] + '/lib/python3.9/site-packages/')",
+        "import imp, os; from pylint.config import find_pylintrc; imp.load_source('import_hook', '/home/spindicator/Code/pylint/import_hook.py')",
+        "--max-line-length",
+        "180",
         "--disable",
         "C0103,C0114",
         "--output-format",
@@ -61,7 +66,7 @@
           "message": 4
         }
       ],
-      "rootPatterns": ["pyproject.toml", "setup.py", ".git", "tox.ini"],
+      "rootPatterns": ["pyproject.toml", "setup.py", ".git", "tox.ini", ".venv", "venv"],
       "securities": {
         "informational": "hint",
         "refactor": "info",
