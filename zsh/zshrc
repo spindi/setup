@@ -122,7 +122,7 @@ alias b='browsh --startup-url www.duckduckgo.com'
 alias diff='colordiff'
 alias dc='docker-compose'
 alias dm='docker-machine'
-alias dms='socat TCP-LISTEN:2376,reuseaddr,fork,bind=127.0.0.1 UNIX-CLIENT:/var/run/docker.sock'
+alias dms='socat tcp-listen:2376,reuseaddr,fork,bind=127.0.0.1 unix-client:/var/run/docker.sock'
 alias e='date +"%s"'
 alias e2d='f(){ date -d @"$1"; unset -f f; }; f'
 alias ep1d="echo \"\`e\` + 86400\" | bc"
@@ -146,6 +146,7 @@ alias python="$(brew --prefix python)/bin/python3"
 alias pip="$(brew --prefix python)/bin/pip3"
 alias t='tree -C'
 alias vd='visidata'
+alias vi='/home/linuxbrew/.linuxbrew/bin/nvim'
 alias ttfb='curl -s -o /dev/null -w "{ \"connect\": %{time_connect}, \"ttfb\": %{time_starttransfer}, \"total\": %{time_total} }\n"'
 
 # Google SDK CLI
