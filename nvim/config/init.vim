@@ -281,6 +281,8 @@ autocmd BufWritePre *.ts :%s/\s\+$//e
 " Navigation
 " ``      = ping pong
 "
+" %       = matching brace
+"
 " [[      = previous def / class
 " ]]      = next def / class
 "
