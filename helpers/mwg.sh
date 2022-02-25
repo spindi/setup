@@ -2,13 +2,20 @@
 # mwg - merge when good
 
 # keep checking 
-while test ! (gh pr checks $1)
+while true
   echo '['(date +%T)'] ...checking...'
-  sleep 10 
+  gh pr checks $1
+  if test $status -eq 0
+    echo $status
+    break
+  else
+    sleep 10 
+  end
 end
 
 # merge if checks pass
-if test (gh pr checks $1)
+gh pr checks $1
+if test $status -eq 0
   banner 'MERGE!'
-  echo "gh pr merge -m --admin $1"
+  gh pr merge -m --admin
 end
