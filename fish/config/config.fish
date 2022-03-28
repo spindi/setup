@@ -36,4 +36,5 @@ ulimit -n 16384
 if test (pwd | tr '[:upper:]' '[:lower:]') = '/mnt/c/windows/system32'
     cd ~/
 end
+
 # cat /home/spindicator/.banner
