@@ -109,7 +109,7 @@ Plug 'sheerun/vim-polyglot'
 
 " Fold
 set foldmethod=syntax
-set foldlevel=1
+set foldlevel=3
 " Fold with the spacebar
 nnoremap <space> za
 Plug 'tmhedberg/SimpylFold'
