@@ -24,6 +24,10 @@ call plug#begin('~/.vim/plugged')
 set nowrap
 nnoremap <F4> :set wrap!<CR>
 
+" Whitespace
+set list
+nnoremap <F5> :set list!<CR>
+
 " Colourscheme
 Plug 'flazz/vim-colorschemes'
 if &diff
