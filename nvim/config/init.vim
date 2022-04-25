@@ -21,11 +21,13 @@ set guicursor+=i:block-Cursor-blinkwait0-blinkon500-blinkoff500
 call plug#begin('~/.vim/plugged')
 
 " Wrap
+let &showbreak = '↪ '
 set nowrap
 nnoremap <F4> :set wrap!<CR>
 
 " Whitespace
-set list
+let &listchars='space:·,tab:▸ ,trail:~'
+set nolist
 nnoremap <F5> :set list!<CR>
 
 " Colourscheme
@@ -57,7 +59,7 @@ map <LocalLeader>; :Leaderf rg<CR>
 
 " Comment
 " gc in visual to toggle
-Plug 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vi'
 
 " Python Virtualenv
 Plug 'jmcantrell/vim-virtualenv'
@@ -326,7 +328,7 @@ set keymodel=startsel
 " \; = rg
 
 " -----------------------------------------------------------------------------
-" Lua plugins
+" Lua 
 lua << END
   require('plugins')
 
