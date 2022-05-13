@@ -59,7 +59,7 @@ map <LocalLeader>; :Leaderf rg<CR>
 
 " Comment
 " gc in visual to toggle
-Plug 'tomtom/tcomment_vi'
+Plug 'tomtom/tcomment_vim'
 
 " Python Virtualenv
 Plug 'jmcantrell/vim-virtualenv'
@@ -102,10 +102,14 @@ nmap <LocalLeader>n <Plug>(coc-references)
 nmap <LocalLeader>r <Plug>(coc-rename)
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
-" File
-let NERDTreeIgnore=['\.pyc$', '\~$'] " Ignore files in NERDTree
-map <F7> :NERDTreeToggle<CR>
-Plug 'preservim/nerdtree'
+" File explorer
+" https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
+let g:netrw_keepdir = 0
+let g:netrw_winsize = 30
+let g:netrw_banner = 0
+let g:netrw_localcopydircmd = 'cp -r'
+hi! link netrwMarkFile Search
+map <F7> :Lexplore<CR>
 
 " OpenSCAD
 Plug 'sirtaj/vim-openscad'
