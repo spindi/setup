@@ -114,8 +114,8 @@ map <F7> :Lexplore<CR>
 " OpenSCAD
 Plug 'sirtaj/vim-openscad'
 
-" Syntax highlighting
-Plug 'sheerun/vim-polyglot'
+" " Syntax highlighting
+" Plug 'sheerun/vim-polyglot'
 
 " Fold
 set foldmethod=syntax
