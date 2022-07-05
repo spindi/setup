@@ -28,7 +28,7 @@ else if test -f $GREP_BREW_DIR/bin/ggrep
   alias grep=$GREP_BREW_DIR/bin/ggrep
 end
 alias h='history'
-alias ip='curl ifconfig.co'
+alias hs='numfmt --to=iec-i --suffix=B --format="%.3f"' # human size output
 alias ll='ls -al'
 alias lll='find . | grep'
 alias ls='gls --color=auto --group-directories-first'
