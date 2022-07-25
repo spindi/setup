@@ -6,6 +6,8 @@ if [ "$CURRENT_BRANCH" == "plan" ]; then
   LOOP="development stage production"
 elif [ "$CURRENT_BRANCH" == "development" ]; then
   LOOP="stage production"
+elif [ "$CURRENT_BRANCH" == "stage" ]; then
+  LOOP="production"
 fi
 
 for environment in $LOOP
