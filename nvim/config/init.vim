@@ -12,7 +12,7 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set autoindent
-"
+
 " Cursor
 set guicursor=n-v-c:block-Cursor-blinkon0
 set guicursor+=i:block-Cursor-blinkwait0-blinkon500-blinkoff500
@@ -30,13 +30,32 @@ let &listchars='space:·,tab:▸ ,trail:~'
 set nolist
 nnoremap <F5> :set list!<CR>
 
+" Enable the cursorline
+set cursorline
+
+" Diff
+" Usage: DP 2 3 # to push to buffer 2 and 3 at the same time in a 3 way diff
+command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -1 ? '' : '<line1>,<line2>') . 'diffput' bufspec | endfor
+
 " Colourscheme
+" https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 Plug 'flazz/vim-colorschemes'
-if &diff
-    colorscheme tender
-else
-    colorscheme molokai
-endif
+set cursorline
+hi CursorLine term=none cterm=none
+"if &diff
+"    colorscheme tender
+"else
+    if $THEME == "light"
+      syntax enable
+      set background=light
+      colorscheme solarized
+      let g:indentLine_color_term = 250
+    else
+      colorscheme molokai
+      hi CursorLine ctermbg=232
+      let g:indentLine_color_term = 235
+    endif
+"endif
 
 " Git
 " Plug 'mhinz/vim-signify'
@@ -61,6 +80,9 @@ map <LocalLeader>; :Leaderf rg<CR>
 " gc in visual to toggle
 Plug 'tomtom/tcomment_vim'
 
+" Indent line
+Plug 'Yggdroot/indentLine'
+
 " Python Virtualenv
 Plug 'jmcantrell/vim-virtualenv'
 
@@ -75,6 +97,10 @@ nmap <LocalLeader>l <Plug>(pydocstring)
 let g:pydocstring_doq_path = '/home/spindicator/.local/bin/doq'
 Plug 'heavenshell/vim-pydocstring'
 " Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}
+
+" Rust
+Plug 'rust-lang/rust.vim'
+autocmd FileType rust noremap <buffer> <LocalLeader>= :RustFmt<CR>
 
 " Completion, Lint, Refactor
 function! SplitIfNotOpen(...)
@@ -250,11 +276,6 @@ autocmd FileType crontab setlocal bkc=yes
 set mouse=a
 " set mouse=v " Mac
 set mousefocus
-
-" Enable the cursorline
-set cursorline
-hi CursorLine ctermbg=234
-" https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 
 " Parenthesis
 hi MatchParen cterm=none ctermbg=green ctermfg=black
