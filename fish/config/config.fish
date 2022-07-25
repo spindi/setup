@@ -18,6 +18,9 @@ set -gx VISUAL (brew --prefix nvim)/bin/nvim
 set -gx EDITOR $VISUAL
 set -gx GIT_EDITOR "$VISUAL --noplugin"
 set -gx BROWSER "explorer.exe" # Uses default browser
+# set -gx FZF_DEFAULT_COMMAND 'rg --files --smart-case --follow --glob "!.git/*"'
+# set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --smart-case --follow --glob "!.git/*"'
+set -gx THEME "light"
 
 # Alias                                                                                                                                                                                                                                     alias d='docker'
 source ~/.config/fish/alias_general.fish
