@@ -42,9 +42,16 @@ command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -
 Plug 'flazz/vim-colorschemes'
 set cursorline
 hi CursorLine term=none cterm=none
-"if &diff
-"    colorscheme tender
-"else
+if &diff
+    if $THEME == "light"
+      syntax enable
+      set background=light
+      colorscheme solarized
+      let g:indentLine_color_term = 250
+    else
+      colorscheme tender
+    endif
+else
     if $THEME == "light"
       syntax enable
       set background=light
@@ -55,7 +62,7 @@ hi CursorLine term=none cterm=none
       hi CursorLine ctermbg=232
       let g:indentLine_color_term = 235
     endif
-"endif
+endif
 
 " Git
 " Plug 'mhinz/vim-signify'
