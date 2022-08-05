@@ -6,6 +6,7 @@ end
 set fish_greeting
 
 # Path
+set -gx PATH /home/spindicator/.cargo/bin $PATH
 set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
 set -gx PATH (brew --prefix openvpn)/sbin $PATH
 set -gx PATH (brew --prefix vim)/bin $PATH

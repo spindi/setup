@@ -76,3 +76,4 @@ touch /tmp/screen-exchange
 export DOCKER_HOST=tcp://localhost:2375
 
 complete -C /usr/bin/terraform terraform
+. "$HOME/.cargo/env"
