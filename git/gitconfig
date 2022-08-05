@@ -8,8 +8,8 @@
 [diff]
 	tool = vimdiff
 [difftool "vimdiff"]
-	cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
+	cmd = $(brew --prefix nvim)/bin/nvim -d \"$LOCAL\" \"$REMOTE\"
 [core]
-	editor = $(brew --prefix vim)/bin/vim
+  editor = $(brew --prefix nvim)/bin/nvim
 [difftool]
 	prompt = false
