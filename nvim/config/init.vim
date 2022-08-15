@@ -182,7 +182,9 @@ let g:terraform_registry_module_completion = 0
 
 " VCL
 let g:vcl_fold = 1
-Plug 'fgsch/vim-varnish'
+" Plug 'fgsch/vim-varnish'
+" Plug 'smerrill/vcl-vim-plugin'
+Plug 'spindi/vim-vcl'
 
 " Unimpaired
 " [l and ]l to nav errors

@@ -187,3 +187,5 @@ source /home/spindicator/Setup/dircolors/dircolors.spindicator.encoded
 # Home
 cd ~/
 cat /home/spindicator/.banner
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

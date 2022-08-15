@@ -3,6 +3,7 @@ for file in ~/Setup/helpers/*.sh
   set alias_name (echo $file | sed -e 's/.*\///' | sed -e 's/.sh$//')
   alias $alias_name=$file
 end
+alias loadtest='oha' # just so i can remember the name of the thing
 alias bat='batcat'
 alias b='browsh --startup-url www.duckduckgo.com'
 alias diff='colordiff'

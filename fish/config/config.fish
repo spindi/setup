@@ -22,6 +22,9 @@ set -gx BROWSER "explorer.exe" # Uses default browser
 # set -gx FZF_DEFAULT_COMMAND 'rg --files --smart-case --follow --glob "!.git/*"'
 # set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --smart-case --follow --glob "!.git/*"'
 set -gx THEME "light"
+## omf bobthefish theme
+set -gx theme_display_date no
+set -gx theme_display_cmd_duration no
 
 # Alias                                                                                                                                                                                                                                     alias d='docker'
 source ~/.config/fish/alias_general.fish
