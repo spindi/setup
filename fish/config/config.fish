@@ -20,11 +20,14 @@ set -gx EDITOR $VISUAL
 set -gx GIT_EDITOR "$VISUAL --noplugin"
 set -gx BROWSER "explorer.exe" # Uses default browser
 # set -gx FZF_DEFAULT_COMMAND 'rg --files --smart-case --follow --glob "!.git/*"'
-# set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --smart-case --follow --glob "!.git/*"'
+set -gx FZF_DEFAULT_COMMAND 'rg --ansi --files --hidden --smart-case --follow --glob "!.git/*"'
 set -gx THEME "light"
 ## omf bobthefish theme
 set -gx theme_display_date no
 set -gx theme_display_cmd_duration no
+## zellij
+#set -gx ZELLIJ_CONFIG_DIR /home/spindicator/.config/zellij/
+#set -gx ZELLIJ_CONFIG_FILE "$ZELLIJ_CONFIG_DIR/config.yaml"
 
 # Alias                                                                                                                                                                                                                                     alias d='docker'
 source ~/.config/fish/alias_general.fish

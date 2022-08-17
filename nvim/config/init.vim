@@ -78,10 +78,14 @@ Plug 'tpope/vim-fugitive'
 " let g:Lf_WindowPosition = 'popup'
 " let g:Lf_PreviewInPopup = 1
 " swap down / up with c-j / c-k
-let g:Lf_CommandMap = {'<Down>': ['<C-J>'], '<Up>': ['<C-K>'], '<C-J>': ['<Down>'], '<C-K>': ['<Up>']}
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-map ; :Leaderf file<CR>
-map <LocalLeader>; :Leaderf rg<CR>
+"let g:Lf_CommandMap = {'<Down>': ['<C-J>'], '<Up>': ['<C-K>'], '<C-J>': ['<Down>'], '<C-K>': ['<Up>']}
+"Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+"map ; :Leaderf file<CR>
+"map <LocalLeader>; :Leaderf rg<CR>
+Plug 'junegunn/fzf'
+map ; :FZF<CR>
+Plug 'jremmen/vim-ripgrep'
+map <LocalLeader>; :Rg<Space> 
 
 " Comment
 " gc in visual to toggle
