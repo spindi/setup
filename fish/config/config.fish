@@ -21,7 +21,7 @@ set -gx GIT_EDITOR "$VISUAL --noplugin"
 set -gx BROWSER "explorer.exe" # Uses default browser
 # set -gx FZF_DEFAULT_COMMAND 'rg --files --smart-case --follow --glob "!.git/*"'
 set -gx FZF_DEFAULT_COMMAND 'rg --ansi --files --hidden --smart-case --follow --glob "!.git/*"'
-set -gx THEME "light"
+# set -gx THEME "light"
 ## omf bobthefish theme
 set -gx theme_display_date no
 set -gx theme_display_cmd_duration no
@@ -37,7 +37,7 @@ source ~/.config/fish/alias_git.fish
 source ~/.ssh/tokens.sh
 
 # Google Cloud SDK does not like pyenv pythons so use the brew
-export CLOUDSDK_PYTHON=/home/linuxbrew/.linuxbrew/opt/python@3.9/bin/python3
+export CLOUDSDK_PYTHON=/home/linuxbrew/.linuxbrew/opt/python@3.9/bin/python3.9
 
 # Ulimit
 ulimit -n 16384
