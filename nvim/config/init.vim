@@ -85,7 +85,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf'
 map ; :FZF<CR>
 Plug 'jremmen/vim-ripgrep'
-map <LocalLeader>; :Rg<Space> 
+map <LocalLeader>; :Rg 
 
 " Comment
 " gc in visual to toggle
@@ -138,6 +138,7 @@ nmap <LocalLeader>d <Plug>(coc-definition)
 nmap <LocalLeader>n <Plug>(coc-references)
 nmap <LocalLeader>r <Plug>(coc-rename)
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>" " tab to select
 
 " File explorer
 " https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
@@ -151,8 +152,10 @@ map <F7> :Lexplore<CR>
 " OpenSCAD
 Plug 'sirtaj/vim-openscad'
 
-" " Syntax highlighting
+" Syntax highlighting
 " Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
 " Fold
 set foldmethod=syntax
@@ -265,6 +268,13 @@ au BufNewFile,BufRead *.json
 " UTF-8 support
 set encoding=utf-8
 
+" Theme override
+" use the :highlight command to set how it is currently set
+if $THEME == "light"
+  " completion menu
+  highlight Pmenu cterm=NONE ctermfg=246 ctermbg=232
+endif
+
 " Syntax
 let python_highlight_all=1
 syntax on
@@ -333,6 +343,13 @@ autocmd BufWritePre *.ts :%s/\s\+$//e
 " Shift+[ = previous paragraph
 " Shift+] = next paragraph
 
+" Bookmarks
+" m{bookmark-name} = add, local lowercase, global uppercase
+" `{bookmark-name} = jump exact position
+" '{bookmark-name} = jump start of line position
+" marks = all marks
+" delmarks {bookmark-name} = delete a specific mark
+
 " Folds
 " zm increases foldlevel by one
 " zM closes all open folds
@@ -370,10 +387,47 @@ set keymodel=startsel
 lua << END
   require('plugins')
 
-  --- require'lspconfig'.pylsp.setup{}
-
 	require('lualine').setup{
 		options = { theme = 'powerline' }
 	}
+
   require('gitsigns').setup()
+
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = { "c", "go", "lua", "python", "rust", "vim" },
+
+    auto_install = true,
+
+    highlight = {
+      enable = true,
+
+      additional_vim_regex_highlighting = false,
+    },
+    refactor = {
+      highlight_definitions = {
+        enable = true,
+        -- Set to false if you have an `updatetime` of ~100.
+        clear_on_cursor_move = true,
+      },
+      -- highlight_current_scope = { 
+      --   enable = true 
+      -- },
+      -- smart_rename = {
+      --   enable = true,
+      --   keymaps = {
+      --     smart_rename = "grr",
+      --   },
+      -- },
+      -- navigation = {
+      --   enable = true,
+      --   keymaps = {
+      --     goto_definition = "gnd",
+      --     list_definitions = "gnD",
+      --     list_definitions_toc = "gO",
+      --     goto_next_usage = "<a-*>",
+      --     goto_previous_usage = "<a-#>",
+      --   },
+      -- },
+    },
+  }
 END
