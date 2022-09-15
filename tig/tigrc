@@ -2,6 +2,7 @@ bind diff    V !git difftool HEAD %(file)
 
 bind log     C ?git checkout %(branch)
 bind log     ! ?git reset --hard %(commit)
+bind log     V !git difftool HEAD %(file)
 
 bind main	   C ?git cherry-pick %(commit)
 bind main    P ?git pull origin %(branch)
@@ -11,7 +12,8 @@ bind main    V !git difftool HEAD %(file)
 
 bind refs	   C ?git checkout %(branch)
 bind refs    P ?git push origin %(branch)
-bind refs    R ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)"
+bind refs    R ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r Romain-MVR
+bind refs    V ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r gajdaw
 
 bind status  P ?git push origin %(branch)
 bind status  V !git difftool HEAD %(file)
