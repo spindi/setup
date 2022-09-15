@@ -24,6 +24,7 @@
   "jedi.workspace.extraPaths": [],
   "jedi.workspace.symbols.maxSymbols": 20,
   "jedi.workspace.symbols.ignoreFolders": [
+    ".git",
     ".nox",
     ".tox",
     ".venv",
