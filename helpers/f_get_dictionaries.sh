@@ -2,6 +2,7 @@
 set SERVICE_ID $argv[1]
 
 # versions
+#for service_id_version in (f /service/$service_id/version | jq .[].number | tail -n 1)
 for service_id_version in (f /service/$SERVICE_ID/version | jq .[].number)
   # dictionaries
   for dictionary in (f /service/$SERVICE_ID/version/$service_id_version/dictionary)

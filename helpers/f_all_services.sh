@@ -1,2 +1,2 @@
 #!/home/linuxbrew/.linuxbrew/bin/fish
-f /service | jq -r .[].versions[].service_id | sort -u
+f /services | jq -r '(.data[] | {id: .id, name: .attributes.name})'
