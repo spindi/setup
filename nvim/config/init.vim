@@ -2,10 +2,6 @@
 set nocompatible
 filetype off
 
-" Clipboard
-" Tell Neovim to use system clipboard
-set clipboard=unnamedplus
-
 " General indent
 set tabstop=2
 set softtabstop=2
@@ -17,30 +13,9 @@ set autoindent
 set guicursor=n-v-c:block-Cursor-blinkon0
 set guicursor+=i:block-Cursor-blinkwait0-blinkon500-blinkoff500
 
-" Start plugins
-call plug#begin('~/.vim/plugged')
-
-" Wrap
-let &showbreak = '↪ '
-set nowrap
-nnoremap <F4> :set wrap!<CR>
-
-" Whitespace
-let &listchars='space:·,tab:▸ ,trail:~'
-set nolist
-nnoremap <F5> :set list!<CR>
-
-" Enable the cursorline
-set cursorline
-
-" Diff
-" Usage: DP 2 3 # to push to buffer 2 and 3 at the same time in a 3 way diff
-command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -1 ? '' : '<line1>,<line2>') . 'diffput' bufspec | endfor
-
 " Colourscheme
 " https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
-Plug 'flazz/vim-colorschemes'
-set cursorline
+" set cursorline
 hi CursorLine term=none cterm=none
 if &diff
     if $THEME == "light"
@@ -63,6 +38,26 @@ else
       let g:indentLine_color_term = 235
     endif
 endif
+
+" Start plugins
+call plug#begin('~/.vim/plugged')
+
+" Wrap
+let &showbreak = '↪ '
+set nowrap
+nnoremap <F4> :set wrap!<CR>
+
+" Whitespace
+let &listchars='space:·,tab:▸ ,trail:~'
+set nolist
+nnoremap <F5> :set list!<CR>
+
+" Enable the cursorline
+set cursorline
+
+" Diff
+" Usage: DP 2 3 # to push to buffer 2 and 3 at the same time in a 3 way diff
+command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -1 ? '' : '<line1>,<line2>') . 'diffput' bufspec | endfor
 
 " Git
 " Plug 'mhinz/vim-signify'
@@ -269,11 +264,16 @@ au BufNewFile,BufRead *.json
 set encoding=utf-8
 
 " Theme override
-" use the :highlight command to set how it is currently set
-if $THEME == "light"
-  " completion menu
-  highlight Pmenu cterm=NONE ctermfg=246 ctermbg=232
-endif
+" use the :hi command to set how it is currently set
+" completion menu
+"hi! CocMenu ctermfg=white ctermbg=darkgrey
+"hi! CocPumMenu ctermfg=white ctermbg=darkgrey
+hi! CocFloating ctermbg=235 " really dark grey
+hi! CocMenuSel ctermfg=black ctermbg=white
+hi! CocPumSearch ctermfg=black ctermbg=green
+" if $THEME == "light"
+"   highlight Pmenu cterm=NONE ctermfg=246 ctermbg=232
+" endif
 
 " Syntax
 let python_highlight_all=1
@@ -286,8 +286,20 @@ syntax on
 " * search on word
 set hlsearch
 
-" System clipboard
+" System clipboard, make sure win32yank is installed and in path
 set clipboard=unnamed
+let g:clipboard = {
+      \   'name': 'win32yank-wsl',
+      \   'copy': {
+      \      '+': 'win32yank.exe -i --crlf',
+      \      '*': 'win32yank.exe -i --crlf',
+      \    },
+      \   'paste': {
+      \      '+': 'win32yank.exe -o --lf',
+      \      '*': 'win32yank.exe -o --lf',
+      \   },
+      \   'cache_enabled': 0,
+      \ }
 
 " Status Bar in single window. 0=never, 1=only with two windows, 2=always
 set laststatus=2
