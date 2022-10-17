@@ -1,4 +1,5 @@
 #!/bin/bash
 # the pbcopy script
-tee <&0 | win32yank.exe -i --crlf
+#tee <&0 | win32yank.exe -i --crlf
+tee <&0 | clip.exe
 exit 0
