@@ -40,7 +40,7 @@ else
 endif
 
 " Start plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged-nvim')
 
 " Wrap
 let &showbreak = '↪ '
@@ -59,8 +59,14 @@ set cursorline
 " Usage: DP 2 3 # to push to buffer 2 and 3 at the same time in a 3 way diff
 command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -1 ? '' : '<line1>,<line2>') . 'diffput' bufspec | endfor
 
-" Git
+" Git 
+Plug 'lewis6991/gitsigns.nvim'
 " Plug 'mhinz/vim-signify'
+" if has('nvim') || has('patch-8.0.902')
+"   Plug 'mhinz/vim-signify'
+" else
+"   Plug 'mhinz/vim-signify', { 'tag': 'legacy' }
+" endif
 nnoremap <LocalLeader>gV :Gvsplit<CR>
 nnoremap <LocalLeader>gv :Gvdiffsplit!<CR>
 " Take the left pane
@@ -70,13 +76,6 @@ nnoremap <LocalLeader>gvb :diffget //3<CR>
 Plug 'tpope/vim-fugitive'
 
 " Find
-" let g:Lf_WindowPosition = 'popup'
-" let g:Lf_PreviewInPopup = 1
-" swap down / up with c-j / c-k
-"let g:Lf_CommandMap = {'<Down>': ['<C-J>'], '<Up>': ['<C-K>'], '<C-J>': ['<Down>'], '<C-K>': ['<Up>']}
-"Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-"map ; :Leaderf file<CR>
-"map <LocalLeader>; :Leaderf rg<CR>
 Plug 'junegunn/fzf'
 map ; :FZF<CR>
 Plug 'jremmen/vim-ripgrep'
@@ -287,19 +286,31 @@ syntax on
 set hlsearch
 
 " System clipboard, make sure win32yank is installed and in path
-set clipboard=unnamed
+set clipboard=unnamedplus
 let g:clipboard = {
-      \   'name': 'win32yank-wsl',
-      \   'copy': {
-      \      '+': 'win32yank.exe -i --crlf',
-      \      '*': 'win32yank.exe -i --crlf',
-      \    },
-      \   'paste': {
-      \      '+': 'win32yank.exe -o --lf',
-      \      '*': 'win32yank.exe -o --lf',
-      \   },
-      \   'cache_enabled': 0,
-      \ }
+  \   'name': 'clip-wsl',
+  \   'copy': {
+  \      '+': 'clip.exe',
+  \      '*': 'clip.exe',
+  \    },
+  \   'paste': {
+  \      '+': 'powershell.exe Get-Clipboard | sed "s/\r$//" | sed -z "$ s/\n$//"',
+  \      '*': 'powershell.exe Get-Clipboard | sed "s/\r$//" | sed -z "$ s/\n$//"',
+  \   },
+  \   'cache_enabled': 1,
+  \ }
+" let g:clipboard = {
+"       \   'name': 'win32yank-wsl',
+"       \   'copy': {
+"       \      '+': 'win32yank.exe -i --crlf',
+"       \      '*': 'win32yank.exe -i --crlf',
+"       \    },
+"       \   'paste': {
+"       \      '+': 'win32yank.exe -o --lf',
+"       \      '*': 'win32yank.exe -o --lf',
+"       \   },
+"       \   'cache_enabled': 0,
+"       \ }
 
 " Status Bar in single window. 0=never, 1=only with two windows, 2=always
 set laststatus=2
@@ -318,8 +329,8 @@ hi MatchParen cterm=none ctermbg=green ctermfg=black
 " Tabs
 nmap <C-h> :tabnew<CR>
 nmap <C-l> :tabclose<CR>
-nmap <C-j> :tabnext<CR>
-nmap <C-k> :tabprevious<CR>
+nmap <C-j> :tabprevious<CR>
+nmap <C-k> :tabnext<CR>
 
 " Spelling
 autocmd BufReadPost,BufNewFile *.md,*.txt set spell spelllang=en_gb
@@ -400,7 +411,7 @@ lua << END
   require('plugins')
 
 	require('lualine').setup{
-		options = { theme = 'powerline' }
+	  options = { theme = 'powerline' }
 	}
 
   require('gitsigns').setup()
