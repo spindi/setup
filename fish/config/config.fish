@@ -5,6 +5,9 @@ end
 # Set the greeting to nothing
 set fish_greeting
 
+# Pipenv fancy
+set pipenv_fish_fancy yes
+
 # Path
 set -gx PATH /home/spindicator/.cargo/bin $PATH
 set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
@@ -21,15 +24,15 @@ set -gx GIT_EDITOR "$VISUAL --noplugin"
 set -gx BROWSER "explorer.exe" # Uses default browser
 # set -gx THEME "light"
 ## omf bobthefish theme
-set -gx theme_display_date no
-set -gx theme_display_cmd_duration no
+#set -gx theme_display_date no
+#set -gx theme_display_cmd_duration no
 
 # Alias                                                                                                                                                                                                                                     alias d='docker'
 source ~/.config/fish/alias_general.fish
 source ~/.config/fish/alias_git.fish
 
 # Token
-source ~/.ssh/tokens.sh
+#source ~/.ssh/tokens.sh
 
 # Google Cloud SDK does not like pyenv pythons so use the brew
 export CLOUDSDK_PYTHON=/home/linuxbrew/.linuxbrew/opt/python@3.9/bin/python3.9

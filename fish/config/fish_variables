@@ -165,7 +165,8 @@ SETUVAR _fisher_jethrokuan_2F_fzf_files:\x7e/\x2econfig/fish/functions/__fzf_cd\
 SETUVAR _fisher_jethrokuan_2F_z_files:\x7e/\x2econfig/fish/functions/__z\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_add\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_clean\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_complete\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/z\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_lewisacidic_2F_fish_2D_docker_files:\x7e/\x2econfig/fish/conf\x2ed/abbr\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/version\x2efish\x1e\x7e/\x2econfig/fish/completions/docker\x2dcompose\x2efish\x1e\x7e/\x2econfig/fish/completions/docker\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher\x1esentriz/fish\x2dpipenv\x1eedc/bass\x1ebarnybug/docker\x2dfish\x2dcompletion\x1elewisacidic/fish\x2ddocker\x1ejethrokuan/z\x1e/home/spindicator/Setup/fish/config/fish_plugins\x1ejethrokuan/fzf
+SETUVAR _fisher_oh_2D_my_2D_fish_2F_theme_2D_default_files:\x7e/\x2econfig/fish/functions/fish_prompt\x2efish\x1e\x7e/\x2econfig/fish/functions/fish_right_prompt\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1esentriz/fish\x2dpipenv\x1eedc/bass\x1ebarnybug/docker\x2dfish\x2dcompletion\x1elewisacidic/fish\x2ddocker\x1ejethrokuan/z\x1e/home/spindicator/Setup/fish/config/fish_plugins\x1ejethrokuan/fzf\x1eoh\x2dmy\x2dfish/theme\x2ddefault
 SETUVAR _fisher_sentriz_2F_fish_2D_pipenv_files:\x7e/\x2econfig/fish/conf\x2ed/pipenv\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
