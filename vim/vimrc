@@ -1,45 +1,73 @@
-set nocompatible " required
-filetype off     " required
+" Required
+set nocompatible
+filetype off
 
-" Plugins
+" General indent
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set autoindent
+
+" Cursor
+set guicursor=n-v-c:block-Cursor-blinkon0
+set guicursor+=i:block-Cursor-blinkwait0-blinkon500-blinkoff500
+
+" Start plugins
 call plug#begin('~/.vim/plugged')
 
+" Colourscheme
+" https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+" set cursorline
+Plug 'flazz/vim-colorschemes'
+hi CursorLine term=none cterm=none
+if &diff
+    if $THEME == "light"
+      syntax enable
+      set background=light
+      colorscheme solarized
+      let g:indentLine_color_term = 250
+    else
+      colorscheme tender
+    endif
+else
+    if $THEME == "light"
+      syntax enable
+      set background=light
+      colorscheme solarized
+      let g:indentLine_color_term = 250
+    else
+      colorscheme molokai
+      hi CursorLine ctermbg=232
+      let g:indentLine_color_term = 235
+    endif
+endif
+
 " Wrap
+"let &showbreak = '↪ '
+let &showbreak = '\ '
 set nowrap
 nnoremap <F4> :set wrap!<CR>
 
-" Enable folded view by default
-set foldmethod=syntax
-set foldlevel=1
-" Fold with the spacebar
-nnoremap <space> za
-" zm fold level
-" zM fold all levels
-" zr unfold level
-" zR unfold all levels
-let g:SimpylFold_docstring_preview = 1 " See the docstrings for folded code
-Plug 'tmhedberg/SimpylFold'
+" Whitespace
+"XXX"let &listchars='space:·,tab:▸ ,trail:~'
+set nolist
+nnoremap <F5> :set list!<CR>
 
-Plug 'flazz/vim-colorschemes'
-if &diff
-    " Vimdiff highlight
-    " hi DiffAdd cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
-    " hi DiffDelete cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
-    " hi DiffText cterm=none ctermfg=White ctermbg=Red gui=none guifg=White guibg=Red
-    " " The diff line highlight
-    " hi DiffChange cterm=none ctermfg=Black ctermbg=White gui=none guifg=Black guibg=White
-    " " Vim highlight
-    " hi Visual term=reverse cterm=reverse
-    colorscheme tender
-else
-    colorscheme molokai
-endif
+" Enable the cursorline
+set cursorline
 
-let NERDTreeIgnore=['\.pyc$', '\~$'] " Ignore files in NERDTree
-Plug 'scrooloose/nerdtree'
+" Diff
+" Usage: DP 2 3 # to push to buffer 2 and 3 at the same time in a 3 way diff
+command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -1 ? '' : '<line1>,<line2>') . 'diffput' bufspec | endfor
 
 " Git
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'tag': 'legacy' }
+endif
 nnoremap <LocalLeader>gV :Gvsplit<CR>
 nnoremap <LocalLeader>gv :Gvdiffsplit!<CR>
 " Take the left pane
@@ -68,105 +96,73 @@ let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 Plug 'vim-airline/vim-airline'
 
-" Format
-"" Python
+" Find
+Plug 'junegunn/fzf'
+map ; :FZF<CR>
+Plug 'jremmen/vim-ripgrep'
+map <LocalLeader>; :Rg 
+
+" Comment
+" gc in visual to toggle
+Plug 'tomtom/tcomment_vim'
+
+" Indent line
+Plug 'Yggdroot/indentLine'
+
+" Python Virtualenv
+Plug 'jmcantrell/vim-virtualenv'
+
+" Python Format
 autocmd FileType python noremap <buffer> <LocalLeader>= :call Autopep8()<CR>
 let g:autopep8_diff_type='vertical'
 let g:autopep8_max_line_length=180
 Plug 'tell-k/vim-autopep8'
-" autocmd FileType python noremap <buffer> <LocalLeader>b :Black<CR>
-" Plug 'ambv/black'
-"" JSON
-autocmd FileType json noremap <buffer> <LocalLeader>= :%!python3 -c "import json, sys, collections; print(json.dumps(json.loads(sys.stdin.read(), object_pairs_hook=collections.OrderedDict), indent=2))"<CR>
 
-" Default key mapping is <C-l>
-let g:pydocstring_doq_path = '/usr/local/bin/doq'
+" Python Docstring
+nmap <LocalLeader>l <Plug>(pydocstring)
+let g:pydocstring_doq_path = '/home/spindicator/.local/bin/doq'
 Plug 'heavenshell/vim-pydocstring'
+" Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}
 
-" Finding
-" ripgrep
-let g:ackprg = 'rg -s --no-heading --vimgrep'
-Plug 'mileszs/ack.vim'
-" fzf
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-map ; :Files<CR>
-map <LocalLeader>; :Rg<CR>
+" Rust
+Plug 'rust-lang/rust.vim'
+autocmd FileType rust noremap <buffer> <LocalLeader>= :RustFmt<CR>
 
-" Tag management
-let g:autotagTagsFile = '/home/spindicator/.vim/tag/autotag'
-Plug 'craigemery/vim-autotag'
-Plug 'majutsushi/tagbar'
-" ctags -R init on dir
-" https://vim.fandom.com/wiki/Browsing_programs_with_tags
-" gd search declaration
-" gD search declaration global, from top
-" c, gn, <enter name>, esc
-" n, .
-" Ctrl + ] jump tag declaration
-" Ctrl + w, Ctrl + ] jump tag declaration in split
-" Ctrl + t jump back
-" # highlight occurrances up
-" * highlight occurrances down
+" Completion, Lint, Refactor
+" function! SplitIfNotOpen(...)
+"     let fname = a:1
+"     let call = ''
+"     if a:0 == 2
+" 	let fname = a:2
+" 	let call = a:1
+"     endif
+"     let bufnum=bufnr(expand(fname))
+"     let winnum=bufwinnr(bufnum)
+"     if winnum != -1
+" 	" Jump to existing split
+" 	exe winnum . "wincmd w"
+"     else
+" 	" Make new split as usual
+" 	exe "vsplit " . fname
+"     endif
+"     " Execute the cursor movement command
+"     exe call
+" endfunction
+" command! -nargs=+ CocSplitIfNotOpen :call SplitIfNotOpen(<f-args>)
+" nmap <LocalLeader>d <Plug>(coc-definition)
+" nmap <LocalLeader>n <Plug>(coc-references)
+" nmap <LocalLeader>r <Plug>(coc-rename)
+" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+"inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>" " tab to select
 
-" gc in visual to toggle
-Plug 'tomtom/tcomment_vim'
-
-" Completion
-" Plug 'codota/tabnine-vim'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" " Completion Snips
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-" let g:UltiSnipsExpandTrigger='<leader>ss'
-
-let g:ycm_seed_identifiers_with_syntax = 0
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_goto_buffer_command='new-or-existing-tab'
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-map <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-map <leader>gr :YcmCompleter GoToReferences<CR>
-" :cw to show fixes
-map <leader>rr :YcmCompleter RefactorRename<Space>
-Plug 'ycm-core/YouCompleteMe'
-" Plug 'tabnine/YouCompleteMe'
-" set completeopt=preview,menuone " default
-" set completeopt=popup,menuone
-
-" Checking
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" sudo apt install flake8
-" https://github.com/DmytroLitvinov/awesome-flake8-extensions
-" pip install flake8-docstrings
-" pip install flake8-todo
-" sudo gem install mdl
-" let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_python_checkers=['flake8', 'python3']
-let g:syntastic_python_flake8_args = '--max-line-length 180'
-let g:syntastic_json_checkers=['jsonlint']
-" let g:syntastic_clojure_checkers=['clj-konto']
-let g:syntastic_markdown_mdl_args = "-r '~MD013'" " ignore the line length warning
-let g:syntastic_ruby_checkers=['rubocop']
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height=5
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-" " virtualenv pylint hack
-" py3 << EOF
-" import os
-" if 'VIRTUAL_ENV' in os.environ:
-"   os.system('pip show pylint >/dev/null && if [ $? -eq 1 ]; then pip install pylint; fi')
-" EOF
-Plug 'vim-syntastic/syntastic'
-
-" Python Virtualenv
-Plug 'jmcantrell/vim-virtualenv'
+" File explorer
+" https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
+let g:netrw_keepdir = 0
+let g:netrw_winsize = 30
+let g:netrw_banner = 0
+let g:netrw_localcopydircmd = 'cp -r'
+hi! link netrwMarkFile Search
+map <F7> :Lexplore<CR>
 
 " OpenSCAD
 Plug 'sirtaj/vim-openscad'
@@ -174,69 +170,84 @@ Plug 'sirtaj/vim-openscad'
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
 
+" Fold
+set foldmethod=syntax
+set foldlevel=3
+" Fold with the spacebar
+nnoremap <space> za
+Plug 'tmhedberg/SimpylFold'
+
 " Indent
-Plug 'Vimjas/vim-python-pep8-indent'
+" Plug 'Vimjas/vim-python-pep8-indent'
 
 " JSON
-Plug 'elzr/vim-json'
 " Disable fancy concealing of attribute quotes.
 let g:vim_json_syntax_conceal = 0
+Plug 'elzr/vim-json', { 'for': 'json' }
+
+" JSON Format
+autocmd FileType json noremap <buffer> <LocalLeader>= :%!python3 -c "import json, sys, collections; print(json.dumps(json.loads(sys.stdin.read(), object_pairs_hook=collections.OrderedDict), indent=2))"<CR>
 
 " Markdown
 " mdr downloadable from https://github.com/MichaelMure/mdr/releases/
 let g:preview_markdown_auto_update = 1
-Plug 'skanehira/preview-markdown.vim'
+Plug 'skanehira/preview-markdown.vim', { 'for': 'markdown' }
 
 " Terraform
 autocmd FileType terraform noremap <buffer> <LocalLeader>= :TerraformFmt<CR>
-Plug 'hashivim/vim-terraform'
-Plug 'juliosueiras/vim-terraform-completion'
+Plug 'hashivim/vim-terraform', { 'for': ['terraform', 'tf'] }
+Plug 'juliosueiras/vim-terraform-completion', { 'for': ['terraform', 'tf'] }
 let g:terraform_completion_keys = 1
 let g:terraform_registry_module_completion = 0
 
-" " Clojure
-" Plug 'clojure-emacs/cider'
-" Plug 'tpope/vim-fireplace'
-
 " VCL
 let g:vcl_fold = 1
-Plug 'fgsch/vim-varnish'
+Plug 'spindi/vim-vcl'
 
 " Unimpaired
 " [l and ]l to nav errors
 Plug 'tpope/vim-unimpaired'
 
+" Completion
+" " Completion Snips
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+" let g:UltiSnipsExpandTrigger='<leader>ss'
+
+let g:ycm_auto_trigger = 1
+let g:ycm_error_symbol = ''
+let g:ycm_warning_symbol = ''
+"let g:ycm_enable_diagnostic_signs = 1
+"let g:ycm_enable_diagnostic_highlighting = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+"let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+"let g:ycm_key_invoke_completion = '<C-Space>'
+"let g:ycm_goto_buffer_command='new-or-existing-tab'
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+nnoremap <leader>gd :YcmCompleter GetDoc<CR>
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+" :cw to show fixes
+map <leader>rr :YcmCompleter RefactorRename<Space>
+Plug 'ycm-core/YouCompleteMe'
+"Plug 'tabnine/YouCompleteMe'
+" set completeopt=preview,menuone " default
+" set completeopt=popup,menuone
+
 " Initialize plugin system
 call plug#end()
 
-" General indent
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-set autoindent
-
 " Development file settings
 " Python
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=180 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
 " JavaScript
-au BufNewFile,BufRead *.js
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=180 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
 " TypeScript
-au BufNewFile,BufRead *.ts
+au BufNewFile,BufRead *.py,*.js,*.ts
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -245,39 +256,12 @@ au BufNewFile,BufRead *.ts
     \ set autoindent |
     \ set fileformat=unix |
 " Varnish Configuration Language
-au BufNewFile,BufRead *.vcl
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set textwidth=180 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-
 " Browser file settings
-au BufNewFile,BufRead *.html
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set textwidth=180 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-au BufNewFile,BufRead *.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set textwidth=180 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-
 " JSON file settings
-au BufNewFile,BufRead *.json
+au BufNewFile,BufRead *.vcl,*.html,*.css,*.json
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
-    \ set filetype=json |
     \ set textwidth=180 |
     \ set expandtab |
     \ set autoindent |
@@ -285,6 +269,18 @@ au BufNewFile,BufRead *.json
 
 " UTF-8 support
 set encoding=utf-8
+
+" Theme override
+" use the :hi command to set how it is currently set
+" completion menu
+"hi! CocMenu ctermfg=white ctermbg=darkgrey
+"hi! CocPumMenu ctermfg=white ctermbg=darkgrey
+"hi! CocFloating ctermbg=235 " really dark grey
+"hi! CocMenuSel ctermfg=black ctermbg=white
+"hi! CocPumSearch ctermfg=black ctermbg=green
+" if $THEME == "light"
+"   highlight Pmenu cterm=NONE ctermfg=246 ctermbg=232
+" endif
 
 " Syntax
 let python_highlight_all=1
@@ -297,13 +293,19 @@ syntax on
 " * search on word
 set hlsearch
 
-" System clipboard
+" Clipboard (System) - Yanking in the WSL
 set clipboard=unnamed
+"if system('uname -r') =~ "microsoft"
+  augroup Yank
+    autocmd!
+    autocmd TextYankPost * :call system('/usr/local/bin/win32yank.exe -i --crlf ',@")
+  augroup END
+"end
 
 " Status Bar in single window. 0=never, 1=only with two windows, 2=always
 set laststatus=2
 
-" Be able to write the crontab
+" Crontab write
 autocmd FileType crontab setlocal bkc=yes
 
 " Mouse
@@ -311,31 +313,18 @@ set mouse=a
 " set mouse=v " Mac
 set mousefocus
 
-" Enable the cursorline
-set cursorline
-hi CursorLine ctermbg=234
-" https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
-
 " Parenthesis
 hi MatchParen cterm=none ctermbg=green ctermfg=black
-
-" NERDTree
-map <F7> :NERDTreeToggle<CR>
-
-" Tagbar
-map <F8> :TagbarToggle<CR>
-
-" Recursive search
-nnoremap \\ :Ack<space>
 
 " Tabs
 nmap <C-h> :tabnew<CR>
 nmap <C-l> :tabclose<CR>
-nmap <C-j> :tabnext<CR>
-nmap <C-k> :tabprevious<CR>
+nmap <C-j> :tabprevious<CR>
+nmap <C-k> :tabnext<CR>
 
 " Spelling
-autocmd BufReadPost,BufNewFile *.md,*.txt set spell spelllang=en_gb
+set nospell
+autocmd BufWritePre *.md,*.txt set spell spelllang=en_gb spellsuggest=best,9 spellfile=~/.vim/spell/en.utf-8.add
 
 " Keyword help
 " K
@@ -345,31 +334,32 @@ autocmd BufNewFile,BufRead *.py set keywordprg=pydoc3
 set belloff=all
 
 " Whitespace removal
-autocmd BufWritePre *.js :%s/\s\+$//e
+autocmd BufWritePre *.js,*.ts :%s/\s\+$//e
 autocmd BufWritePre *.json :%s/\s\+$//e
 autocmd BufWritePre *.md :%s/\s\+$//e
 autocmd BufWritePre *.py :%s/\s\+$//e
 autocmd BufWritePre *.tf :%s/\s\+$//e
-autocmd BufWritePre *.ts :%s/\s\+$//e
 
-" Clipboard
-" Yanking in the WSL
-let s:clip = '/mnt/c/Windows/system32/clip.exe'
-if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)
-    augroup END
-end
+" set completeopt-=preview
+" autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 " Navigation
 " ``      = ping pong
+"
+" %       = matching brace
 "
 " [[      = previous def / class
 " ]]      = next def / class
 "
 " Shift+[ = previous paragraph
 " Shift+] = next paragraph
+
+" Bookmarks
+" m{bookmark-name} = add, local lowercase, global uppercase
+" `{bookmark-name} = jump exact position
+" '{bookmark-name} = jump start of line position
+" marks = all marks
+" delmarks {bookmark-name} = delete a specific mark
 
 " Folds
 " zm increases foldlevel by one
@@ -399,21 +389,6 @@ set keymodel=startsel
 " Terminal
 " :ter
 
-" Fuzzy file search
-" ;
-
-" Colour overrides
-" Generally making things a little darker
-hi Normal ctermbg=232
-hi SignColumn ctermbg=233
-hi CursorLine ctermbg=233 
-
-" Cursor for different modes
-if &term =~ "xterm\\|rxvt"
-    " use an orange cursor in insert mode
-    let &t_SI = "\<Esc>]12;blue\x7"
-    " use a red cursor otherwise
-    let &t_EI = "\<Esc>]12;red\x7"
-    " reset cursor when vim exits
-    autocmd VimLeave * let &t_me="\<Esc>]12;magenta\x7"
-endif
+" Fuzzy search
+" ; = file
+" \; = rg
