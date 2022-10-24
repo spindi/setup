@@ -16,7 +16,7 @@ function fish_prompt
 
   #set -l fish     "⋊>"
   #set -l fish     "▶◀▶"
-  set -l fish     ""
+  set -l fish     "▶"
   set -l ahead    "↑"
   set -l behind   "↓"
   set -l diverged "⥄"
@@ -54,7 +54,7 @@ function fish_prompt
       set cwd (echo $PWD | sed -e "s|$parent_root_folder/||")
     end
 
-    echo -n -s " on " $repository_color (git_branch_name) $normal_color
+    echo -n -s (set_color bryellow) " (" (git_branch_name) ")" $normal_color
 
     set -l list
     if test "$theme_stash_indicator" = yes; and git_is_stashed
