@@ -131,8 +131,9 @@ command! -nargs=+ CocSplitIfNotOpen :call SplitIfNotOpen(<f-args>)
 nmap <LocalLeader>d <Plug>(coc-definition)
 nmap <LocalLeader>n <Plug>(coc-references)
 nmap <LocalLeader>r <Plug>(coc-rename)
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>" " tab to select
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>" " enter to select
 
 " File explorer
@@ -287,33 +288,36 @@ syntax on
 " Highlight search
 " * search on word
 set hlsearch
+" Since visual marking is reverse this is necessary
+hi! IncSearch ctermbg=yellow ctermfg=red
+hi! Search ctermbg=yellow ctermfg=red
 
 " System clipboard, make sure win32yank is installed and in path
 set clipboard=unnamedplus
+" let g:clipboard = {
+"   \   'name': 'clip-wsl',
+"   \   'copy': {
+"   \      '+': 'clip.exe',
+"   \      '*': 'clip.exe',
+"   \    },
+"   \   'paste': {
+"   \      '+': 'powershell.exe Get-Clipboard | sed "s/\r$//" | sed -z "$ s/\n$//"',
+"   \      '*': 'powershell.exe Get-Clipboard | sed "s/\r$//" | sed -z "$ s/\n$//"',
+"   \   },
+"   \   'cache_enabled': 1,
+"   \ }
 let g:clipboard = {
-  \   'name': 'clip-wsl',
+  \   'name': 'win32yank-wsl',
   \   'copy': {
-  \      '+': 'clip.exe',
-  \      '*': 'clip.exe',
+  \      '+': 'win32yank.exe -i --crlf',
+  \      '*': 'win32yank.exe -i --crlf',
   \    },
   \   'paste': {
-  \      '+': 'powershell.exe Get-Clipboard | sed "s/\r$//" | sed -z "$ s/\n$//"',
-  \      '*': 'powershell.exe Get-Clipboard | sed "s/\r$//" | sed -z "$ s/\n$//"',
+  \      '+': 'win32yank.exe -o --lf',
+  \      '*': 'win32yank.exe -o --lf',
   \   },
-  \   'cache_enabled': 1,
+  \   'cache_enabled': 0,
   \ }
-" let g:clipboard = {
-"       \   'name': 'win32yank-wsl',
-"       \   'copy': {
-"       \      '+': 'win32yank.exe -i --crlf',
-"       \      '*': 'win32yank.exe -i --crlf',
-"       \    },
-"       \   'paste': {
-"       \      '+': 'win32yank.exe -o --lf',
-"       \      '*': 'win32yank.exe -o --lf',
-"       \   },
-"       \   'cache_enabled': 0,
-"       \ }
 
 " Status Bar in single window. 0=never, 1=only with two windows, 2=always
 set laststatus=2
@@ -381,6 +385,10 @@ autocmd BufWritePre *.ts :%s/\s\+$//e
 " zM closes all open folds
 " zr decreases foldlevel by one
 " zR opens all closed folds
+
+" Git
+" ]g next Git chunk
+" [g prev Git chunk
 
 " Highlight
 " * highlight and go to next occurrance of word cursor is on
