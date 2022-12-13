@@ -60,20 +60,20 @@ set cursorline
 command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -1 ? '' : '<line1>,<line2>') . 'diffput' bufspec | endfor
 
 " Git 
-Plug 'lewis6991/gitsigns.nvim'
+" Plug 'lewis6991/gitsigns.nvim'
 " Plug 'mhinz/vim-signify'
 " if has('nvim') || has('patch-8.0.902')
 "   Plug 'mhinz/vim-signify'
 " else
 "   Plug 'mhinz/vim-signify', { 'tag': 'legacy' }
 " endif
-nnoremap <LocalLeader>gV :Gvsplit<CR>
-nnoremap <LocalLeader>gv :Gvdiffsplit!<CR>
-" Take the left pane
-nnoremap <LocalLeader>gvc :diffget //2<CR>
-" Take the right pane
-nnoremap <LocalLeader>gvb :diffget //3<CR>
-Plug 'tpope/vim-fugitive'
+" nnoremap <LocalLeader>gV :Gvsplit<CR>
+" nnoremap <LocalLeader>gv :Gvdiffsplit!<CR>
+" " Take the left pane
+" nnoremap <LocalLeader>gvc :diffget //2<CR>
+" " Take the right pane
+" nnoremap <LocalLeader>gvb :diffget //3<CR>
+" Plug 'tpope/vim-fugitive'
 
 " Find
 Plug 'junegunn/fzf'
@@ -103,9 +103,9 @@ let g:pydocstring_doq_path = '/home/spindicator/.local/bin/doq'
 Plug 'heavenshell/vim-pydocstring'
 " Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}
 
-" Rust
-Plug 'rust-lang/rust.vim'
-autocmd FileType rust noremap <buffer> <LocalLeader>= :RustFmt<CR>
+" " Rust
+" Plug 'rust-lang/rust.vim'
+" autocmd FileType rust noremap <buffer> <LocalLeader>= :RustFmt<CR>
 
 " Completion, Lint, Refactor
 function! SplitIfNotOpen(...)
@@ -132,7 +132,8 @@ nmap <LocalLeader>d <Plug>(coc-definition)
 nmap <LocalLeader>n <Plug>(coc-references)
 nmap <LocalLeader>r <Plug>(coc-rename)
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>" " tab to select
+" inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>" " tab to select
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>" " enter to select
 
 " File explorer
 " https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/
@@ -187,9 +188,9 @@ let g:vcl_fold = 1
 " Plug 'smerrill/vcl-vim-plugin'
 Plug 'spindi/vim-vcl'
 
-" Unimpaired
-" [l and ]l to nav errors
-Plug 'tpope/vim-unimpaired'
+" " Unimpaired
+" " [l and ]l to nav errors
+" Plug 'tpope/vim-unimpaired'
 
 " Initialize plugin system
 call plug#end()
@@ -268,11 +269,13 @@ set encoding=utf-8
 "hi! CocMenu ctermfg=white ctermbg=darkgrey
 "hi! CocPumMenu ctermfg=white ctermbg=darkgrey
 hi! CocFloating ctermbg=235 " really dark grey
+"hi! CocFloating ctermfg=black ctermbg=darkgrey
 hi! CocMenuSel ctermfg=black ctermbg=white
 hi! CocPumSearch ctermfg=black ctermbg=green
 " if $THEME == "light"
 "   highlight Pmenu cterm=NONE ctermfg=246 ctermbg=232
 " endif
+hi! Visual cterm=reverse ctermbg=NONE
 
 " Syntax
 let python_highlight_all=1
@@ -414,43 +417,5 @@ lua << END
 	  options = { theme = 'powerline' }
 	}
 
-  require('gitsigns').setup()
-
-  require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "c", "go", "lua", "python", "rust", "vim" },
-
-    auto_install = true,
-
-    highlight = {
-      enable = true,
-
-      additional_vim_regex_highlighting = false,
-    },
-    refactor = {
-      highlight_definitions = {
-        enable = true,
-        -- Set to false if you have an `updatetime` of ~100.
-        clear_on_cursor_move = true,
-      },
-      -- highlight_current_scope = { 
-      --   enable = true 
-      -- },
-      -- smart_rename = {
-      --   enable = true,
-      --   keymaps = {
-      --     smart_rename = "grr",
-      --   },
-      -- },
-      -- navigation = {
-      --   enable = true,
-      --   keymaps = {
-      --     goto_definition = "gnd",
-      --     list_definitions = "gnD",
-      --     list_definitions_toc = "gO",
-      --     goto_next_usage = "<a-*>",
-      --     goto_previous_usage = "<a-#>",
-      --   },
-      -- },
-    },
-  }
+  -- require('gitsigns').setup()
 END
