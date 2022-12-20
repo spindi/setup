@@ -12,10 +12,11 @@ bind main    V !git difftool HEAD %(file)
 
 bind refs	   C ?git checkout %(branch)
 bind refs    P ?git push -u origin %(branch)
-bind refs    R ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r Romain-MVR
-bind refs    V ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r gajdaw
-bind refs    N ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r neiliux
 bind refs    H ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r hanielbaez
+bind refs    N ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r neiliux
+bind refs    R ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r Romain-MVR
+bind refs    S ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r senthil-arasu
+bind refs    V ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r gajdaw
 
 bind status  P ?git push origin %(branch)
 bind status  V !git difftool HEAD %(file)
