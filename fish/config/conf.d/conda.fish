@@ -1,0 +1,1 @@
+/home/spindicator/miniconda3/etc/fish/conf.d/conda.fish
