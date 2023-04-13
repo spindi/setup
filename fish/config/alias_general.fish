@@ -1,11 +1,11 @@
 # Helpers
-for file in ~/Setup/helpers/*.sh
+for file in ~/Documents/Repo/Setup/helpers/*.sh
   set alias_name (echo $file | sed -e 's/.*\///' | sed -e 's/.sh$//')
   alias $alias_name=$file
 end
 alias loadtest='oha' # just so i can remember the name of the thing
 alias bat='batcat'
-alias b='browsh --startup-url www.duckduckgo.com'
+alias bqq='bq query --use_legacy_sql=false --format=pretty'
 alias diff='colordiff'
 alias dc='docker-compose'
 alias dm='docker-machine'
@@ -35,11 +35,14 @@ alias lll='find . | grep'
 alias ls='gls --color=auto --group-directories-first'
 alias n='nb'
 set PYTHON_BREW_DIR (brew --prefix python)
-alias python="$PYTHON_BREW_DIR/bin/python3"
-alias pip="$PYTHON_BREW_DIR/bin/pip3"
+# alias python="$PYTHON_BREW_DIR/bin/python3"
+# alias pip="$PYTHON_BREW_DIR/bin/pip3"
+alias profile3.11='python3.11 -m cProfile -o output.profile' # then run snakeviz on the output
 alias t='tree -C'
 alias vd='visidata'
 alias v='nvim'
 alias vi='nvim'
 alias ttfb='curl -s -o /dev/null -w "{ \"connect\": %{time_connect}, \"ttfb\": %{time_starttransfer}, \"total\": %{time_total} }\n"'
 alias bat='bat --color --theme=ansi-light'
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'

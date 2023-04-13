@@ -1,4 +1,5 @@
 {
+  "coc.preferences.formatOnType": true,
   "jedi.enable": true,
   "jedi.startupMessage": true,
   "jedi.markupKindPreferred": "plaintext",
@@ -32,11 +33,14 @@
     "venv"
   ],
   "diagnostic-languageserver.formatFiletypes": {
-    "python": "autopep8"
+    "python": ["black", "isort"]
   },
   "diagnostic-languageserver.formatters": {
     "autopep8": {
-      "command": "/home/spindicator/.local/bin/autopep8"
+      "command": "/home/linuxbrew/.linuxbrew/bin/autopep8"
+    },
+    "black": {
+      "command": "/home/linuxbrew/.linuxbrew/bin/black"
     }
   },
   "diagnostic-languageserver.filetypes": {

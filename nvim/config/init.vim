@@ -86,6 +86,7 @@ map <LocalLeader>; :Rg
 Plug 'tomtom/tcomment_vim'
 
 " Indent line
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 Plug 'Yggdroot/indentLine'
 
 " Python Virtualenv
@@ -96,10 +97,13 @@ autocmd FileType python noremap <buffer> <LocalLeader>= :call Autopep8()<CR>
 let g:autopep8_diff_type='vertical'
 let g:autopep8_max_line_length=180
 Plug 'tell-k/vim-autopep8'
+" autocmd FileType python noremap <buffer> <LocalLeader>= :Black<CR>
+" let g:black_linelength = 180
+" Plug 'psf/black', { 'branch': 'stable' }
 
 " Python Docstring
 nmap <LocalLeader>l <Plug>(pydocstring)
-let g:pydocstring_doq_path = '/home/spindicator/.local/bin/doq'
+let g:pydocstring_doq_path = '/home/linuxbrew/.linuxbrew/bin/doq'
 Plug 'heavenshell/vim-pydocstring'
 " Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}
 
@@ -130,6 +134,7 @@ endfunction
 command! -nargs=+ CocSplitIfNotOpen :call SplitIfNotOpen(<f-args>)
 nmap <LocalLeader>d <Plug>(coc-definition)
 nmap <LocalLeader>n <Plug>(coc-references)
+nmap <LocalLeader>i <Plug>(coc-implementation)
 nmap <LocalLeader>r <Plug>(coc-rename)
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
@@ -145,13 +150,19 @@ let g:netrw_localcopydircmd = 'cp -r'
 hi! link netrwMarkFile Search
 map <F7> :Lexplore<CR>
 
+" Showing code outline
+map <F8> :CocOutline<CR>
+
+" Syntax highlighting
 " OpenSCAD
 Plug 'sirtaj/vim-openscad'
 
-" Syntax highlighting
 " Plug 'sheerun/vim-polyglot'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
+
+" Fish shell
+Plug 'khaveesh/vim-fish-syntax'
 
 " Fold
 set foldmethod=syntax
@@ -289,8 +300,8 @@ syntax on
 " * search on word
 set hlsearch
 " Since visual marking is reverse this is necessary
-hi! IncSearch ctermbg=yellow ctermfg=red
-hi! Search ctermbg=yellow ctermfg=red
+hi! IncSearch ctermbg=yellow ctermfg=black
+hi! Search ctermbg=yellow ctermfg=black
 
 " System clipboard, make sure win32yank is installed and in path
 set clipboard=unnamedplus
@@ -306,18 +317,18 @@ set clipboard=unnamedplus
 "   \   },
 "   \   'cache_enabled': 1,
 "   \ }
-let g:clipboard = {
-  \   'name': 'win32yank-wsl',
-  \   'copy': {
-  \      '+': 'win32yank.exe -i --crlf',
-  \      '*': 'win32yank.exe -i --crlf',
-  \    },
-  \   'paste': {
-  \      '+': 'win32yank.exe -o --lf',
-  \      '*': 'win32yank.exe -o --lf',
-  \   },
-  \   'cache_enabled': 0,
-  \ }
+" let g:clipboard = {
+"   \   'name': 'win32yank-wsl',
+"   \   'copy': {
+"   \      '+': 'win32yank.exe -i --crlf',
+"   \      '*': 'win32yank.exe -i --crlf',
+"   \    },
+"   \   'paste': {
+"   \      '+': 'win32yank.exe -o --lf',
+"   \      '*': 'win32yank.exe -o --lf',
+"   \   },
+"   \   'cache_enabled': 0,
+"   \ }
 
 " Status Bar in single window. 0=never, 1=only with two windows, 2=always
 set laststatus=2
@@ -386,10 +397,6 @@ autocmd BufWritePre *.ts :%s/\s\+$//e
 " zr decreases foldlevel by one
 " zR opens all closed folds
 
-" Git
-" ]g next Git chunk
-" [g prev Git chunk
-
 " Highlight
 " * highlight and go to next occurrance of word cursor is on
 " # highlight and go to previous occurrance of word cursor is on
@@ -401,6 +408,15 @@ set keymodel=startsel
 " [s ]s move between misspellings
 " z= to get alternatives
 " zg to add word to personal dictionary
+
+" Code
+" \d definition
+" \n references (n for number)
+" \r rename all occurrances
+
+" Git
+" ]g next Git chunk
+" [g prev Git chunk
 
 " Debug Pdb
 " \r = run
