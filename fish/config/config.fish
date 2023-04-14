@@ -22,7 +22,8 @@ set -gx PATH /home/linuxbrew/.linuxbrew/opt/coreutils/libexec/gnubin $PATH
 # Environment
 set -gx VISUAL (brew --prefix nvim)/bin/nvim
 set -gx EDITOR $VISUAL
-set -gx GIT_EDITOR "$VISUAL --noplugin"
+# set -gx GIT_EDITOR "$VISUAL --noplugin"
+set -gx GIT_EDITOR $VISUAL
 set -gx BROWSER "explorer.exe" # Uses default browser
 set -gx XDG_DATA_DIRS /var/lib/flatpak/exports/share:$XDG_DATA_DIRS
 set -gx XDG_DATA_DIRS $HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS
