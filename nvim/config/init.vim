@@ -79,7 +79,8 @@ command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -
 Plug 'junegunn/fzf'
 map ; :FZF<CR>
 Plug 'jremmen/vim-ripgrep'
-map <LocalLeader>; :Rg 
+nnoremap <LocalLeader>; :Rg 
+nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
 
 " Comment
 " gc in visual to toggle
@@ -165,14 +166,10 @@ Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'khaveesh/vim-fish-syntax'
 
 " Fold
-set foldmethod=syntax
+Plug 'samuelstevens/vim-python-folding'
 set foldlevel=3
 " Fold with the spacebar
 nnoremap <space> za
-Plug 'tmhedberg/SimpylFold'
-
-" Indent
-" Plug 'Vimjas/vim-python-pep8-indent'
 
 " JSON
 " Disable fancy concealing of attribute quotes.
@@ -195,10 +192,10 @@ let g:terraform_completion_keys = 1
 let g:terraform_registry_module_completion = 0
 
 " VCL
-let g:vcl_fold = 1
+" let g:vcl_fold = 1
 " Plug 'fgsch/vim-varnish'
 " Plug 'smerrill/vcl-vim-plugin'
-Plug 'spindi/vim-vcl'
+" Plug 'spindi/vim-vcl'
 
 " " Unimpaired
 " " [l and ]l to nav errors
@@ -348,7 +345,9 @@ hi MatchParen cterm=none ctermbg=green ctermfg=black
 nmap <C-h> :tabnew<CR>
 nmap <C-l> :tabclose<CR>
 nmap <C-j> :tabprevious<CR>
+nmap <CS-j> :tabprevious<CR>
 nmap <C-k> :tabnext<CR>
+nmap <CS-k> :tabnext<CR>
 
 " Spelling
 autocmd BufReadPost,BufNewFile *.md,*.txt set spell spelllang=en_gb
