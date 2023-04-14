@@ -100,7 +100,10 @@ bind main    V !git difftool HEAD %(file)
 
 bind refs	 C ?git checkout %(branch)
 bind refs    P ?git push -u origin %(branch)
-bind refs    V ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r gajdaw
+bind refs    V !git difftool HEAD %(file)
+
+# github pr create via cli
+# ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r gajdaw
 
 bind status  P ?git push origin %(branch)
 bind status  V !git difftool HEAD %(file)
