@@ -1,6 +1,7 @@
 " Required
 set nocompatible
-filetype off
+" filetype off
+filetype plugin indent on
 
 " General indent
 set tabstop=2
@@ -76,11 +77,12 @@ command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -
 " Plug 'tpope/vim-fugitive'
 
 " Find
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 map ; :FZF<CR>
 Plug 'jremmen/vim-ripgrep'
 nnoremap <LocalLeader>; :Rg 
-nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
+nnoremap <Leader>rg :Rg <C-R><C-W><CR>
 
 " Comment
 " gc in visual to toggle
@@ -133,12 +135,19 @@ function! SplitIfNotOpen(...)
     exe call
 endfunction
 command! -nargs=+ CocSplitIfNotOpen :call SplitIfNotOpen(<f-args>)
+nmap <LocalLeader>a <Plug>(coc-codeaction-selected)<CR>
+nmap <LocalLeader>f <Plug>(coc-format-selected)
+vmap <LocalLeader>f <Plug>(coc-format-selected)
 nmap <LocalLeader>d <Plug>(coc-definition)
+" split definition
+nmap <LocalLeader>v :vsp<CR><Plug>(coc-definition)<C-W>L
 nmap <LocalLeader>n <Plug>(coc-references)
 nmap <LocalLeader>i <Plug>(coc-implementation)
 nmap <LocalLeader>r <Plug>(coc-rename)
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
+" show the tip again in insert mode 
+inoremap <silent><expr> <c-space> coc#refresh()
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>" " enter to select
 
@@ -179,10 +188,10 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 " JSON Format
 autocmd FileType json noremap <buffer> <LocalLeader>= :%!python3 -c "import json, sys, collections; print(json.dumps(json.loads(sys.stdin.read(), object_pairs_hook=collections.OrderedDict), indent=2))"<CR>
 
-" Markdown
-" mdr downloadable from https://github.com/MichaelMure/mdr/releases/
-let g:preview_markdown_auto_update = 1
-Plug 'skanehira/preview-markdown.vim', { 'for': 'markdown' }
+" " Markdown
+" " mdr downloadable from https://github.com/MichaelMure/mdr/releases/
+" let g:preview_markdown_auto_update = 1
+" Plug 'skanehira/preview-markdown.vim', { 'for': 'markdown' }
 
 " Terraform
 autocmd FileType terraform noremap <buffer> <LocalLeader>= :TerraformFmt<CR>
