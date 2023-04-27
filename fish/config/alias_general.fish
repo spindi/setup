@@ -38,6 +38,7 @@ set PYTHON_BREW_DIR (brew --prefix python)
 # alias python="$PYTHON_BREW_DIR/bin/python3"
 # alias pip="$PYTHON_BREW_DIR/bin/pip3"
 alias profile3.11='python3.11 -m cProfile -o output.profile' # then run snakeviz on the output
+alias pyenv='/home/linuxbrew/.linuxbrew/bin/pyenv'
 alias t='tree -C'
 alias vd='visidata'
 alias v='nvim'

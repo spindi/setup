@@ -50,6 +50,7 @@ end
 # pyenv
 # https://gist.github.com/entropiae/326611addf6662d1d8fbf5792ab9a770
 # sudo apt-get update; sudo apt-get install --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+set -gx PYENV_VIRTUALENV_DISABLE_PROMPT 1
 set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
 set -gx PYENV_ROOT $HOME/.pyenv
 set -gx PATH $PYENV_ROOT/bin $PATH
