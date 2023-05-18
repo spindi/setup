@@ -61,6 +61,7 @@ end
 pyenv init - | source
 pyenv virtualenv-init - | source
 
+# conda
 set -gx CONDA_LEFT_PROMPT 1
 # # >>> conda initialize >>>
 # # !! Contents within this block are managed by 'conda init' !!
@@ -69,3 +70,6 @@ set -gx CONDA_LEFT_PROMPT 1
 # end
 # # <<< conda initialize <<<
 conda deactivate
+
+# # direnv
+# direnv hook fish | source
