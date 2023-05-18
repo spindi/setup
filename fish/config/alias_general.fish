@@ -6,6 +6,7 @@ end
 alias loadtest='oha' # just so i can remember the name of the thing
 alias bat='batcat'
 alias bqq='bq query --use_legacy_sql=false --format=pretty'
+alias config-nvim='cd ~/.config/nvim/ && vi init.vim && cd -'
 alias diff='colordiff'
 alias dc='docker-compose'
 alias dm='docker-machine'
