@@ -74,5 +74,6 @@ function fish_prompt
     end
   end
 
-  echo -n -s (set_color green) " \$ " (set_color normal)
+  echo
+  echo -n -s (set_color green) "\$ " (set_color normal)
 end
