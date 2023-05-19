@@ -110,6 +110,16 @@ let g:pydocstring_doq_path = '/home/linuxbrew/.linuxbrew/bin/doq'
 Plug 'heavenshell/vim-pydocstring'
 " Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}
 
+" Testing
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+" nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+" nmap <silent> <leader>g :TestVisit<CR>
+let test#strategy = "kitty"
+let test#python#runner = 'pytest'
+Plug 'vim-test/vim-test'
+
 " " Rust
 " Plug 'rust-lang/rust.vim'
 " autocmd FileType rust noremap <buffer> <LocalLeader>= :RustFmt<CR>
@@ -138,9 +148,9 @@ command! -nargs=+ CocSplitIfNotOpen :call SplitIfNotOpen(<f-args>)
 nmap <LocalLeader>a <Plug>(coc-codeaction-selected)<CR>
 nmap <LocalLeader>f <Plug>(coc-format-selected)
 vmap <LocalLeader>f <Plug>(coc-format-selected)
-nmap <LocalLeader>d <Plug>(coc-definition)
-" split definition
-nmap <LocalLeader>v :vsp<CR><Plug>(coc-definition)<C-W>L
+nmap <LocalLeader>d :call CocAction('jumpDefinition', 'split')<CR>
+nmap <LocalLeader>v :call CocAction('jumpDefinition', 'vsplit')<CR>
+nmap <LocalLeader>t :call CocAction('jumpDefinition', 'tabe')<CR>
 nmap <LocalLeader>n <Plug>(coc-references)
 nmap <LocalLeader>i <Plug>(coc-implementation)
 nmap <LocalLeader>r <Plug>(coc-rename)
@@ -196,7 +206,7 @@ autocmd FileType json noremap <buffer> <LocalLeader>= :%!python3 -c "import json
 " Terraform
 autocmd FileType terraform noremap <buffer> <LocalLeader>= :TerraformFmt<CR>
 Plug 'hashivim/vim-terraform', { 'for': ['terraform', 'tf'] }
-Plug 'juliosueiras/vim-terraform-completion', { 'for': ['terraform', 'tf'] }
+" Plug 'juliosueiras/vim-terraform-completion', { 'for': ['terraform', 'tf'] }
 let g:terraform_completion_keys = 1
 let g:terraform_registry_module_completion = 0
 
@@ -273,10 +283,14 @@ au BufNewFile,BufRead *.json
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
     \ set filetype=json |
+    \ set foldmethod=syntax |
     \ set textwidth=180 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
+" Terraform file settings
+au BufNewFile,BufRead *.tf
+    \ set foldmethod=syntax
 
 " UTF-8 support
 set encoding=utf-8
@@ -294,6 +308,7 @@ hi! CocPumSearch ctermfg=black ctermbg=green
 "   highlight Pmenu cterm=NONE ctermfg=246 ctermbg=232
 " endif
 hi! Visual cterm=reverse ctermbg=NONE
+hi! CocUnusedHighlight ctermfg=0 ctermbg=10
 
 " Syntax
 let python_highlight_all=1
@@ -432,6 +447,7 @@ set keymodel=startsel
 " next
 " step
 " continue
+" display VAR
 
 " Terminal
 " :ter
@@ -439,6 +455,9 @@ set keymodel=startsel
 " Fuzzy search
 " ; = file
 " \; = rg
+
+" Word search
+" \rg
 
 " -----------------------------------------------------------------------------
 " Lua 
