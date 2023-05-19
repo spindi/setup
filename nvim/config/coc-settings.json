@@ -1,101 +1,18 @@
 {
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": ["terraform"],
+      "initializationOptions": {}
+    }
+  },
   "coc.preferences.formatOnType": true,
-  "jedi.enable": true,
-  "jedi.startupMessage": true,
-  "jedi.markupKindPreferred": "plaintext",
-  "jedi.trace.server": "off",
-  "jedi.jediSettings.autoImportModules": [],
-  "jedi.jediSettings.caseInsensitiveCompletion": true,
-  "jedi.jediSettings.debug": false,
-  "jedi.executable.command": "jedi-language-server",
-  "jedi.executable.args": [],
-  "jedi.codeAction.nameExtractFunction": "jls_extract_def",
-  "jedi.codeAction.nameExtractVariable": "jls_extract_var",
-  "jedi.completion.disableSnippets": false,
-  "jedi.completion.resolveEagerly": false,
-  "jedi.completion.ignorePatterns": [],
-  "jedi.diagnostics.enable": true,
-  "jedi.diagnostics.didOpen": true,
-  "jedi.diagnostics.didChange": true,
-  "jedi.diagnostics.didSave": true,
-  "jedi.hover.enable": true,
-  "jedi.hover.disable.keyword.all": false,
-  "jedi.hover.disable.keyword.names": [],
-  "jedi.hover.disable.keyword.fullNames": [],
-  "jedi.workspace.extraPaths": [],
-  "jedi.workspace.symbols.maxSymbols": 20,
-  "jedi.workspace.symbols.ignoreFolders": [
-    ".git",
-    ".nox",
-    ".tox",
-    ".venv",
-    "__pycache__",
-    "venv"
-  ],
-  "diagnostic-languageserver.formatFiletypes": {
-    "python": ["black", "isort"]
-  },
-  "diagnostic-languageserver.formatters": {
-    "autopep8": {
-      "command": "/home/linuxbrew/.linuxbrew/bin/autopep8"
-    },
-    "black": {
-      "command": "/home/linuxbrew/.linuxbrew/bin/black"
-    }
-  },
-  "diagnostic-languageserver.filetypes": {
-    "python": "pylint"
-  },
-  "diagnostic-languageserver.linters": {
-    "pylint": {
-      "sourceName": "pylint",
-      "command": "pylint",
-      "debounce": 100,
-      "args": [
-        "--init-hook",
-        "import imp, os; from pylint.config import find_pylintrc; imp.load_source('import_hook', '/home/spindicator/Code/pylint/import_hook.py')",
-        "--max-line-length",
-        "180",
-        "--disable",
-        "C0103,C0114,R0903",
-        "--output-format",
-        "text",
-        "--score",
-        "no",
-        "--msg-template",
-        "'{line}:{column}:{category}:{msg} ({msg_id}:{symbol})'",
-        "%file"
-      ],
-      "formatPattern": [
-        "^(\\d+?):(\\d+?):([a-z]+?):(.*)$",
-        {
-          "line": 1,
-          "column": 2,
-          "endColumn": 2,
-          "security": 3,
-          "message": 4
-        }
-      ],
-      "rootPatterns": ["pyproject.toml", "setup.py", ".git", "tox.ini", ".venv", "venv"],
-      "securities": {
-        "informational": "hint",
-        "refactor": "info",
-        "convention": "info",
-        "warning": "warning",
-        "error": "error",
-        "fatal": "error"
-      },
-      "offsetColumn": 1,
-      "offsetColumnEnd": 1,
-      "formatLines": 1
-    }
-  },
+  "coc.preferences.jumpCommand": "CocSplitIfNotOpen",
   "diagnostic.errorSign": "✖",
   "diagnostic.warningSign": "⚠",
   "diagnostic.infoSign": "●",
   "diagnostic.hintSign": "○",
   "diagnostic.checkCurrentLine": true,
-  "coc.preferences.jumpCommand": "CocSplitIfNotOpen",
   "cSpell.language": "en-GB",
   "cSpell.enabled": false,
   "suggest.completionItemKindLabels": {
