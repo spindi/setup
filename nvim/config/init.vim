@@ -210,6 +210,12 @@ Plug 'hashivim/vim-terraform', { 'for': ['terraform', 'tf'] }
 let g:terraform_completion_keys = 1
 let g:terraform_registry_module_completion = 0
 
+" YAML
+" Plug 'pedrohdz/vim-yaml-folds'
+
+" SOPS
+" Plug 'ChipWolf/vim-sops'
+
 " VCL
 " let g:vcl_fold = 1
 " Plug 'fgsch/vim-varnish'
@@ -291,6 +297,9 @@ au BufNewFile,BufRead *.json
 " Terraform file settings
 au BufNewFile,BufRead *.tf
     \ set foldmethod=syntax
+" YAML file settings
+au BufNewFile,BufRead *.yml
+    \ set foldmethod=indent
 
 " UTF-8 support
 set encoding=utf-8
@@ -308,7 +317,7 @@ hi! CocPumSearch ctermfg=black ctermbg=green
 "   highlight Pmenu cterm=NONE ctermfg=246 ctermbg=232
 " endif
 hi! Visual cterm=reverse ctermbg=NONE
-hi! CocUnusedHighlight ctermfg=0 ctermbg=10
+hi! CocUnusedHighlight ctermfg=white ctermbg=red
 
 " Syntax
 let python_highlight_all=1

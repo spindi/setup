@@ -27,6 +27,7 @@ set -gx GIT_EDITOR $VISUAL
 set -gx BROWSER "explorer.exe" # Uses default browser
 set -gx XDG_DATA_DIRS /var/lib/flatpak/exports/share:$XDG_DATA_DIRS
 set -gx XDG_DATA_DIRS $HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS
+set -gx VIRTUAL_ENV_DISABLE_PROMPT 1 # stop poetry adding in the prompt twice
 
 # Alias
 source ~/.config/fish/alias_general.fish
