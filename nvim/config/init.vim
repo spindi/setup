@@ -226,6 +226,16 @@ let g:terraform_registry_module_completion = 0
 " " [l and ]l to nav errors
 " Plug 'tpope/vim-unimpaired'
 
+" Codium
+let g:codeium_server_config = {
+  \'portal_url': 'https://dev.codeium.earth.planet.com',
+  \'api_url': 'https://dev.codeium.earth.planet.com/_route/api_server' }
+Plug 'Exafunction/codeium.vim', { 'tag': '1.2.16' }
+imap <script><silent><nowait><expr> <C-g> codeium#Accept()
+imap <C-;> <Cmd>call codeium#CycleCompletions(1)<CR>
+imap <C-,> <Cmd>call codeium#CycleCompletions(-1)<CR>
+imap <C-x> <Cmd>call codeium#Clear()<CR>
+
 " Initialize plugin system
 call plug#end()
 
@@ -318,6 +328,7 @@ hi! CocPumSearch ctermfg=black ctermbg=green
 " endif
 hi! Visual cterm=reverse ctermbg=NONE
 hi! CocUnusedHighlight ctermfg=white ctermbg=red
+hi! FgCocErrorFloatBgCocFloating ctermfg=green ctermbg=235
 
 " Syntax
 let python_highlight_all=1
