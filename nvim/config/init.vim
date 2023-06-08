@@ -61,15 +61,16 @@ set cursorline
 command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -1 ? '' : '<line1>,<line2>') . 'diffput' bufspec | endfor
 
 " Git 
-nnoremap <LocalLeader>gv :Gvdiffsplit!<CR>
+nnoremap <LocalLeader>gs :G status<CR>
+nnoremap <LocalLeader>gv :Gvdiffsplit<CR>
+nnoremap <LocalLeader>gd :Gdiffsplit<CR>
 " stage the file
 nnoremap <LocalLeader>gw :Gw<CR>
 nnoremap <LocalLeader>gc :G commit<CR>
 nnoremap <LocalLeader>gp :G push<CR>
-" " Take the left pane
-" nnoremap <LocalLeader>gvc :diffget //2<CR>
-" " Take the right pane
-" nnoremap <LocalLeader>gvb :diffget //3<CR>
+nnoremap <LocalLeader>gm :G mergetool<CR>
+" interactive
+nnoremap <LocalLeader>gg :G<CR>
 Plug 'tpope/vim-fugitive'
 
 " Find
