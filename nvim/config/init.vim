@@ -62,10 +62,14 @@ command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -
 
 " Git 
 nnoremap <LocalLeader>gv :Gvdiffsplit!<CR>
-" Take the left pane
-nnoremap <LocalLeader>gvc :diffget //2<CR>
-" Take the right pane
-nnoremap <LocalLeader>gvb :diffget //3<CR>
+" stage the file
+nnoremap <LocalLeader>gw :Gw<CR>
+nnoremap <LocalLeader>gc :G commit<CR>
+nnoremap <LocalLeader>gp :G push<CR>
+" " Take the left pane
+" nnoremap <LocalLeader>gvc :diffget //2<CR>
+" " Take the right pane
+" nnoremap <LocalLeader>gvb :diffget //3<CR>
 Plug 'tpope/vim-fugitive'
 
 " Find
