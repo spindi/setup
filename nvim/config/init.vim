@@ -61,20 +61,12 @@ set cursorline
 command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -1 ? '' : '<line1>,<line2>') . 'diffput' bufspec | endfor
 
 " Git 
-" Plug 'lewis6991/gitsigns.nvim'
-" Plug 'mhinz/vim-signify'
-" if has('nvim') || has('patch-8.0.902')
-"   Plug 'mhinz/vim-signify'
-" else
-"   Plug 'mhinz/vim-signify', { 'tag': 'legacy' }
-" endif
-" nnoremap <LocalLeader>gV :Gvsplit<CR>
-" nnoremap <LocalLeader>gv :Gvdiffsplit!<CR>
-" " Take the left pane
-" nnoremap <LocalLeader>gvc :diffget //2<CR>
-" " Take the right pane
-" nnoremap <LocalLeader>gvb :diffget //3<CR>
-" Plug 'tpope/vim-fugitive'
+nnoremap <LocalLeader>gv :Gvdiffsplit!<CR>
+" Take the left pane
+nnoremap <LocalLeader>gvc :diffget //2<CR>
+" Take the right pane
+nnoremap <LocalLeader>gvb :diffget //3<CR>
+Plug 'tpope/vim-fugitive'
 
 " Find
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
