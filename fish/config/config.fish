@@ -61,6 +61,7 @@ if command -v pyenv 1>/dev/null 2>&1
 end
 pyenv init - | source
 pyenv virtualenv-init - | source
+pyenv shell 3.11 # default python to use in shell
 
 # conda
 set -gx CONDA_LEFT_PROMPT 1
@@ -70,7 +71,7 @@ set -gx CONDA_LEFT_PROMPT 1
 #     eval $HOME/Documents/Code/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # end
 # # <<< conda initialize <<<
+# deactivate default config
 conda deactivate
-
-# # direnv
-# direnv hook fish | source
+# virtual auto acivator
+auto_activate_virtual
