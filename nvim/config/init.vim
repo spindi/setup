@@ -62,6 +62,8 @@ command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -
 
 " Git 
 nnoremap <LocalLeader>gs :G status<CR>
+" diff
+" git difftool master..(git branch --show-current) 2>/dev/null; or git difftool main..(git branch --show-current) 2>/dev/null
 nnoremap <LocalLeader>gv :Gvdiffsplit<CR>
 nnoremap <LocalLeader>gd :Gdiffsplit<CR>
 " stage the file
@@ -224,14 +226,14 @@ let g:terraform_registry_module_completion = 0
 " Plug 'tpope/vim-unimpaired'
 
 " Codium
-let g:codeium_server_config = {
-  \'portal_url': 'https://dev.codeium.earth.planet.com',
-  \'api_url': 'https://dev.codeium.earth.planet.com/_route/api_server' }
-Plug 'Exafunction/codeium.vim', { 'tag': '1.2.16' }
-imap <script><silent><nowait><expr> <C-g> codeium#Accept()
-imap <C-;> <Cmd>call codeium#CycleCompletions(1)<CR>
-imap <C-,> <Cmd>call codeium#CycleCompletions(-1)<CR>
-imap <C-x> <Cmd>call codeium#Clear()<CR>
+" let g:codeium_server_config = {
+"   \'portal_url': 'https://dev.codeium.earth.planet.com',
+"   \'api_url': 'https://dev.codeium.earth.planet.com/_route/api_server' }
+" Plug 'Exafunction/codeium.vim', { 'tag': '1.2.16' }
+" imap <script><silent><nowait><expr> <C-g> codeium#Accept()
+" imap <C-;> <Cmd>call codeium#CycleCompletions(1)<CR>
+" imap <C-,> <Cmd>call codeium#CycleCompletions(-1)<CR>
+" imap <C-x> <Cmd>call codeium#Clear()<CR>
 
 " Initialize plugin system
 call plug#end()
@@ -296,6 +298,17 @@ au BufNewFile,BufRead *.json
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
     \ set filetype=json |
+    \ set foldmethod=syntax |
+    \ set textwidth=180 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+" Fish file settings
+au BufNewFile,BufRead *.fish
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set filetype=fish |
     \ set foldmethod=syntax |
     \ set textwidth=180 |
     \ set expandtab |
@@ -409,6 +422,10 @@ autocmd BufWritePre *.md :%s/\s\+$//e
 autocmd BufWritePre *.py :%s/\s\+$//e
 autocmd BufWritePre *.tf :%s/\s\+$//e
 autocmd BufWritePre *.ts :%s/\s\+$//e
+autocmd BufWritePre *.tf :%s/\s\+$//e
+autocmd BufWritePre *.yml :%s/\s\+$//e
+autocmd BufWritePre *.yaml :%s/\s\+$//e
+autocmd BufWritePre *.fish :%s/\s\+$//e
 
 " set completeopt-=preview
 " autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
@@ -475,6 +492,12 @@ set keymodel=startsel
 
 " Word search
 " \rg
+
+" Window Sizing
+" taller  ctrl-w +
+" shorter ctrl-w -
+" fat     ctrl-w >
+" skinny  ctrl-w <
 
 " -----------------------------------------------------------------------------
 " Lua 

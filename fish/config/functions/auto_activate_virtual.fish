@@ -24,5 +24,9 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_swap vdsdb
   else if string match -r "^$REPO_BASE/vds_sm_nrt" $PWD 1>/dev/null
     _conda_swap vds_sm_nrt
+  else if string match -r "^$REPO_BASE/planet-grafana-cloud" $PWD 1>/dev/null
+    _conda_swap vds_sm_nrt
+  else if string match -r "^$REPO_BASE/sentinel_chaperon" $PWD 1>/dev/null
+    _conda_swap sentinel_chaperon
   end
 end
