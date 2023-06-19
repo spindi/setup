@@ -146,7 +146,6 @@ endfunction
 command! -nargs=+ CocSplitIfNotOpen :call SplitIfNotOpen(<f-args>)
 nmap <LocalLeader>a <Plug>(coc-codeaction-selected)<CR>
 nmap <LocalLeader>f <Plug>(coc-format-selected)
-vmap <LocalLeader>f <Plug>(coc-format-selected)
 nmap <LocalLeader>d :call CocAction('jumpDefinition', 'split')<CR>
 nmap <LocalLeader>v :call CocAction('jumpDefinition', 'vsplit')<CR>
 nmap <LocalLeader>t :call CocAction('jumpDefinition', 'tabe')<CR>
