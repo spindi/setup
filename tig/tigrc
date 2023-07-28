@@ -1,6 +1,32 @@
 # vim: set expandtab sw=4 tabstop=4:
 # *color* 'area' 'fgcolor' 'bgcolor' '[attributes]'
 
+# keybindings
+bind log     ! ?git reset --hard %(commit)
+bind log     C ?git checkout %(branch)
+bind log     V !git difftool -y HEAD %(file)
+
+bind main	 C ?git cherry-pick %(commit)
+bind main    F ?git fetch origin %(branch)
+bind main    M ?git merge %(branch) main
+bind main    P ?git pull origin %(branch)
+bind main    V !git difftool -y main..%(branch)
+bind main    v !git difftool -y master..%(branch)
+
+bind refs	 C ?git checkout %(branch)
+bind refs    P ?git push -u origin %(branch)
+bind refs    V !git difftool -y HEAD %(branch)
+
+# github pr create via cli
+# ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r gajdaw
+
+bind status  P ?git push origin %(branch)
+bind status  V !git difftool HEAD %(file)
+
+set vertical-split = yes
+set line-graphics = utf-8
+set mouse = true
+
 # general
 color   default                 15      233
 color   cursor                  15      241
@@ -87,27 +113,3 @@ color   tree.directory         221     default
 #   LINE(PALETTE_4, "", COLOR_DEFAULT, COLOR_DEFAULT, 0), \
 #   LINE(PALETTE_5, "", COLOR_WHITE, COLOR_DEFAULT, 0), \
 #   LINE(PALETTE_6, "", COLOR_RED, )bind diff    V !git difftool HEAD %(file)
-
-bind log     ! ?git reset --hard %(commit)
-bind log     C ?git checkout %(branch)
-bind log     V !git difftool HEAD %(file)
-
-bind main	 C ?git cherry-pick %(commit)
-bind main    F ?git fetch origin %(branch)
-bind main    M ?git merge %(branch) main
-bind main    P ?git pull origin %(branch)
-bind main    V !git difftool HEAD %(file)
-
-bind refs	 C ?git checkout %(branch)
-bind refs    P ?git push -u origin %(branch)
-bind refs    V !git difftool HEAD %(file)
-
-# github pr create via cli
-# ?gh pr create --base production --title "Merge %(branch)" --body "Merge %(branch)" -r gajdaw
-
-bind status  P ?git push origin %(branch)
-bind status  V !git difftool HEAD %(file)
-
-set vertical-split = yes
-set line-graphics = utf-8
-set mouse = true
