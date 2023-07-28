@@ -61,6 +61,10 @@ set cursorline
 command! -range=-1 -nargs=+ DP for bufspec in [<f-args>] | execute (<count> == -1 ? '' : '<line1>,<line2>') . 'diffput' bufspec | endfor
 
 " Git 
+" let g:fugitive_gitlab_domains = ['https://hello.planet.com/code']
+" nnoremap <LocalLeader>gb :GBrowse<CR>
+" Plug 'shumphrey/fugitive-gitlab'
+
 nnoremap <LocalLeader>gs :G status<CR>
 " diff
 " git difftool master..(git branch --show-current) 2>/dev/null; or git difftool main..(git branch --show-current) 2>/dev/null
@@ -68,8 +72,9 @@ nnoremap <LocalLeader>gv :Gvdiffsplit<CR>
 nnoremap <LocalLeader>gd :Gdiffsplit<CR>
 " stage the file
 nnoremap <LocalLeader>gw :Gw<CR>
+nnoremap <LocalLeader>gb :G blame<CR>
 nnoremap <LocalLeader>gc :G commit<CR>
-nnoremap <LocalLeader>gp :G push<CR>
+nnoremap <LocalLeader>gp :G! push -u origin<CR>
 nnoremap <LocalLeader>gm :G mergetool<CR>
 " interactive
 nnoremap <LocalLeader>gg :G<CR>
@@ -115,8 +120,10 @@ nmap <silent> <leader>T :TestFile<CR>
 " nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 " nmap <silent> <leader>g :TestVisit<CR>
-let test#strategy = "kitty"
+" let test#strategy = "kitty"
+let test#strategy = "neovim"
 let test#python#runner = 'pytest'
+let test#python#pytest#options = '--no-cov'
 Plug 'vim-test/vim-test'
 
 " " Rust
@@ -148,7 +155,6 @@ nmap <LocalLeader>a <Plug>(coc-codeaction-selected)<CR>
 nmap <LocalLeader>f <Plug>(coc-format-selected)
 nmap <LocalLeader>d :call CocAction('jumpDefinition', 'split')<CR>
 nmap <LocalLeader>v :call CocAction('jumpDefinition', 'vsplit')<CR>
-nmap <LocalLeader>t :call CocAction('jumpDefinition', 'tabe')<CR>
 nmap <LocalLeader>n <Plug>(coc-references)
 nmap <LocalLeader>i <Plug>(coc-implementation)
 nmap <LocalLeader>r <Plug>(coc-rename)
@@ -207,6 +213,9 @@ Plug 'hashivim/vim-terraform', { 'for': ['terraform', 'tf'] }
 " Plug 'juliosueiras/vim-terraform-completion', { 'for': ['terraform', 'tf'] }
 let g:terraform_completion_keys = 1
 let g:terraform_registry_module_completion = 0
+
+" ESC quit Terminal
+tnoremap <Esc> <C-\><C-n>:q!<CR>
 
 " YAML
 " Plug 'pedrohdz/vim-yaml-folds'
