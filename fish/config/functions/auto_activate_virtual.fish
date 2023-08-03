@@ -30,5 +30,7 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_deactivate
   else if string match -r "^$REPO_BASE/sentinel_chaperon" $PWD 1>/dev/null
     _conda_swap sentinel_chaperon
+  else if string match -r "^$REPO_BASE/vds_processing_monitor" $PWD 1>/dev/null
+    _conda_swap vds_processing_monitor
   end
 end
