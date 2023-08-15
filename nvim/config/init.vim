@@ -507,6 +507,9 @@ set keymodel=startsel
 " fat     ctrl-w >
 " skinny  ctrl-w <
 
+" Preview
+" pcl close 
+
 " -----------------------------------------------------------------------------
 " Lua 
 lua << END
