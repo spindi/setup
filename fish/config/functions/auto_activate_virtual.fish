@@ -18,7 +18,7 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
   end
 
   if string match -r "^$REPO_BASE/pv_matcher" $PWD 1>/dev/null
-    _conda_swap pv_matcher
+    _deactivate
   else if string match -r "^$REPO_BASE/DamSat" $PWD 1>/dev/null
     _conda_swap damsat
   else if string match -r "^$REPO_BASE/LibSat" $PWD 1>/dev/null
@@ -29,12 +29,14 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_swap vds_sm_nrt
   else if string match -r "^$REPO_BASE/planet-grafana-cloud-users" $PWD 1>/dev/null
     _deactivate
-    source venv/bin/activate.fish
+    source /home/conor.boyd/Documents/Repo/planet-grafana-cloud-users/venv/bin/activate.fish
   else if string match -r "^$REPO_BASE/planet-grafana-cloud" $PWD 1>/dev/null
     _deactivate
   else if string match -r "^$REPO_BASE/sentinel_chaperon" $PWD 1>/dev/null
     _conda_swap sentinel_chaperon
   else if string match -r "^$REPO_BASE/vds_processing_monitor" $PWD 1>/dev/null
     _conda_swap vds_processing_monitor
+  else if string match -r "^$REPO_BASE" $PWD 1>/dev/null
+    _deactivate
   end
 end
