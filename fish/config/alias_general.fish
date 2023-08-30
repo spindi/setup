@@ -23,6 +23,7 @@ alias em1m="echo (e)\" - (86400 * 30)\" | bc"
 alias em2m="echo (e)\" - (86400 * 60)\" | bc"
 alias em3m="echo (e)\" - (86400 * 90)\" | bc"
 alias fd="fdfind"
+alias gsw_main="gsw main 2>/dev/null; gsw master 2>/dev/null"
 set GREP_BREW_DIR (brew --prefix grep)
 if test -f $GREP_BREW_DIR/bin/grep
   alias grep=$GREP_BREW_DIR/bin/grep
