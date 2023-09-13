@@ -20,7 +20,7 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
   if string match -r "^$REPO_BASE/pv_matcher" $PWD 1>/dev/null
     _conda_swap pv_matcher
   else if string match -r "^$REPO_BASE/OneSat" $PWD 1>/dev/null
-    _conda_swap one
+    _conda_swap onesat
   else if string match -r "^$REPO_BASE/DamSat" $PWD 1>/dev/null
     _conda_swap damsat
   else if string match -r "^$REPO_BASE/LibSat" $PWD 1>/dev/null
