@@ -33,20 +33,21 @@ end
 alias h='history'
 alias hs='numfmt --to=iec-i --suffix=B --format="%.3f"' # human size output
 alias lg='lazygit'
+alias l='ls'
 alias ll='ls -al'
 alias lll='find . | grep'
 alias ls='gls --color=auto --group-directories-first'
 alias n='nb'
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 set PYTHON_BREW_DIR (brew --prefix python)
 # alias python="$PYTHON_BREW_DIR/bin/python3"
 # alias pip="$PYTHON_BREW_DIR/bin/pip3"
 alias profile3.11='python3.11 -m cProfile -o output.profile' # then run snakeviz on the output
 alias pyenv='/home/linuxbrew/.linuxbrew/bin/pyenv'
 alias t='tree -C'
+alias ttfb='curl -s -o /dev/null -w "{ \"connect\": %{time_connect}, \"ttfb\": %{time_starttransfer}, \"total\": %{time_total} }\n"'
 alias vd='visidata'
 alias v='nvim'
 alias vi='nvim'
-alias ttfb='curl -s -o /dev/null -w "{ \"connect\": %{time_connect}, \"ttfb\": %{time_starttransfer}, \"total\": %{time_total} }\n"'
-alias bat='bat --color --theme=ansi-light'
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+alias ww='watch -n 5 -d'

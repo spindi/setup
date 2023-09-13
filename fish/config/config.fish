@@ -38,7 +38,7 @@ bass source $HOME/.local/bin/planet_alias
 #source ~/.ssh/tokens.sh
 
 # Google Cloud SDK does not like pyenv pythons so use the brew
-export CLOUDSDK_PYTHON=/home/linuxbrew/.linuxbrew/opt/python@3.9/bin/python3.9
+# export CLOUDSDK_PYTHON=/home/linuxbrew/.linuxbrew/opt/python@3.9/bin/python3.9
 
 # Ulimit
 ulimit -n 16384
