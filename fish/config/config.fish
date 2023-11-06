@@ -78,3 +78,6 @@ auto_activate_virtual
 
 # set the keyboard repeat and delay
 xset r rate 250 60
+
+# set the touchpad not to accelerate
+xinput set-prop "Apple Inc. Magic Trackpad 2" "libinput Accel Speed" 0 1>/dev/null 2>&1
