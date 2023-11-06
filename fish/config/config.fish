@@ -75,3 +75,6 @@ set -gx CONDA_LEFT_PROMPT 1
 conda deactivate
 # virtual auto acivator
 auto_activate_virtual
+
+# set the keyboard repeat and delay
+xset r rate 250 60
