@@ -32,7 +32,7 @@ set -gx VIRTUAL_ENV_DISABLE_PROMPT 1 # stop poetry adding in the prompt twice
 # Alias
 source ~/.config/fish/alias_general.fish
 source ~/.config/fish/alias_git.fish
-bass source $HOME/.local/bin/planet_alias
+bass source $HOME/.local/bin/planet_env
 
 # Token
 #source ~/.ssh/tokens.sh
@@ -77,7 +77,7 @@ conda deactivate
 auto_activate_virtual
 
 # set the keyboard repeat and delay
-xset r rate 250 60
+xset r rate 350 60
 
 # set the touchpad not to accelerate
 xinput set-prop "Apple Inc. Magic Trackpad 2" "libinput Accel Speed" 0 1>/dev/null 2>&1
