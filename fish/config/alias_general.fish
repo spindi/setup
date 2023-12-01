@@ -5,6 +5,7 @@ for file in ~/Documents/Repo/Setup/helpers/*.sh
 end
 alias loadtest='oha' # just so i can remember the name of the thing
 alias bat='batcat'
+alias bc_sum='paste -sd+ - | bc'
 alias bqq='bq query --use_legacy_sql=false --format=pretty'
 alias config-nvim='cd ~/.config/nvim/ && vi init.vim && cd -'
 alias diff='colordiff'
@@ -50,4 +51,5 @@ alias ttfb='curl -s -o /dev/null -w "{ \"connect\": %{time_connect}, \"ttfb\": %
 alias vd='visidata'
 alias v='nvim'
 alias vi='nvim'
-alias ww='watch -n 5 -d'
+alias ww5='watch -n 5 -d'
+alias ww10='watch -n 10 -d'
