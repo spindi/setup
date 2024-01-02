@@ -1,6 +1,16 @@
-# https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium
-
-customCommands:
+gui:
+  theme:
+    activeBorderColor:
+      - green
+      - bold
+    inactiveBorderColor:
+      - red
+    selectedLineBgColor:
+      - '#202020'
+      - bold
+  nerdFontsVersion: "3"
+quitOnTopLevelReturn: true
+customCommands: # https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium
   - key: b
     command: tig blame -- {{.SelectedFile.Name}}
     context: files
