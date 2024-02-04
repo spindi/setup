@@ -198,13 +198,13 @@ bindsym $mod+r mode "resize"
 # shutdown / restart / suspend...
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (CTRL+s) shutdown
 # dark grey instead of the white
-set $i3lockwall i3lock -c 111111
+set $i3lockcol i3lock -c 111111
 
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $i3lockwall, mode "default"
+    bindsym l exec --no-startup-id $i3lockcol, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $i3lockwall && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $i3lockwall && systemctl hibernate, mode "default"
+    bindsym s exec --no-startup-id $i3lockcol && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $i3lockcol && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
