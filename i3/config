@@ -23,6 +23,9 @@ set $mod Mod4
 # font pango:DejaVu Sans Mono 12
 font pango:DejaVu Sans Mono 12
 
+# settings for gtk apps in...
+# ~/.config/gtk-3.0/settings.ini
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
