@@ -17,7 +17,7 @@ set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
 set -gx PATH /home/linuxbrew/.linuxbrew/opt/coreutils/libexec/gnubin $PATH
 # set -gx PATH (brew --prefix openvpn)/sbin $PATH
 # set -gx PATH (brew --prefix vim)/bin $PATH
-# set -gx PATH $HOME/Documents/Code/miniconda3/bin $PATH  # commented out by conda initialize
+set -gx PATH $HOME/miniconda3/bin $PATH  # commented out by conda initialize
 
 # Environment
 set -gx VISUAL (brew --prefix nvim)/bin/nvim
@@ -67,13 +67,13 @@ pyenv shell 3.11 # default python to use in shell
 set -gx CONDA_LEFT_PROMPT 1
 # # >>> conda initialize >>>
 # # !! Contents within this block are managed by 'conda init' !!
-# if test -f $HOME/Documents/Code/miniconda3/bin/conda
-#     eval $HOME/Documents/Code/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+# if test -f $HOME/miniconda3/bin/conda
+#     eval $HOME/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # end
 # # <<< conda initialize <<<
-# deactivate default config
+# # deactivate default config
 conda deactivate
-# virtual auto acivator
+# virtual auto activator
 auto_activate_virtual
 
 # set the keyboard repeat and delay
