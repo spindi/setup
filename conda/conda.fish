@@ -1,4 +1,4 @@
-set -gx CONDA_ROOT "/home/conor.boyd/Documents/Code/miniconda3"
+set -gx CONDA_ROOT "/home/conor.boyd/miniforge3"
 set -gx CONDA_EXE "$CONDA_ROOT/bin/conda"
 set _CONDA_EXE "$CONDA_ROOT/bin/conda"
 set -gx CONDA_PYTHON_EXE "$CONDA_ROOT/bin/python"
