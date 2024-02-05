@@ -173,21 +173,15 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# clipboard 
-set $mclip /home/conor.boyd/Documents/Repo/rofi-clipboard-manager/mclip.py
-bindsym Print exec rofi -modi "clipboard:$mclip menu" -show && $mclip paste
-
 # screenshot
 bindsym $mod+Print exec flameshot gui
 
-# copyq always floating
-# use `xprop` to get the WM_CLASS 
-# WM_CLASS(STRING) = "Browser", "Firefox"
-# for_window [class="Firefox" instance="Browser"] floating enable 
-for_window [class="copyq" instance="copyq"] floating enable, move position center
+# clipboard 
+exec_always --no-startup-id clipcatd
+bindsym Print exec --no-startup-id clipcat-menu
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
+mode "RESIZE" {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
@@ -211,12 +205,11 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "RESIZE"
 
 # shutdown / restart / suspend...
-# set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (CTRL+s) shutdown
-set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (CTRL+s) shutdown
-# dark grey instead of the white
+set $mode_system SYSTEM (l) Lock, (e) Logout, (s) Suspend, (r) Reboot, (CTRL+s) Shutdown
+# dark grey instead of the default white
 set $i3lockcol i3lock -c 111111
 
 mode "$mode_system" {
@@ -240,6 +233,3 @@ bar {
     status_command i3status
     output primary
 }
-
-# multiple monitor layout - generated using arandr
-# $ . .screenlayout/hdmi_above_centre.sh
