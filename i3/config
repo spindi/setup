@@ -179,6 +179,7 @@ bindsym Print exec --no-startup-id clipcat-menu
 #
 # network
 # can use gui with nm-connection-editor
+# can use cli with nmcli device wifi
 exec_always --no-startup-id nm-applet
 
 # resize window (you can also use the mouse for that)
