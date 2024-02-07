@@ -1,0 +1,1 @@
+clipcatctl completions fish | source
