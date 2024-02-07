@@ -175,6 +175,12 @@ bindsym $mod+Print exec flameshot gui
 exec_always --no-startup-id clipcatd
 bindsym Print exec --no-startup-id clipcat-menu
 
+# tray
+#
+# network
+# can use gui with nm-connection-editor
+exec_always --no-startup-id nm-applet
+
 # resize window (you can also use the mouse for that)
 mode "RESIZE" {
         # These bindings trigger as soon as you enter the resize mode
