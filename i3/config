@@ -72,7 +72,7 @@ bindsym $mod+Ctrl+s exec /snap/slack/current/usr/bin/slack # message
 bindsym $mod+Shift+q kill
 
 # rofi
-bindsym $mod+d exec "rofi -combi-modi drun,window -show combi -icon-theme 'Papirus' -show-icons"
+bindsym $mod+d exec "rofi -combi-modi drun,run,window -show combi -icon-theme 'Papirus' -show-icons"
 
 # change focus
 bindsym $mod+j focus left
