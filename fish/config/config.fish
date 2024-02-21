@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 # Set the greeting to nothing
-set fish_greeting
+set -g fish_greeting
 
 # Pipenv fancy
 set pipenv_fish_fancy yes
