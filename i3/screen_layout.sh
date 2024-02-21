@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/home/linuxbrew/.linuxbrew/bin/fish/bin/fish
 set screen_layout (xrandr | grep ' connected ' | sed -e 's/ .*//' | tr "\n" ' ' | xargs)
 
 switch $screen_layout 
