@@ -66,6 +66,7 @@ bindsym $mod+Return exec kitty
 
 # applications
 bindsym $mod+Ctrl+a exec pavucontrol # audio
+bindsym $mod+Ctrl+f exec firefox # browser
 bindsym $mod+Ctrl+l exec logseq # note
 bindsym $mod+Ctrl+n exec nautilus # file
 bindsym $mod+Ctrl+q exec qutebrowser # browser
