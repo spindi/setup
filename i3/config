@@ -53,8 +53,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # brightness
 # cd /sys/class/backlight/amdgpu_bl0/
 # sudo chmod o+w brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -d 'amdgpu_bl0' set +20% # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -d 'amdgpu_bl0' set 20%- # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -d 'amdgpu_bl0' set +20% # increase screen brightness
+# bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -d 'amdgpu_bl0' set 20%- # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +20% # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%- # decrease screen brightness
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
