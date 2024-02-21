@@ -32,7 +32,9 @@ set -gx VIRTUAL_ENV_DISABLE_PROMPT 1 # stop poetry adding in the prompt twice
 # Alias
 source ~/.config/fish/alias_general.fish
 source ~/.config/fish/alias_git.fish
-bass source $HOME/.local/bin/planet_env
+if test (hostname) = "PF3TSGLG"
+  source ~/.local/bin/alias_planet.fish
+end
 
 # Token
 #source ~/.ssh/tokens.sh
