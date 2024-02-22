@@ -21,7 +21,7 @@ set $mod Mod4
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # default
 # font pango:DejaVu Sans Mono 12
-font pango:DejaVu Sans Mono 12
+font pango:Menslo Mono 12
 
 # settings for gtk apps in...
 # ~/.config/gtk-3.0/settings.ini
@@ -166,8 +166,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Print exec flameshot gui
 
 # clipboard 
-exec_always --no-startup-id clipcatd
-bindsym Print exec --no-startup-id clipcat-menu
+# exec_always --no-startup-id clipcatd
+# bindsym Print exec --no-startup-id clipcat-menu
+exec_always --no-startup-id greenclip daemon
+bindsym Print exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # tray
 #
@@ -184,12 +186,6 @@ mode "RESIZE" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
