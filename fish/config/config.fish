@@ -83,3 +83,6 @@ xset r rate 350 60
 
 # set the touchpad not to accelerate
 xinput set-prop "Apple Inc. Magic Trackpad 2" "libinput Accel Speed" 0 1>/dev/null 2>&1
+
+# set the dircolors env LS_COLORS
+source $HOME/Documents/Repo/Setup/dircolors/dircolors.256dark.encoded.fish
