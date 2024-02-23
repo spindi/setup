@@ -48,6 +48,7 @@ set PYTHON_BREW_DIR (brew --prefix python)
 # alias pip="$PYTHON_BREW_DIR/bin/pip3"
 alias profile3.11='python3.11 -m cProfile -o output.profile' # then run snakeviz on the output
 alias pyenv='/home/linuxbrew/.linuxbrew/bin/pyenv'
+alias ranger='pipx run --spec ranger-fm ranger' # install with same command
 alias t='tree -C'
 alias ttfb='curl -s -o /dev/null -w "{ \"connect\": %{time_connect}, \"ttfb\": %{time_starttransfer}, \"total\": %{time_total} }\n"'
 alias vd='visidata'
