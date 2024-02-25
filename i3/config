@@ -226,5 +226,5 @@ bindsym $mod+BackSpace mode "$mode_system"
 # finds out, if available)
 bar {
     status_command i3status
-    output primary
+    # output primary # this can cause the bar to disappear in multi monitor
 }
