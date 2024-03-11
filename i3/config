@@ -82,6 +82,7 @@ bindsym $mod+d exec "rofi -combi-modi drun,run,window -show combi -icon-theme 'P
 for_window [class="zoom"] floating enable
 for_window [class="zoom" title="Zoom - Licensed Account"] floating disable
 # for_window [class="zoom" title="Zoom Meeting"] floating disable
+for_window [class="Windscribe"] floating enable
 
 # change focus
 bindsym $mod+j focus left
@@ -116,7 +117,10 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
+# container layout
+# default
+workspace_layout tabbed
+# container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
