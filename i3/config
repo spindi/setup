@@ -206,6 +206,12 @@ mode "RESIZE" {
 
 bindsym $mod+r mode "RESIZE"
 
+# capslock indication
+mode "CAPSLOCK" {
+  bindsym Caps_Lock mode "default"
+}
+bindsym Caps_Lock mode "CAPSLOCK"
+
 # shutdown / restart / suspend...
 set $mode_system SYSTEM (l) Lock, (e) Logout, (s) Suspend, (r) Reboot, (CTRL+s) Shutdown
 # dark grey instead of the default white
