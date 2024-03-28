@@ -18,8 +18,10 @@ set $mod Mod4
 # font pango:monospace 12
 
 # font
-# font pango:DejaVu Sans Mono 12
-font pango:Menslo Mono 12
+font pango:Menslo Mono 10
+# for 4k monitors
+# font pango:Menslo Mono 12
+# gtk font settings in ~/.config/gtk-3.0
 
 # background
 exec --no-startup-id xsetroot -solid "#222222"
@@ -84,6 +86,7 @@ for_window [class="zoom"] floating enable
 for_window [class="zoom" title="Zoom - Licensed Account"] floating disable
 # for_window [class="zoom" title="Zoom Meeting"] floating disable
 for_window [class="Windscribe"] floating enable
+for_window [class="XCalc"] floating enable
 
 # change focus
 bindsym $mod+j focus left

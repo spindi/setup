@@ -34,6 +34,7 @@ else if test -f $GREP_BREW_DIR/bin/ggrep
 end
 alias h='history'
 alias hs='numfmt --to=iec-i --suffix=B --format="%.3f"' # human size output
+alias ktl='kubectl'
 alias lg='lazygit'
 alias l='ls'
 alias ll='ls -al'
