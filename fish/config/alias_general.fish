@@ -12,7 +12,8 @@ alias diff='colordiff'
 alias dc='docker-compose'
 alias dm='docker-machine'
 alias dms='socat tcp-listen:2376,reuseaddr,fork,bind=127.0.0.1 unix-client:/var/run/docker.sock'
-alias e='date +"%s"'
+alias e='emacs'
+alias ee='date +"%s"'
 alias ep1d="echo (e)\" + 86400\" | bc"
 alias ep2d="echo (e)\" + (86400 * 2)\" | bc"
 alias ep1m="echo (e)\" + (86400 * 30)\" | bc"
