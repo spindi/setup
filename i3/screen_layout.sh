@@ -3,6 +3,9 @@ set screen_layout (xrandr | grep ' connected ' | sed -e 's/ .*//' | tr "\n" ' ' 
 
 echo $screen_layout
 switch $screen_layout 
+  case "eDP DisplayPort-5"
+    echo "HDMI above centre - beside Ebe - Hardcore desk, P14S"
+    $HOME/.screenlayout/hdmi_above_centre_p14s_beside_ebe_hardcore_desk_dp5.sh
   case "eDP DisplayPort-4"
     echo "HDMI above centre - beside Ebe - Hardcore desk, P14S"
     $HOME/.screenlayout/hdmi_above_centre_p14s_beside_ebe_hardcore_desk.sh
