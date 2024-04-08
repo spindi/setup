@@ -27,6 +27,7 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_swap onesat
   else if string match -r "^$REPO_BASE/DamSat" $PWD 1>/dev/null
     _conda_swap damsat
+    export ALEMBIC_CONFIG="$REPO_BASE/DamSat/src/damsat/alembic.ini"
   else if string match -r "^$REPO_BASE/LibSat" $PWD 1>/dev/null
     _conda_swap libsat
   else if string match -r "^$REPO_BASE/VdSDB" $PWD 1>/dev/null
@@ -42,6 +43,8 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_swap sentinel_chaperon
   else if string match -r "^$REPO_BASE/vds_processing_monitor" $PWD 1>/dev/null
     _conda_swap vds_processing_monitor
+  else if string match -r "^$REPO_BASE/lst_quality_monitoring" $PWD 1>/dev/null
+    _conda_swap lst_quality_monitoring
   else # if string match -r "^$REPO_BASE" $PWD 1>/dev/null
     _deactivate
   end
