@@ -45,6 +45,8 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_swap vds_processing_monitor
   else if string match -r "^$REPO_BASE/lst_quality_monitoring" $PWD 1>/dev/null
     _conda_swap lst_quality_monitoring
+  else if string match -r "^$REPO_BASE/vds_io" $PWD 1>/dev/null
+    _conda_swap vds_io
   else # if string match -r "^$REPO_BASE" $PWD 1>/dev/null
     _deactivate
   end
