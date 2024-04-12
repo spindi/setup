@@ -27,6 +27,8 @@ alias em3m="echo (e)\" - (86400 * 90)\" | bc"
 alias fd="fdfind"
 alias glab_base="perl -i -pe 's/(?<=glab-resolved = base:)code\///g' .git/config" # run in base of repo
 alias gsw_main="gsw main 2>/dev/null; gsw master 2>/dev/null"
+alias geovalidate="python /home/conor.boyd/Documents/Code/geojson_validator/geovalidate.py"
+alias geofix="python /home/conor.boyd/Documents/Code/geojson_validator/geofix.py"
 set GREP_BREW_DIR (brew --prefix grep)
 if test -f $GREP_BREW_DIR/bin/grep
   alias grep=$GREP_BREW_DIR/bin/grep
