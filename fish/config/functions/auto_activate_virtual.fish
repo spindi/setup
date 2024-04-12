@@ -49,6 +49,8 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_swap lst_validation_app
   else if string match -r "^$REPO_BASE/vds_io" $PWD 1>/dev/null
     _conda_swap vds_io
+  else if string match -r "^$REPO_BASE/stac-storage" $PWD 1>/dev/null
+    source /home/conor.boyd/.cache/pypoetry/virtualenvs/stac-storage-_yzA6wEw-py3.11/bin/activate.fish
   else # if string match -r "^$REPO_BASE" $PWD 1>/dev/null
     _deactivate
   end
