@@ -10,6 +10,10 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     if set -q VIRTUAL_ENV
       deactivate
     end
+    # nodeenv
+    if set -q NODE_VIRTUAL_ENV
+      deactivate_node
+    end
   end
 
   function _conda_swap
@@ -19,6 +23,7 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
 
   if string match -r "^$REPO_BASE/pv_matcher" $PWD 1>/dev/null
     _conda_swap pv_matcher
+    export ALEMBIC_CONFIG="$REPO_BASE/pv_matcher/src/pv_matcher/db/alembic.ini"
   else if string match -r "^$REPO_BASE/vds_s1" $PWD 1>/dev/null
     _conda_swap vds_s1
   else if string match -r "^$REPO_BASE/vds_s2" $PWD 1>/dev/null
@@ -51,6 +56,8 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_swap vds_io
   else if string match -r "^$REPO_BASE/stac-storage" $PWD 1>/dev/null
     source /home/conor.boyd/.cache/pypoetry/virtualenvs/stac-storage-_yzA6wEw-py3.11/bin/activate.fish
+    # nodeenv
+    source $VIRTUAL_ENV/nodeenv/bin/activate.fish
   else # if string match -r "^$REPO_BASE" $PWD 1>/dev/null
     _deactivate
   end
