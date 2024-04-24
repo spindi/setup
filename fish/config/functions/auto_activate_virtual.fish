@@ -55,9 +55,8 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
   else if string match -r "^$REPO_BASE/vds_io" $PWD 1>/dev/null
     _conda_swap vds_io
   else if string match -r "^$REPO_BASE/stac-storage" $PWD 1>/dev/null
+    # poetry
     source /home/conor.boyd/.cache/pypoetry/virtualenvs/stac-storage-_yzA6wEw-py3.11/bin/activate.fish
-    # nodeenv
-    source $VIRTUAL_ENV/nodeenv/bin/activate.fish
   else # if string match -r "^$REPO_BASE" $PWD 1>/dev/null
     _deactivate
   end

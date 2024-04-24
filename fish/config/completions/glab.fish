@@ -1,1 +1,1 @@
-glab completion -s fish | source
+/home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d/glab.fish
