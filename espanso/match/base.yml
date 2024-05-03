@@ -1,13 +1,13 @@
 matches:
   # jira
   - trigger: ":jci" # code inline
-    replace: "{{{color:#337733} {color}}}"
+    replace: "{{{color:#337733}$|${color}}}"
   - trigger: ":jcn" # code noformat
-    replace: "{noformat:bgColor=#eeeeee}\n{noformat}"
+    replace: "{noformat:bgColor=#eeeeee}$|$\n{noformat}"
   - trigger: ":jcp" # code python
-    replace: "{code:python|bgColor=#eeeeee}\n{code}"
+    replace: "{code:python|bgColor=#eeeeee}$|$\n{code}"
   - trigger: ":jcs" # code sql
-    replace: "{code:sql|bgColor=#eeeeee}\n{code}"
+    replace: "{code:sql|bgColor=#eeeeee}$|$\n{code}"
 
   # general
   - trigger: ":tc"
