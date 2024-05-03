@@ -12,3 +12,5 @@ matches:
   # general
   - trigger: ":tc"
     replace: "Thanks,\nConor"
+  - trigger: :euro
+    replace: €
