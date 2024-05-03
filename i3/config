@@ -176,6 +176,9 @@ bindsym $mod+Print exec flameshot gui
 # screensaver prevent blank when some programs open
 exec_always --no-startup-id $HOME/.config/i3/screen_prevent_blank.sh
 
+# screen layout on startup
+exec_always --no-startup-id $HOME/.config/i3/screen_layout.sh
+
 # clipboard 
 # exec_always --no-startup-id clipcatd
 # bindsym Print exec --no-startup-id clipcat-menu
