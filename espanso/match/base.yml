@@ -1,3 +1,8 @@
+# reliability
+disable_x11_fast_inject: true
+inject_delay: 1
+key_delay: 1
+
 matches:
   # jira
   - trigger: ":jci" # code inline
