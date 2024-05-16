@@ -14,3 +14,19 @@ matches:
     replace: "Thanks,\nConor"
   - trigger: :euro
     replace: €
+
+  # time / date
+  - trigger: ":time"
+    replace: "{{h_m}}"
+    vars:
+      - name: h_m
+        type: date
+        params:
+          format: "%H%M"
+  - trigger: ":date"
+    replace: "{{y_m_d}}"
+    vars:
+      - name: y_m_d
+        type: date
+        params:
+          format: "%Y%m%d"
