@@ -11,6 +11,5 @@
 	cmd = $(brew --prefix nvim)/bin/nvim -d \"$LOCAL\" \"$REMOTE\"
 [core]
   editor = $(brew --prefix nvim)/bin/nvim
-	sshCommand = ssh -i ~/.ssh/id_ed25519_napster -F /dev/null
 [difftool]
 	prompt = false
