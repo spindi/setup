@@ -74,9 +74,11 @@ set -gx CONDA_LEFT_PROMPT 1
 # end
 # # <<< conda initialize <<<
 # # deactivate default config
-conda deactivate
-# virtual auto activator
-auto_activate_virtual
+if test (hostname) = "PF3TSGLG"
+  conda deactivate
+  # virtual auto activator
+  auto_activate_virtual
+end
 
 # set the keyboard repeat and delay
 xset r rate 350 60
