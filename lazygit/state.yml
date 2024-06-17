@@ -1,15 +1,15 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/conor.boyd/Documents/Repo/LibSat
-- /home/conor.boyd/Documents/Repo/sentinel_chaperon
-- /home/conor.boyd/Documents/Repo/sentinel_chaperon/tests/s2_test_data
-- /home/conor.boyd/Documents/Repo/DamSat
-- /home/conor.boyd/Documents/Repo/Setup
-- /home/conor.boyd/Documents/Repo/pv_matcher
-- /home/conor.boyd/Documents/Repo/VdSDB
-- /home/conor.boyd/Documents/Repo/vds_sm_nrt
+- /home/spindicator/Documents/Repo/Setup
 startuppopupversion: 5
+lastversion: 0.41.0
 customcommandshistory:
 - blame
 - git blame
 hidecommandlog: false
+ignorewhitespaceindiffview: false
+diffcontextsize: 3
+localbranchsortorder: recency
+remotebranchsortorder: alphabetical
+gitlogorder: topo-order
+gitlogshowgraph: always
