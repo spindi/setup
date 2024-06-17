@@ -1,4 +1,4 @@
-set REPO_BASE "/home/conor.boyd/Documents/Repo"
+set REPO_BASE "/home/$USER/Documents/Repo"
 
 function auto_activate_virtual --on-variable PWD --description 'Activate virtual environment'
   status --is-command-substitution; and return
@@ -41,7 +41,7 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_swap vds_sm_nrt
   else if string match -r "^$REPO_BASE/planet-grafana-cloud-users" $PWD 1>/dev/null
     _deactivate
-    source /home/conor.boyd/Documents/Repo/planet-grafana-cloud-users/venv/bin/activate.fish
+    source /home/$USER/Documents/Repo/planet-grafana-cloud-users/venv/bin/activate.fish
   else if string match -r "^$REPO_BASE/planet-grafana-cloud" $PWD 1>/dev/null
     _deactivate
   else if string match -r "^$REPO_BASE/sentinel_chaperon" $PWD 1>/dev/null
@@ -56,7 +56,7 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_swap vds_io
   else if string match -r "^$REPO_BASE/stac-storage" $PWD 1>/dev/null
     # poetry
-    source /home/conor.boyd/.cache/pypoetry/virtualenvs/stac-storage-_yzA6wEw-py3.11/bin/activate.fish
+    source /home/$USER/.cache/pypoetry/virtualenvs/stac-storage-_yzA6wEw-py3.11/bin/activate.fish
   else # if string match -r "^$REPO_BASE" $PWD 1>/dev/null
     _deactivate
   end

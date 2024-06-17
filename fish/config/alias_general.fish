@@ -27,8 +27,8 @@ alias em3m="echo (e)\" - (86400 * 90)\" | bc"
 alias fd="fdfind"
 alias glab_base="perl -i -pe 's/(?<=glab-resolved = base:)code\///g' .git/config" # run in base of repo
 alias gsw_main="gsw main 2>/dev/null; gsw master 2>/dev/null"
-alias geovalidate="python /home/conor.boyd/Documents/Code/geojson_validator/geovalidate.py"
-alias geofix="python /home/conor.boyd/Documents/Code/geojson_validator/geofix.py"
+alias geovalidate="python /home/$USER/Documents/Code/geojson_validator/geovalidate.py"
+alias geofix="python /home/$USER/Documents/Code/geojson_validator/geofix.py"
 set GREP_BREW_DIR (brew --prefix grep)
 if test -f $GREP_BREW_DIR/bin/grep
   alias grep=$GREP_BREW_DIR/bin/grep
@@ -43,7 +43,7 @@ alias l='ls'
 alias ll='ls -al'
 alias lll='find . | grep'
 alias ls='gls --color=auto --group-directories-first'
-alias mamba='/home/conor.boyd/miniforge3/bin/mamba'
+alias mamba="/home/$USER/miniforge3/bin/mamba"
 alias n='nb'
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
