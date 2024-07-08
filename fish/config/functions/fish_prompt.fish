@@ -16,7 +16,8 @@ function fish_prompt
 
   #set -l fish     "⋊>"
   #set -l fish     "▶◀▶"
-  set -l fish     "▶"
+  #set -l fish     "▶"
+  set -l fish     \ue00a # 
   set -l ahead    "↑"
   set -l behind   "↓"
   set -l diverged "⥄"
