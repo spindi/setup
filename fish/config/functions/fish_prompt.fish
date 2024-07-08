@@ -28,7 +28,8 @@ function fish_prompt
   set -l success_color    (set_color cyan)
   set -l error_color      (set_color $fish_color_error 2> /dev/null; or set_color red --bold)
   set -l directory_color  (set_color $fish_color_quote 2> /dev/null; or set_color brown)
-  set -l repository_color (set_color $fish_color_cwd 2> /dev/null; or set_color green)
+  set -l repository_color (set_color bryellow)
+  set -l branch_symbol    (echo -n -s \ue0a0)
 
   set -l prompt_string $fish
 
@@ -42,11 +43,6 @@ function fish_prompt
     echo -n -s $error_color $prompt_string $normal_color
   end
 
-  if set -q VIRTUAL_ENV
-     echo -n -s " " (set_color -b green black) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal)
-  end
-
-  echo -n -s " " $directory_color $cwd $normal_color
   if git_is_repo
     if test "$theme_short_path" = 'yes'
       set root_folder (command git rev-parse --show-toplevel 2> /dev/null)
@@ -54,7 +50,8 @@ function fish_prompt
       set cwd (echo $PWD | sed -e "s|$parent_root_folder/||")
     end
 
-    echo -n -s (set_color bryellow) " (" (git_branch_name) ")" $normal_color
+    echo -n -s " " $directory_color $cwd $normal_color
+    echo -n -s " " $repository_color $branch_symbol " " (git_branch_name) $normal_color " "
 
     set -l list
     if test "$theme_stash_indicator" = yes; and git_is_stashed
@@ -63,15 +60,13 @@ function fish_prompt
     if git_is_touched
       set list $list $dirty
     end
+    echo -n $list
 
     if test -z "$list"
-      set -l git_ahead_string (git_ahead $ahead $behind $diverged $none)
-      if test -n "$git_ahead_string"
-        echo -n -s " " $git_ahead_string
-      end
-    else
-      echo -n -s " " $list
+      echo -n -s (git_ahead $ahead $behind $diverged $none)
     end
+  else
+    echo -n -s " " $directory_color $cwd $normal_color
   end
 
   echo
