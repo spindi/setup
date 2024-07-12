@@ -36,7 +36,7 @@ function fish_prompt
   set -l error_color      (set_color $fish_color_error 2> /dev/null; or set_color red --bold)
   set -l directory_color  (set_color $fish_color_quote 2> /dev/null; or set_color brown)
   set -l repository_color (set_color bryellow)
-  set -l branch_symbol    (echo -n -s \ue0a0)
+  set -l branch_symbol    \ue0a0 # 
 
   set -l prompt_string $fish
 
