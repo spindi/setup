@@ -18,18 +18,12 @@ function fish_prompt
   #set -l fish     "▶◀▶"
   #set -l fish     "▶"
   set -l fish     \ue00a # 
-  #set -l ahead    "↑"
-  #set -l behind   "↓"
-  #set -l diverged "⥄"
-  #set -l dirty    "⨯"
-  #set -l stash    "≡"
-  #set -l none     "◦"
-  set -l ahead    "ahead"
-  set -l behind   "behind"
-  set -l diverged "diverged"
+  set -l ahead    \uf0a6 # 
+  set -l behind   \uf0a7 # 
+  set -l diverged \uf25b # 
   set -l dirty    \uf2fe # 
-  set -l stash    "stash"
-  set -l none     ""
+  set -l stash    \uf02d # 
+  set -l none     \uef88 # 
 
   set -l normal_color     (set_color normal)
   set -l success_color    (set_color cyan)
