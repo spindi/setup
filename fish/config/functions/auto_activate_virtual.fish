@@ -60,6 +60,10 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_swap vds_backend_security
   else if string match -r "^$REPO_BASE/vds_smap" $PWD 1>/dev/null
     _conda_swap vds_smap
+  else if string match -r "^$REPO_BASE/vds_amsr" $PWD 1>/dev/null
+    _conda_swap vds_amsr
+  else if string match -r "^$REPO_BASE/vds_gmi" $PWD 1>/dev/null
+    _conda_swap vds_gmi
   else if string match -r "^$REPO_BASE/vds_base_cli" $PWD 1>/dev/null
     _conda_swap vds_base_cli
   else if string match -r "^$REPO_BASE/stac-storage" $PWD 1>/dev/null
