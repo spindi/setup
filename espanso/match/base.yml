@@ -1,7 +1,7 @@
 # reliability
-disable_x11_fast_inject: true
-inject_delay: 1
-key_delay: 1
+disable_x11_fast_inject: false
+inject_delay: 5
+key_delay: 5
 
 matches:
   # jira
@@ -19,8 +19,10 @@ matches:
     replace: "Thanks,\nConor"
   - trigger: :euro
     replace: €
+  - trigger: :delta
+    replace: Δ
 
-  # time / date
+  # time
   - trigger: ":time"
     replace: "{{h_m}}"
     vars:
@@ -28,6 +30,22 @@ matches:
         type: date
         params:
           format: "%H%M"
+  - trigger: ":-time"
+    replace: "{{h_m}}"
+    vars:
+      - name: h_m
+        type: date
+        params:
+          format: "%H-%M"
+  - trigger: ":_time"
+    replace: "{{h_m}}"
+    vars:
+      - name: h_m
+        type: date
+        params:
+          format: "%H_%M"
+
+  # date
   - trigger: ":date"
     replace: "{{y_m_d}}"
     vars:
@@ -35,3 +53,17 @@ matches:
         type: date
         params:
           format: "%Y%m%d"
+  - trigger: ":-date"
+    replace: "{{y_m_d}}"
+    vars:
+      - name: y_m_d
+        type: date
+        params:
+          format: "%Y-%m-%d"
+  - trigger: ":_date"
+    replace: "{{y_m_d}}"
+    vars:
+      - name: y_m_d
+        type: date
+        params:
+          format: "%Y_%m_%d"
