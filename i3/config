@@ -93,6 +93,7 @@ for_window [class="zoom" title="Zoom - Licensed account"] floating disable
 for_window [class="Windscribe"] floating enable
 for_window [class="XCalc"] floating enable
 for_window [class="gnome-calculator"] floating enable
+for_window [class="Protonvpn-app"] floating enable
 
 # change focus
 bindsym $mod+j focus left
@@ -218,11 +219,11 @@ mode "RESIZE" {
 
 bindsym $mod+r mode "RESIZE"
 
-# capslock indication
-mode "CAPSLOCK" {
-  bindsym Caps_Lock mode "default"
-}
-bindsym Caps_Lock mode "CAPSLOCK"
+# # capslock indication
+# mode "CAPSLOCK" {
+#   bindsym Caps_Lock mode "default"
+# }
+# bindsym Caps_Lock mode "CAPSLOCK"
 
 # shutdown / restart / suspend...
 set $mode_system SYSTEM (l) Lock, (e) Logout, (s) Suspend, (r) Reboot, (CTRL+s) Shutdown
