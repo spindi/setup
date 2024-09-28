@@ -17,6 +17,8 @@ matches:
   # general
   - trigger: ":tc"
     replace: "Thanks,\nConor"
+  - trigger: :pound
+    replace: £
   - trigger: :euro
     replace: €
   - trigger: :delta
