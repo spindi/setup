@@ -8,3 +8,4 @@ qutebrowser/catppuccin
 lazygit/state.yml
 nvim/lazy-lock.json
 nvim/lazyvim.json
+fish/config/fish_variables
