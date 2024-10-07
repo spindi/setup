@@ -92,3 +92,6 @@ xinput set-prop "Apple Inc. Magic Trackpad 2" "libinput Accel Speed" 0 1>/dev/nu
 
 # set the dircolors env LS_COLORS
 source $HOME/Documents/Repo/Setup/dircolors/dircolors.256dark.encoded.fish
+
+# auto virtual env
+source $HOME/.config/fish/functions/auto_activate_virtual.fish
