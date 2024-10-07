@@ -87,6 +87,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -combi-modi drun,run,window -show combi -icon-theme 'Papirus' -show-icons"
 
 # force floating
+# check with `xprop`
 for_window [class="zoom"] floating enable
 for_window [class="zoom" title="Zoom - Licensed account"] floating disable
 # for_window [class="zoom" title="Zoom Meeting"] floating disable
@@ -94,6 +95,7 @@ for_window [class="Windscribe"] floating enable
 for_window [class="XCalc"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="Protonvpn-app"] floating enable
+for_window [title="Bitwarden - Vivaldi"] floating enable
 
 # change focus
 bindsym $mod+j focus left
