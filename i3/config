@@ -183,7 +183,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Print exec flameshot gui
 
 # screensaver prevent blank when some programs open
-exec_always --no-startup-id $HOME/.config/i3/screen_prevent_blank.sh
+# exec_always --no-startup-id $HOME/.config/i3/screen_prevent_blank.sh
+exec_always --no-startup-id xset s off -dpms
 
 # screen layout on startup
 exec_always --no-startup-id $HOME/.config/i3/screen_layout.sh
