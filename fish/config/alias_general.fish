@@ -38,11 +38,11 @@ end
 alias h='history'
 alias hs='numfmt --to=iec-i --suffix=B --format="%.3f"' # human size output
 alias ktl='kubectl'
-alias ld='lazydocker'
-alias lg='lazygit'
 alias l='ls'
 alias ll='ls -al'
 alias lll='find . | grep'
+alias lzd='lazydocker'
+alias lzg='lazygit'
 alias ls='gls --color=auto --group-directories-first'
 alias mamba="/home/$USER/miniforge3/bin/mamba"
 alias n='nb'
