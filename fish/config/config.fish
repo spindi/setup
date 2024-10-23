@@ -27,7 +27,7 @@ set -gx GIT_EDITOR $VISUAL
 set -gx BROWSER "explorer.exe" # Uses default browser
 set -gx XDG_DATA_DIRS /var/lib/flatpak/exports/share:$XDG_DATA_DIRS
 set -gx XDG_DATA_DIRS $HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS
-set -gx VIRTUAL_ENV_DISABLE_PROMPT 1 # stop poetry adding in the prompt twice
+# set -gx VIRTUAL_ENV_DISABLE_PROMPT 1 # stop poetry adding in the prompt twice
 set -gx GOOGLE_APPLICATION_CREDENTIALS $HOME/.config/gcloud/application_default_credentials.json
 
 # kubectl package manager
@@ -54,20 +54,20 @@ if test (pwd | tr '[:upper:]' '[:lower:]') = '/mnt/c/windows/system32'
     cd ~/
 end
 
-# pyenv
-# https://gist.github.com/entropiae/326611addf6662d1d8fbf5792ab9a770
-# sudo apt-get update; sudo apt-get install --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-set -gx PYENV_VIRTUALENV_DISABLE_PROMPT 1
-set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
-set -gx PYENV_ROOT $HOME/.pyenv
-set -gx PATH $PYENV_ROOT/bin $PATH
-set -gx CONFIGURE_OPTS "-with-openssl="(brew --prefix openssl)
-if command -v pyenv 1>/dev/null 2>&1
-  pyenv init - | source
-end
-pyenv init - | source
-pyenv virtualenv-init - | source
-pyenv shell 3.11 # default python to use in shell
+## pyenv
+## https://gist.github.com/entropiae/326611addf6662d1d8fbf5792ab9a770
+## sudo apt-get update; sudo apt-get install --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+#set -gx PYENV_VIRTUALENV_DISABLE_PROMPT 1
+#set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
+#set -gx PYENV_ROOT $HOME/.pyenv
+#set -gx PATH $PYENV_ROOT/bin $PATH
+#set -gx CONFIGURE_OPTS "-with-openssl="(brew --prefix openssl)
+#if command -v pyenv 1>/dev/null 2>&1
+#  pyenv init - | source
+#end
+#pyenv init - | source
+#pyenv virtualenv-init - | source
+#pyenv shell 3.11 # default python to use in shell
 
 # conda
 set -gx CONDA_LEFT_PROMPT 1
@@ -80,8 +80,8 @@ set -gx CONDA_LEFT_PROMPT 1
 # # deactivate default config
 if test (hostname) = "PF3TSGLG"
   conda deactivate
-  # virtual auto activator
-  auto_activate_virtual
+  ## virtual auto activator
+  #auto_activate_virtual
 end
 
 # set the keyboard repeat and delay
@@ -91,7 +91,9 @@ xset r rate 350 60
 xinput set-prop "Apple Inc. Magic Trackpad 2" "libinput Accel Speed" 0 1>/dev/null 2>&1
 
 # set the dircolors env LS_COLORS
-source $HOME/Documents/Repo/Setup/dircolors/dircolors.256dark.encoded.fish
+if test (hostname) = "PF3TSGLG"
+  source $HOME/Documents/Repo/Setup/dircolors/dircolors.256dark.encoded.fish
+end
 
 # auto virtual env
 source $HOME/.config/fish/functions/auto_activate_virtual.fish
