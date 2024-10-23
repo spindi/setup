@@ -68,9 +68,14 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_swap vds_base_cli
   else if string match -r "^$REPO_BASE/pv_stac" $PWD 1>/dev/null
     _conda_swap pv_stac
-  else if string match -r "^$REPO_BASE/stac-storage" $PWD 1>/dev/null
-    # poetry
-    source /home/$USER/.cache/pypoetry/virtualenvs/stac-storage-_yzA6wEw-py3.11/bin/activate.fish
+  else if string match -r "^$REPO_BASE/pv_stac" $PWD 1>/dev/null
+    _conda_swap pv_stac
+  else if string match -r "^$REPO_BASE/delta-vessel-detection" $PWD 1>/dev/null
+    _deactivate
+    source $REPO_BASE/delta-vessel-detection/.venv/bin/activate.fish
+  #else if string match -r "^$REPO_BASE/stac-storage" $PWD 1>/dev/null
+  #  # poetry
+  #  source /home/$USER/.cache/pypoetry/virtualenvs/stac-storage-_yzA6wEw-py3.11/bin/activate.fish
   else if string match -r "^$REPO_BASE/Trading" $PWD 1>/dev/null
     _deactivate
     source $REPO_BASE/Trading/.venv/bin/activate.fish
