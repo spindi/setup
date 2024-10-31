@@ -79,6 +79,9 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
   else if string match -r "^$REPO_BASE/Trading" $PWD 1>/dev/null
     _deactivate
     source $REPO_BASE/Trading/.venv/bin/activate.fish
+  else if string match -r "^$REPO_BASE/Temporal" $PWD 1>/dev/null
+    _deactivate
+    source $REPO_BASE/Temporal/.venv/bin/activate.fish
   else # if string match -r "^$REPO_BASE" $PWD 1>/dev/null
     _deactivate
   end
