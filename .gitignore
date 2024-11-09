@@ -1,13 +1,11 @@
-solarized
-screen/exchange
 block/block_file.txt
 charles/block_file_for_charles.xml 
 fish/config/fish_variables
 lazygit/state.yml
-qutebrowser/catppuccin
-lazygit/state.yml
 nvim/lazy-lock.json
 nvim/lazyvim.json
-fish/config/fish_variables
-lazygit/state.yml
 qutebrowser/catppuccin
+screen/exchange
+solarized
+nvim/lazyvim.json
+nvim/lazy-lock.json
