@@ -17,4 +17,4 @@ settings:
     global:
       DEFAULT: https://search.brave.com/search?q={}
   url.start_pages:
-    global: https://search.brave.com/search?q=news
+    global: https://search.brave.com/news?q=news
