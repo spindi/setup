@@ -18,9 +18,9 @@ set $mod Mod4
 # font pango:monospace 12
 
 # font
-font pango:Menslo Mono 10
+font pango:FiraCode Nerd Font 11
 # for 4k monitors
-# font pango:Menslo Mono 12
+# font pango:FiraCode Nerd Font 13
 # gtk font settings in ~/.config/gtk-3.0
 
 # background

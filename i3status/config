@@ -18,27 +18,30 @@ order += "load"
 order += "tztime local"
 
 wireless _first_ {
-  format_up = "W: %ip [%essid%quality]@%bitrate"
-  format_down = "W: down"
+  format_up = "󰖩 %ip [%essid%quality]@%bitrate"
+  format_down = "󱚵 "
 }
 
 ethernet enx8cec4b0a9e87 {
-  format_up = "ETH: %ip %speed"
+  format_up = "󰈀 %ip %speed"
   format_down = ""
 }
 
 ethernet enp5s0 {
-  format_up = "ETH: %ip %speed"
+  format_up = "󰈀 %ip %speed"
   format_down = ""
 }
 
 ethernet enp2s0f0 {
-  format_up = "ETH: %ip %speed"
+  format_up = "󰈀 %ip %speed"
   format_down = ""
 }
 
 battery 0 {
-  format = "%status %percentage %remaining>%emptytime"
+  last_full_capacity = true
+  integer_battery_capacity = true
+
+  format = "%status %percentage %remaining 󰁕 %emptytime"
   format_down = "No battery"
   status_chr = "CHR "
   status_bat = "BAT 🗲"
@@ -46,6 +49,7 @@ battery 0 {
   status_full = "FULL ☻"
   path = "/sys/class/power_supply/BAT%d/uevent"
   low_threshold = 20
+  threshold_type = percentage
 }
 
 volume master {
@@ -57,21 +61,21 @@ volume master {
   mixer_idx = 0
 }
 
-tztime local {
-  format = "%A %Y-%m-%d %H:%M:%S"
-  # hide_if_equals_localtime = true
-}
-
-load {
-  format = "L: %5min"
-}
-
 memory {
-  format = "M: %used"
+  format = "󰍛 %used"
   threshold_degraded = "10%"
   format_degraded = "M: %free"
 }
 
 disk "/" {
-  format = "D: %free"
+  format = " %free"
+}
+
+load {
+  format = "󰄧 %5min"
+}
+
+tztime local {
+  format = "%A %Y-%m-%d %H:%M:%S"
+  # hide_if_equals_localtime = true
 }
