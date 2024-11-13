@@ -53,8 +53,8 @@ battery 0 {
 }
 
 volume master {
-  # format = “♪: %volume”
-  # format_muted = “♪: muted (%volume)”
+  format = "  %volume"
+  format_muted = " %volume"
   device = "default"
   # device = "pulse"
   mixer = "Master"
@@ -64,7 +64,7 @@ volume master {
 memory {
   format = "󰍛 %used"
   threshold_degraded = "10%"
-  format_degraded = "M: %free"
+  format_degraded = "󰍛 %free"
 }
 
 disk "/" {
