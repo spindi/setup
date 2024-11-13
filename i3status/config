@@ -38,7 +38,10 @@ ethernet enp2s0f0 {
 }
 
 battery 0 {
-  format = "%status %percentage %remaining>%emptytime"
+  last_full_capacity = true
+  integer_battery_capacity = true
+
+  format = "%status %percentage %remaining 󰁕 %emptytime"
   format_down = "No battery"
   status_chr = "CHR "
   status_bat = "BAT 🗲"
@@ -46,6 +49,7 @@ battery 0 {
   status_full = "FULL ☻"
   path = "/sys/class/power_supply/BAT%d/uevent"
   low_threshold = 20
+  threshold_type = percentage
 }
 
 volume master {
@@ -63,15 +67,15 @@ tztime local {
 }
 
 load {
-  format = "L: %5min"
+  format = "󰄧 %5min"
 }
 
 memory {
-  format = "M: %used"
+  format = "  %used"
   threshold_degraded = "10%"
   format_degraded = "M: %free"
 }
 
 disk "/" {
-  format = "D: %free"
+  format = " %free"
 }
