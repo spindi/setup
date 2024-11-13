@@ -61,15 +61,6 @@ volume master {
   mixer_idx = 0
 }
 
-tztime local {
-  format = "%A %Y-%m-%d %H:%M:%S"
-  # hide_if_equals_localtime = true
-}
-
-load {
-  format = "󰄧 %5min"
-}
-
 memory {
   format = "󰍛 %used"
   threshold_degraded = "10%"
@@ -78,4 +69,13 @@ memory {
 
 disk "/" {
   format = " %free"
+}
+
+load {
+  format = "󰄧 %5min"
+}
+
+tztime local {
+  format = "%A %Y-%m-%d %H:%M:%S"
+  # hide_if_equals_localtime = true
 }
