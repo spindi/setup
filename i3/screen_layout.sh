@@ -15,6 +15,9 @@ switch $screen_layout
   case "eDP HDMI-A-0"
     echo "HDMI above centre, P14S"
     $HOME/.screenlayout/hdmi_above_centre_p14s.sh
+  case "eDP DisplayPort-0"
+    echo "HDMI above centre, P14S"
+    $HOME/.screenlayout/displayport_above_centre_p14s.sh
   case "eDP"
     echo "Laptop screen only, P14S"
     $HOME/.screenlayout/laptop_screen_only_p14s.sh
