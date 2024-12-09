@@ -68,8 +68,6 @@ function auto_activate_virtual --on-variable PWD --description 'Activate virtual
     _conda_swap vds_base_cli
   else if string match -r "^$REPO_BASE/pv_stac" $PWD 1>/dev/null
     _conda_swap pv_stac
-  else if string match -r "^$REPO_BASE/pv_stac" $PWD 1>/dev/null
-    _conda_swap pv_stac
   else if string match -r "^$REPO_BASE/delta-vessel-detection" $PWD 1>/dev/null
     _deactivate
     source $REPO_BASE/delta-vessel-detection/.venv/bin/activate.fish
