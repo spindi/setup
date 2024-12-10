@@ -72,14 +72,6 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec kitty
 
-# applications
-bindsym $mod+Ctrl+a exec pavucontrol # audio
-bindsym $mod+Ctrl+f exec firefox # browser
-bindsym $mod+Ctrl+l exec logseq # note
-bindsym $mod+Ctrl+n exec nautilus # file
-bindsym $mod+Ctrl+q exec qutebrowser # browser
-bindsym $mod+Ctrl+s exec /snap/slack/current/usr/bin/slack # message
-
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -102,6 +94,8 @@ bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
+bindsym $mod+Tab focus right
+bindsym $mod+Shift+Tab focus left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
