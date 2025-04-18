@@ -7,7 +7,7 @@
                         "description": "Paste tool. Change right Command to Option+Command+V",
                         "manipulators": [
                             {
-                                "from": { "key_code": "right_option" },
+                                "from": { "key_code": "right_command" },
                                 "to": [
                                     {
                                         "key_code": "v",
@@ -20,17 +20,6 @@
                     }
                 ]
             },
-            "devices": [
-                {
-                    "identifiers": { "is_keyboard": true },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "non_us_backslash" },
-                            "to": [{ "key_code": "grave_accent_and_tilde" }]
-                        }
-                    ]
-                }
-            ],
             "name": "Default profile",
             "selected": true,
             "simple_modifications": [
@@ -39,7 +28,7 @@
                     "to": [{ "key_code": "grave_accent_and_tilde" }]
                 }
             ],
-            "virtual_hid_keyboard": { "keyboard_type_v2": "iso" }
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
     ]
 }
