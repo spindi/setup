@@ -32,6 +32,7 @@
 ### Segment drawing
 # A few utility functions to make it easy and re-usable to draw segmented prompts
 
+# CUSTOM
 AGNOSTER_DIR_BG="36"
 
 CURRENT_BG='NONE'
@@ -62,8 +63,8 @@ esac
 # Git related
 : ${AGNOSTER_GIT_CLEAN_FG:=${CURRENT_FG}}
 : ${AGNOSTER_GIT_CLEAN_BG:=green}
-: ${AGNOSTER_GIT_DIRTY_FG:=black}
-: ${AGNOSTER_GIT_DIRTY_BG:=yellow}
+: ${AGNOSTER_GIT_DIRTY_FG:=white} # CUSTOME
+: ${AGNOSTER_GIT_DIRTY_BG:=red} # CUSTOME
 
 # Bazaar related
 : ${AGNOSTER_BZR_CLEAN_FG:=${CURRENT_FG}}
