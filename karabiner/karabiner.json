@@ -4,7 +4,25 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Paste tool. Change right Command to Option+Command+V",
+                        "description": "Peek def VSCode. Allow media controls. One handed unlike Fn+Option+F12 key",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f12",
+                                    "modifiers": { "mandatory": ["right_command"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f12",
+                                        "modifiers": ["fn", "option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Paste tool. Change right Option to Option+Command+V",
                         "manipulators": [
                             {
                                 "from": { "key_code": "right_option" },
