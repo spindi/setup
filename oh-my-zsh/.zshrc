@@ -153,3 +153,6 @@ export HARAMBE_ROOT="$HOME/Documents/Repo/partnerize"
 
 # virtual enable / disable
 source ~/Documents/Repo/setup/oh-my-zsh/chpwd_virtual.sh
+
+# partnerize specific
+source ~/.partnerize
