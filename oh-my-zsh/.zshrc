@@ -73,7 +73,7 @@ ZSH_THEME="powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew fzf git python z brew zsh-autosuggestions fast-syntax-highlighting zsh-history-substring-search)
+plugins=(brew fzf git python z brew zsh-autosuggestions fast-syntax-highlighting zsh-history-substring-search web-search)
 
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
