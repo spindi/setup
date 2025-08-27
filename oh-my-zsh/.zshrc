@@ -115,12 +115,12 @@ alias vi=nvim
 alias vf='vi "$(fzf)"'
 
 # using gnu ls for LS_COLORS compatible ls
-alias ls="gls --color"
-alias ll="gls -l --color"
-alias lll="find . | grep"
+alias ls="eza --time-style long-iso"
+alias ll="eza --time-style long-iso -l"
+alias lll="fd . | grep"
 alias lz="lazygit"
 alias lzd="lazydocker"
-alias t="tree"
+alias t="eza -T"
 export LS_COLORS="$(vivid generate ayu)"
 
 # editor
