@@ -115,8 +115,8 @@ alias vi=nvim
 alias vf='vi "$(fzf)"'
 
 # using gnu ls for LS_COLORS compatible ls
-alias ls="eza --time-style long-iso"
-alias ll="eza --time-style long-iso -l"
+alias ls="eza --no-user --time-style long-iso"
+alias ll="eza --no-user --time-style long-iso -l"
 alias lll="fd . | grep"
 alias lz="lazygit"
 alias lzd="lazydocker"
