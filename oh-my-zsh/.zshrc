@@ -121,6 +121,7 @@ alias lll="fd . | grep"
 alias lz="lazygit"
 alias lzd="lazydocker"
 alias t="eza -T"
+alias top="btop"
 export LS_COLORS="$(vivid generate ayu)"
 
 # editor
