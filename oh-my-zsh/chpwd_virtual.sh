@@ -8,7 +8,7 @@ function chpwd() {
   if [[ $PWD == *"$BASE"* && $PWD != $BASE ]];
   then
     # dir specific actions
-    if [[ $DIR =~ "^(pz-tracking-cache-binlog|pz-tracking-data-generator|pz-tracking|graphql-strawberry|graphql-strawberry-django|pz-trackman|alpaca)$" ]]; 
+    if [[ $DIR =~ "^(pz-tracking-cache-binlog|pz-tracking-data-generator|pz-tracking|graphql-strawberry|graphql-strawberry-django|pz-trackman|alpaca|pz-druid-indexer|pz-druid-consumer)$" ]]; 
     then
       source "${BASE}/${DIR}/.venv/bin/activate"
     fi

@@ -110,6 +110,8 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/opt/homebrew/bin:$HOME/go/bin:$HOME/.local/bin:$PATH
 export XDG_CONFIG_HOME=/Users/conor.boyd/.config
 
+alias h="history"
+
 alias v="nvim --clean"
 alias vi=nvim
 alias vf='vi "$(fzf)"'
