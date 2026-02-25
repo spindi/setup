@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 BASE="/Users/conor.boyd/Documents/Repo"
-VALID_DIRS=(pz-message pz-impression-processor pz-tracking-cache-binlog pz-tracking-data-generator pz-tracking graphql-strawberry graphql-strawberry-django pz-trackman alpaca pz-druid-indexer pz-druid-consumer)
+VALID_DIRS=(pz-uar-django-test pz-uar pz-vantagepoint pz-consumer pz-tracking-partitioning-consumer pz-tracking-consumer pz-message pz-impression-processor pz-tracking-cache-binlog pz-tracking-data-generator pz-tracking graphql-strawberry graphql-strawberry-django pz-trackman alpaca pz-druid-indexer pz-druid-consumer)
 
 function chpwd() {
   PWD=$(pwd)
