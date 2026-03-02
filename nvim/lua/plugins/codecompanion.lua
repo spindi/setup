@@ -25,6 +25,19 @@ return {
         })
       end,
     },
+    display = {
+      action_palette = {
+        width = 95,
+        height = 10,
+        prompt = "Prompt ",
+        provider = "default",
+        opts = {
+          show_preset_actions = true,
+          show_preset_prompts = true,
+          title = "CodeCompanion actions",
+        },
+      },
+    },
     strategies = {
       cmd = {
         adapter = "ollama",
@@ -42,4 +55,8 @@ return {
       },
     },
   },
+  keys = {
+    { "<leader>a", nil, desc = "ai" },
+    { "<leader>aa","<cmd>CodeCompanionChat<cr>", desc = "Chat", mode = { "n","v" }},
+    { "<leader>ac","<cmd>CodeCompanionActions<cr>", desc = "Actions", mode = { "n","v" } }},
 }
