@@ -1,0 +1,26 @@
+theme = dark:TokyoNight Night, light:TokyoNight Day
+
+# override
+background = 090909
+font-family = FiraCode Nerd Font Mono
+unfocused-split-opacity = 0.85
+unfocused-split-fill = 343434
+
+# cursor
+cursor-style = block
+cursor-style-blink = true
+shell-integration-features = no-cursor
+cursor-color = ff00ff
+cursor-text = ffffff
+
+# keybinds
+keybind = cmd+[=goto_split:left
+keybind = cmd+]=goto_split:right
+
+keybind = cmd+left=previous_tab
+keybind = cmd+right=next_tab
+
+keybind = cmd+shift+up=new_split:up
+keybind = cmd+shift+down=new_split:down
+keybind = cmd+shift+left=new_split:left
+keybind = cmd+shift+right=new_split:right
