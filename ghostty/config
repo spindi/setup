@@ -20,6 +20,7 @@ keybind = cmd+]=goto_split:right
 keybind = cmd+left=previous_tab
 keybind = cmd+right=next_tab
 
+# cmd + shift + enter = split zoom
 keybind = cmd+shift+up=new_split:up
 keybind = cmd+shift+down=new_split:down
 keybind = cmd+shift+left=new_split:left
