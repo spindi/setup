@@ -10,8 +10,7 @@ fi
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="agnoster-spindi"
-# ZSH_THEME="agnoster-spindi"
-ZSH_THEME="powerlevel10k"
+ZSH_THEME="powerlevel10k" # set by `omz`
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -159,3 +158,10 @@ source ~/Documents/Repo/setup/oh-my-zsh/chpwd_virtual.sh
 
 # partnerize specific
 source ~/.partnerize
+
+# histroy control, no dups
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_REDUCE_BLANKS
