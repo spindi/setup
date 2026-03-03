@@ -5,7 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "hrsh7th/nvim-cmp", -- Optional: for autocompletion
-    -- "nvim-telescope/telescope.nvim", -- Optional: for telescope
+    "nvim-telescope/telescope.nvim", -- Optional: for telescope
   },
 
   opts = {
@@ -57,6 +57,6 @@ return {
   },
   keys = {
     { "<leader>a", nil, desc = "ai" },
-    { "<leader>aa","<cmd>CodeCompanionChat<cr>", desc = "Chat", mode = { "n","v" }},
-    { "<leader>ac","<cmd>CodeCompanionActions<cr>", desc = "Actions", mode = { "n","v" } }},
+    { "<leader>aa","<cmd>CodeCompanionActions<cr>", desc = "Actions", mode = { "n","v" }},
+    { "<leader>ac","<cmd>CodeCompanionChat<cr>", desc = "Chat", mode = { "n","v" } }},
 }

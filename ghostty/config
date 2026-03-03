@@ -4,7 +4,7 @@ theme = dark:TokyoNight Night, light:TokyoNight Day
 background = 090909
 font-family = FiraCode Nerd Font Mono
 unfocused-split-opacity = 0.85
-unfocused-split-fill = 343434
+unfocused-split-fill = 676767
 
 # cursor
 cursor-style = block
