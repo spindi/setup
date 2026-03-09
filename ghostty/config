@@ -5,6 +5,8 @@ background = 090909
 font-family = FiraCode Nerd Font Mono
 unfocused-split-opacity = 0.85
 unfocused-split-fill = 676767
+split-divider-color = 555555
+link-url = true
 
 # cursor
 cursor-style = block
