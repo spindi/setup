@@ -3,6 +3,8 @@
 This project uses **uv** as its Python package and project manager.[web:2][web:8]
 Always use `uv` (not `pip`, `poetry`, or `conda`) for installing dependencies, running commands, and managing virtual environments.[web:2][web:6][web:15]
 
+Details of the setup can be found in the `pyproject.toml` file.
+
 ## How to set up
 
 - Ensure `uv` is installed (see installation instructions in the official docs).[web:2]

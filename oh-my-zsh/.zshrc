@@ -165,3 +165,13 @@ export SAVEHIST=1000000
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 setopt HIST_REDUCE_BLANKS
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/conor.boyd/.lmstudio/bin"
+# End of LM Studio CLI section
+
+# trigger pwd for virtual envs
+cd .
+
+# open files
+ulimit -n 10240

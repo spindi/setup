@@ -16,7 +16,7 @@ return {
         return require("codecompanion.adapters").extend("ollama", {
           schema = {
             model = {
-              default = "mistral:latest", -- default model
+              default = "qwen3:8b", -- default model
             },
             env = {
               url = "http://localhost:11434", -- hostname
@@ -34,24 +34,24 @@ return {
         opts = {
           show_preset_actions = true,
           show_preset_prompts = true,
-          title = "CodeCompanion actions",
+          title = "CodeCompanion Actions",
         },
       },
     },
     strategies = {
       cmd = {
         adapter = "ollama",
-        model = "mistral:latest",
+        model = "qwen3:8b",
       },
 
       chat = {
         adapter = "ollama",
-        model = "mistral:latest",
+        model = "qwen3:8b",
       },
 
       inline = {
         adapter = "ollama",
-        model = "mistral:latest",
+        model = "qwen3:8b",
       },
     },
   },
