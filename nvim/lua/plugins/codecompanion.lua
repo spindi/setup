@@ -10,7 +10,6 @@ return {
 
   opts = {
     completers = { "codecompanion.nvim" },
-
     adapters = {
       ollama = function()
         return require("codecompanion.adapters").extend("ollama", {
@@ -19,7 +18,7 @@ return {
               default = "qwen3:8b", -- default model
             },
             env = {
-              url = "http://localhost:11434", -- hostname
+              url = "http://localhost:11434/v1", -- hostname
             },
           },
         })
@@ -54,9 +53,18 @@ return {
         model = "qwen3:8b",
       },
     },
+    mcp = {
+      servers = {
+        ["docker-mcp"] = {
+          cmd = { "docker", "run", "-i", "--rm", "mcp/mcp-python-refactoring" },
+        },
+      },
+    },
   },
   keys = {
     { "<leader>a", nil, desc = "ai" },
-    { "<leader>aa","<cmd>CodeCompanionActions<cr>", desc = "Actions", mode = { "n","v" }},
-    { "<leader>ac","<cmd>CodeCompanionChat<cr>", desc = "Chat", mode = { "n","v" } }},
+    { "<leader>aa", "<cmd>CodeCompanionActions<cr>", desc = "Actions", mode = { "n", "v" } },
+    { "<leader>ai", "<cmd>CodeCompanion<cr>", desc = "Inline", mode = { "n", "v" } },
+    { "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Chat", mode = { "n", "v" } },
+  },
 }
