@@ -61,10 +61,10 @@ return {
       },
     },
   },
-  keys = {
-    { "<leader>a", nil, desc = "ai" },
-    { "<leader>aa", "<cmd>CodeCompanionActions<cr>", desc = "Actions", mode = { "n", "v" } },
-    { "<leader>ai", "<cmd>CodeCompanion<cr>", desc = "Inline", mode = { "n", "v" } },
-    { "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Chat", mode = { "n", "v" } },
-  },
+  -- keys = {
+  --   { "<leader>a", nil, desc = "ai" },
+  --   { "<leader>aa", "<cmd>CodeCompanionActions<cr>", desc = "Actions", mode = { "n", "v" } },
+  --   { "<leader>ai", "<cmd>CodeCompanion<cr>", desc = "Inline", mode = { "n", "v" } },
+  --   { "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Chat", mode = { "n", "v" } },
+  -- },
 }
