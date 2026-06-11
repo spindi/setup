@@ -150,6 +150,10 @@ compinit
 
 export HARAMBE_ROOT="$HOME/Documents/Repo/partnerize"
 
+# Gitlab completions
+# source <(glab completion -s zsh); compdef _glab glab # p10k did not like the output
+source <(glab completion -s zsh 1>/dev/null 2>&1); compdef _glab glab
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
