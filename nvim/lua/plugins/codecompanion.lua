@@ -15,7 +15,7 @@ return {
         return require("codecompanion.adapters").extend("ollama", {
           schema = {
             model = {
-              default = "qwen3:8b", -- default model
+              default = "qwen2.5-coder:1.5b", -- default model
             },
             env = {
               url = "http://localhost:11434/v1", -- hostname
@@ -40,17 +40,15 @@ return {
     strategies = {
       cmd = {
         adapter = "ollama",
-        model = "qwen3:8b",
+        model = "qwen2.5-coder:1.5b",
       },
-
       chat = {
         adapter = "ollama",
-        model = "qwen3:8b",
+        model = "qwen2.5-coder:1.5b",
       },
-
       inline = {
         adapter = "ollama",
-        model = "qwen3:8b",
+        model = "qwen2.5-coder:1.5b",
       },
     },
     mcp = {
@@ -63,8 +61,8 @@ return {
   },
   -- keys = {
   --   { "<leader>a", nil, desc = "ai" },
-  --   { "<leader>aa", "<cmd>CodeCompanionActions<cr>", desc = "Actions", mode = { "n", "v" } },
-  --   { "<leader>ai", "<cmd>CodeCompanion<cr>", desc = "Inline", mode = { "n", "v" } },
-  --   { "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Chat", mode = { "n", "v" } },
+  --   { "<leader>ax", "<cmd>CodeCompanionActions<cr>", desc = "CC Actions", mode = { "n", "v" } },
+  --   { "<leader>ay", "<cmd>CodeCompanion<cr>", desc = "CC Inline", mode = { "n", "v" } },
+  --   { "<leader>az", "<cmd>CodeCompanionChat Toggle<cr>", desc = "CC Chat", mode = { "n", "v" } },
   -- },
 }
