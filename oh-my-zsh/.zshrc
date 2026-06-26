@@ -123,6 +123,7 @@ alias lz="lazygit"
 alias lzd="lazydocker"
 alias t="eza -T"
 alias top="btop"
+alias claude="DEBUG=0 claude"
 export LS_COLORS="$(vivid generate ayu)"
 
 # editor
