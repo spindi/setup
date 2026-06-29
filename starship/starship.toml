@@ -1,0 +1,82 @@
+add_newline = false
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
+
+palette = "snazzy"
+
+[palettes.snazzy]
+grey    = "242"
+red     = "#FF5C57"
+yellow  = "#F3F99D"
+blue    = "#57C7FF"
+magenta = "#FF6AC1"
+cyan    = "#9AEDFE"
+white   = "#F1F1F0"
+green   = "#00DD00"
+
+# --- context: user@host, only when root or over SSH (p10k default/sudo hidden) ---
+[username]
+show_always = false       # only root or SSH, like p10k context
+style_user = "grey"
+style_root = "white"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = true
+style = "grey"
+format = "[@$hostname]($style) "
+
+# --- current directory (green, full Pure-style path) ---
+[directory]
+style = "green"
+truncation_length = 0
+truncate_to_repo = false
+truncation_symbol = ""
+
+# --- git branch (yellow, no icon) ---
+[git_branch]
+format = "[$branch]($style) "
+symbol = ""
+style = "yellow"
+
+# --- git status: single '*' when dirty (yellow), cyan ahead/behind arrows, no counts ---
+[git_status]
+style = "cyan"
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇡⇣"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = ""
+format = '[(*$conflicted$untracked$modified$staged$renamed$deleted)](yellow)[$ahead_behind]($style) '
+
+# --- previous command duration (grey, only if >= 5s) ---
+[cmd_duration]
+min_time = 5000
+show_milliseconds = false
+style = "grey"
+format = "[$duration]($style) "
+
+# --- python virtualenv name only (grey, no version) ---
+[python]
+format = "[$virtualenv]($style) "
+style = "grey"
+
+# --- prompt symbol: ❯ yellow on success / red on error, ❮ in vi command mode ---
+[character]
+success_symbol = "[❯](yellow)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](yellow)"

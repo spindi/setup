@@ -10,7 +10,7 @@ fi
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="agnoster-spindi"
-ZSH_THEME="powerlevel10k" # set by `omz`
+# ZSH_THEME="powerlevel10k" # set by `omz`
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -155,8 +155,8 @@ export HARAMBE_ROOT="$HOME/Documents/Repo/partnerize"
 # source <(glab completion -s zsh); compdef _glab glab # p10k did not like the output
 source <(glab completion -s zsh 1>/dev/null 2>&1); compdef _glab glab
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Starship prompt
+eval "$(starship init zsh)"
 
 # virtual enable / disable
 source ~/Documents/Repo/setup/oh-my-zsh/chpwd_virtual.sh
@@ -175,8 +175,8 @@ setopt HIST_REDUCE_BLANKS
 export PATH="$PATH:/Users/conor.boyd/.lmstudio/bin"
 # End of LM Studio CLI section
 
-# trigger pwd for virtual envs
+# Trigger pwd for virtual envs
 cd .
 
-# open files
+# Open files limit bump
 ulimit -n 10240
