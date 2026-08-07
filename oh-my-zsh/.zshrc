@@ -117,6 +117,7 @@ alias vf='vi "$(fzf)"'
 
 # using gnu ls for LS_COLORS compatible ls
 alias ls="eza --no-user --time-style long-iso"
+alias l="eza --no-user --time-style long-iso -l"
 alias ll="eza --no-user --time-style long-iso -al"
 alias lll="fd . | grep"
 alias lz="lazygit"
