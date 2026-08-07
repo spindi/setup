@@ -28,5 +28,5 @@ customCommands: # https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-
     context: commitFiles
     description: Blame file at tree
 git:
-  pagers:
-    - pager: delta --dark --paging=never
+  diffRenderers:
+    - command: delta --dark --paging=never
