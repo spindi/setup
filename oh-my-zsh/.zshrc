@@ -177,6 +177,12 @@ setopt HIST_REDUCE_BLANKS
 export PATH="$PATH:/Users/conor.boyd/.lmstudio/bin"
 # End of LM Studio CLI section
 
+# Claude code branch picker
+cc() {
+  local b; b=$(git branch --show-current 2>/dev/null)
+  if [[ -n $b ]]; then command claude -n "$b" "$@"; else command claude "$@"; fi
+}
+
 # Trigger pwd for virtual envs
 cd .
 
