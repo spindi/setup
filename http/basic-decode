@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+
+if [[ $# -ne 1 ]]; then
+    print "Usage: $0 '<Authorization header or Base64 value>'"
+    exit 1
+fi
+
+input="$1"
+
+# Accept either:
+#   dXNlcm5hbWU6cGFzc3dvcmQ=
+# or:
+#   Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
+
+if [[ "$input" == Authorization:\ Basic\ * ]]; then
+    encoded="${input#Authorization: Basic }"
+else
+    encoded="$input"
+fi
+
+decoded="$(printf '%s' "$encoded" | base64 --decode 2>/dev/null)"
+rc=$?
+
+if [[ $rc -ne 0 ]]; then
+    print "Error: invalid Base64 input"
+    exit 1
+fi
+
+if [[ "$decoded" != *:* ]]; then
+    print "Error: decoded value is not in username:password form"
+    print "Decoded: $decoded"
+    exit 1
+fi
+
+print $decoded

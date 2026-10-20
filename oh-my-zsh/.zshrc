@@ -117,10 +117,12 @@ alias vf='vi "$(fzf)"'
 
 # using gnu ls for LS_COLORS compatible ls
 alias ls="eza --no-user --time-style long-iso"
+alias l="eza --no-user --time-style long-iso -l"
 alias ll="eza --no-user --time-style long-iso -al"
 alias lll="fd . | grep"
 alias lz="lazygit"
 alias lzd="lazydocker"
+alias mysql="/opt/homebrew/opt/mysql-client@8.0/bin/mysql"
 alias t="eza -T"
 alias top="btop"
 alias claude="DEBUG=0 claude"
@@ -174,6 +176,12 @@ setopt HIST_REDUCE_BLANKS
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/conor.boyd/.lmstudio/bin"
 # End of LM Studio CLI section
+
+# Claude code branch picker
+cc() {
+  local b; b=$(git branch --show-current 2>/dev/null)
+  if [[ -n $b ]]; then command claude -n "$b" "$@"; else command claude "$@"; fi
+}
 
 # Trigger pwd for virtual envs
 cd .
